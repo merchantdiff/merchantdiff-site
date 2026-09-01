@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MerchantDiff — Weekly Shopify Release Intelligence</title>
+  <meta name="description" content="MerchantDiff tracks Shopify API changes, deprecations, deadlines, documentation updates, and ecosystem changes — then explains what changed, who is affected, and what to do." />
+  <meta name="robots" content="index,follow" />
+  <meta name="theme-color" content="#07111f" />
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="MerchantDiff — Weekly Shopify Release Intelligence" />
+  <meta property="og:description" content="Stay ahead of Shopify API changes, deprecations, deadlines, and ecosystem updates without monitoring every changelog yourself." />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="MerchantDiff — Weekly Shopify Release Intelligence" />
+  <meta name="twitter:description" content="Weekly release intelligence for Shopify developers." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "MerchantDiff",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Web",
+    "description": "Weekly release intelligence for Shopify developers covering API changes, deprecations, deadlines, documentation updates, and ecosystem changes.",
+    "url": "https://boosty.to/merchantdiff"
+  }
+  </script>
+  <style>
+    :root{--bg:#07111f;--card:rgba(255,255,255,.065);--border:rgba(255,255,255,.11);--text:#f5f8fc;--muted:#a9b7c9;--accent:#63b3ff;--accent2:#82e6d1;--shadow:0 24px 80px rgba(0,0,0,.28);--radius:22px;--max:1120px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 20% 0%,rgba(74,155,255,.18),transparent 34rem),radial-gradient(circle at 85% 15%,rgba(96,227,197,.10),transparent 30rem),var(--bg);color:var(--text);line-height:1.6}a{color:inherit;text-decoration:none}.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    nav{display:flex;align-items:center;justify-content:space-between;padding:24px 0}.brand{display:flex;align-items:center;gap:12px;font-weight:800;letter-spacing:-.02em;font-size:20px}.mark{width:38px;height:38px;display:grid;place-items:center;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#06101e;font-weight:900;box-shadow:0 10px 30px rgba(99,179,255,.25)}.nav-links{display:flex;align-items:center;gap:22px;color:var(--muted);font-size:14px}.nav-links a:hover{color:var(--text)}
+    .button{display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 20px;border-radius:13px;border:1px solid rgba(255,255,255,.13);font-weight:750;transition:.18s ease}.button:hover{transform:translateY(-1px)}.button.primary{background:linear-gradient(135deg,var(--accent),#7f9dff);color:#06101e;border-color:transparent;box-shadow:0 14px 40px rgba(76,145,255,.24)}.button.secondary{background:rgba(255,255,255,.055)}
+    .hero{padding:88px 0 68px;text-align:center}.eyebrow{display:inline-flex;align-items:center;gap:8px;padding:7px 12px;border:1px solid rgba(130,230,209,.22);border-radius:999px;background:rgba(130,230,209,.07);color:#baf5e8;font-size:13px;font-weight:700}h1{max-width:920px;margin:24px auto 18px;font-size:clamp(44px,7vw,82px);line-height:1.02;letter-spacing:-.055em}.gradient{background:linear-gradient(90deg,#fff,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}.hero p{max-width:770px;margin:0 auto;font-size:clamp(18px,2.2vw,22px);color:var(--muted)}.hero-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:32px}.micro{margin-top:15px;color:#7f90a6;font-size:13px}
+    .dashboard{margin:56px auto 0;max-width:960px;padding:16px;border:1px solid var(--border);border-radius:28px;background:rgba(255,255,255,.045);box-shadow:var(--shadow);backdrop-filter:blur(14px);text-align:left}.window{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.09);background:#0a1625}.window-bar{display:flex;gap:7px;padding:13px 15px;border-bottom:1px solid rgba(255,255,255,.08)}.dot{width:9px;height:9px;border-radius:50%;background:#40516a}.brief{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.07)}.brief>div{padding:28px;background:#0b1727}.brief .label{color:#7e91a8;font-size:12px;text-transform:uppercase;letter-spacing:.12em;font-weight:800}.brief strong{display:block;margin-top:8px;font-size:18px;line-height:1.35}
+    section{padding:76px 0}.section-head{max-width:720px;margin-bottom:30px}h2{margin:0 0 10px;font-size:clamp(32px,4vw,48px);line-height:1.08;letter-spacing:-.035em}.section-head p{margin:0;color:var(--muted);font-size:18px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.card{padding:26px;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);backdrop-filter:blur(10px)}.icon{width:42px;height:42px;display:grid;place-items:center;border-radius:13px;background:rgba(99,179,255,.12);color:#a8d5ff;font-size:20px;margin-bottom:18px}.card h3{margin:0 0 8px;font-size:19px}.card p{margin:0;color:var(--muted)}
+    .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:step}.step{counter-increment:step;position:relative;padding:28px;border-top:1px solid rgba(255,255,255,.16)}.step:before{content:"0" counter(step);display:block;color:var(--accent);font-weight:850;margin-bottom:14px}.step h3{margin:0 0 8px}.step p{color:var(--muted);margin:0}.cta{margin:68px 0 30px;padding:44px;text-align:center;border-radius:30px;border:1px solid rgba(99,179,255,.18);background:linear-gradient(135deg,rgba(99,179,255,.12),rgba(130,230,209,.06)),rgba(255,255,255,.035);box-shadow:var(--shadow)}.cta p{max-width:670px;margin:12px auto 24px;color:var(--muted);font-size:18px}footer{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:32px 0 42px;color:#7d8da2;font-size:14px;border-top:1px solid rgba(255,255,255,.08)}footer .links{display:flex;gap:18px}
+    @media(max-width:820px){.nav-links a:not(.button){display:none}.hero{padding-top:58px}.grid,.steps,.brief{grid-template-columns:1fr}.dashboard{margin-top:40px}section{padding:56px 0}.cta{padding:34px 22px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="#top" aria-label="MerchantDiff home"><span class="mark">MΔ</span><span>MerchantDiff</span></a>
+      <div class="nav-links"><a href="#features">What you get</a><a href="#how">How it works</a><a class="button secondary" href="https://x.com/MerchantDiff" target="_blank" rel="noopener">Follow on X</a></div>
+    </nav>
+    <main id="top">
+      <section class="hero">
+        <div class="eyebrow">Shopify release intelligence · weekly</div>
+        <h1>Stop reading every Shopify changelog. <span class="gradient">Read the changes that matter.</span></h1>
+        <p>MerchantDiff tracks Shopify API changes, deprecations, deadlines, documentation updates, and important ecosystem changes — then turns them into a concise developer-focused brief.</p>
+        <div class="hero-actions"><a class="button primary" href="https://boosty.to/merchantdiff" target="_blank" rel="noopener">Get MerchantDiff →</a><a class="button secondary" href="#features">See what’s inside</a></div>
+        <div class="micro">Paid subscription · current pricing and access are available on Boosty.</div>
+        <div class="dashboard" aria-label="MerchantDiff brief preview"><div class="window"><div class="window-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><div class="brief"><div><span class="label">What changed</span><strong>API and platform updates worth your attention</strong></div><div><span class="label">Who is affected</span><strong>Clear developer impact, without the noise</strong></div><div><span class="label">What to do</span><strong>Deadlines, migration signals, and next actions</strong></div></div></div></div>
+      </section>
+      <section id="features">
+        <div class="section-head"><h2>One weekly brief instead of scattered updates.</h2><p>MerchantDiff is built for Shopify developers who need to know what changed without constantly monitoring multiple sources.</p></div>
+        <div class="grid">
+          <article class="card"><div class="icon">↻</div><h3>API change monitoring</h3><p>Track meaningful Shopify API and platform updates in one place.</p></article>
+          <article class="card"><div class="icon">⌛</div><h3>Deprecations & deadlines</h3><p>Spot time-sensitive changes before they turn into emergency migrations.</p></article>
+          <article class="card"><div class="icon">◎</div><h3>Developer-focused summaries</h3><p>Understand what changed, who is affected, and what action may be needed.</p></article>
+          <article class="card"><div class="icon">≋</div><h3>Documentation changes</h3><p>Surface important documentation updates without manually diffing pages.</p></article>
+          <article class="card"><div class="icon">◇</div><h3>Ecosystem signals</h3><p>Keep important Shopify ecosystem tooling and platform changes on your radar.</p></article>
+          <article class="card"><div class="icon">✓</div><h3>Weekly cadence</h3><p>A compact rhythm designed to fit into a developer’s normal workflow.</p></article>
+        </div>
+      </section>
+      <section id="how">
+        <div class="section-head"><h2>How MerchantDiff works.</h2><p>The goal is simple: reduce monitoring time while making important Shopify changes harder to miss.</p></div>
+        <div class="steps"><div class="step"><h3>Monitor</h3><p>Relevant Shopify platform, API, documentation, deprecation, deadline, and ecosystem updates are tracked.</p></div><div class="step"><h3>Filter</h3><p>Low-signal noise is removed so the brief stays focused on changes developers may actually need to react to.</p></div><div class="step"><h3>Explain</h3><p>Each issue turns updates into practical context: what changed, who is affected, and what to consider next.</p></div></div>
+        <div class="cta"><h2>Spend less time watching Shopify change.</h2><p>Use that time to build. MerchantDiff gives you a recurring view of the changes that may affect your Shopify development work.</p><a class="button primary" href="https://boosty.to/merchantdiff" target="_blank" rel="noopener">Subscribe on Boosty →</a></div>
+      </section>
+    </main>
+    <footer><div>© MerchantDiff. Weekly Shopify release intelligence.</div><div class="links"><a href="https://boosty.to/merchantdiff" target="_blank" rel="noopener">Boosty</a><a href="https://x.com/MerchantDiff" target="_blank" rel="noopener">X</a></div></footer>
+  </div>
+</body>
+</html>
