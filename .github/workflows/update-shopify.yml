@@ -18,30 +18,33 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v7
         with:
           python-version: "3.12"
 
-      - name: Generate Shopify updates page
+      - name: Generate Shopify content
         run: python scripts/update_shopify.py
 
       - name: Check for changes
         id: changes
         run: |
-          git add updates.html
+          git add updates.html sitemap.xml changes/
 
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No Shopify changelog changes."
+            echo "No Shopify changes."
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
-            echo "Shopify changelog changed."
+            git diff --cached --name-only > "$RUNNER_TEMP/changed-files.txt"
+
+            echo "Changed files:"
+            cat "$RUNNER_TEMP/changed-files.txt"
           fi
 
-      - name: Commit updated page
+      - name: Commit generated content
         if: steps.changes.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
@@ -54,17 +57,73 @@ jobs:
         if: steps.changes.outputs.changed == 'true'
         run: sleep 60
 
+      - name: Build IndexNow payload
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          from pathlib import Path
+
+          base = "https://merchantdiff.github.io/merchantdiff-site/"
+
+          changed_file = Path(
+              os.environ["RUNNER_TEMP"]
+          ) / "changed-files.txt"
+
+          paths = changed_file.read_text(
+              encoding="utf-8"
+          ).splitlines()
+
+          urls = []
+
+          for path in paths:
+              if path == "updates.html":
+                  urls.append(base + "updates.html")
+
+              elif (
+                  path.startswith("changes/")
+                  and path.endswith(".html")
+              ):
+                  urls.append(base + path)
+
+          urls = list(dict.fromkeys(urls))
+
+          if not urls:
+              urls = [base + "updates.html"]
+
+          payload = {
+              "host": "merchantdiff.github.io",
+              "key": "ea135eb8f61d4600a04e289be17b8956",
+              "keyLocation":
+                  base
+                  + "ea135eb8f61d4600a04e289be17b8956.txt",
+              "urlList": urls,
+          }
+
+          output = Path(
+              os.environ["RUNNER_TEMP"]
+          ) / "indexnow.json"
+
+          output.write_text(
+              json.dumps(payload),
+              encoding="utf-8"
+          )
+
+          print(
+              f"Submitting {len(urls)} URL(s) to IndexNow:"
+          )
+
+          for url in urls:
+              print(url)
+          PY
+
       - name: Notify IndexNow
         if: steps.changes.outputs.changed == 'true'
         run: |
-          curl --fail-with-body --retry 3 --retry-delay 10 \
+          curl --fail-with-body \
+            --retry 3 \
+            --retry-delay 10 \
             -H "Content-Type: application/json; charset=utf-8" \
-            -d '{
-              "host": "merchantdiff.github.io",
-              "key": "ea135eb8f61d4600a04e289be17b8956",
-              "keyLocation": "https://merchantdiff.github.io/merchantdiff-site/ea135eb8f61d4600a04e289be17b8956.txt",
-              "urlList": [
-                "https://merchantdiff.github.io/merchantdiff-site/updates.html"
-              ]
-            }' \
+            --data-binary @"$RUNNER_TEMP/indexnow.json" \
             https://api.indexnow.org/indexnow
