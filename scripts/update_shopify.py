@@ -90,30 +90,24 @@ def is_important(title, categories):
 
 def is_seo_worthy(title, categories):
     """
-    Only the Shopify changes with stronger developer/search value
-    are allowed into sitemap.xml.
+    В sitemap попадают только более важные изменения Shopify.
 
-    Other pages still exist and are linked from updates.html,
-    but receive noindex,follow.
+    Остальные страницы продолжают существовать,
+    но получают noindex,follow.
     """
 
     category_text = " ".join(categories).lower()
     title_text = title.lower()
 
-    category_signals = [
-        "api",
-        "graphql",
-        "rest",
-        "webhook",
-        "checkout",
-        "shopify functions",
-        "function",
+    strong_category_signals = [
         "action required",
-        "breaking",
+        "breaking api change",
+        "breaking change",
+        "deprecation announcement",
         "deprecation",
     ]
 
-    title_signals = [
+    strong_title_signals = [
         "deprecated",
         "deprecation",
         "breaking",
@@ -121,21 +115,56 @@ def is_seo_worthy(title, categories):
         "removal",
         "sunset",
         "deadline",
+        "action required",
+        "no longer supported",
+        "no longer available",
         "api version",
+        "migration required",
+    ]
+
+    technical_title_signals = [
         "graphql",
         "rest api",
         "webhook",
+        "checkout",
+        "shopify functions",
+        "access token",
     ]
 
-    return (
+    technical_change_signals = [
+        "change",
+        "update",
+        "new",
+        "removed",
+        "deprecated",
+        "require",
+    ]
+
+    strong_category_match = any(
+        signal in category_text
+        for signal in strong_category_signals
+    )
+
+    strong_title_match = any(
+        signal in title_text
+        for signal in strong_title_signals
+    )
+
+    technical_match = (
         any(
-            signal in category_text
-            for signal in category_signals
-        )
-        or any(
             signal in title_text
-            for signal in title_signals
+            for signal in technical_title_signals
         )
+        and any(
+            signal in title_text
+            for signal in technical_change_signals
+        )
+    )
+
+    return (
+        strong_category_match
+        or strong_title_match
+        or technical_match
     )
 
 
@@ -491,9 +520,6 @@ for update in updates:
         meta_description[:155]
     )
 
-    # Important SEO logic:
-    # weaker/template pages remain accessible,
-    # but Google/Bing should not index them.
     robots_meta = (
         ""
         if update["seo_worthy"]
@@ -880,7 +906,7 @@ with open(
 
 
 # ---------------------------------------------------------
-# SELECT ONLY STRONGER PAGES FOR SEARCH INDEXING
+# SELECT ONLY IMPORTANT PAGES FOR SEARCH INDEXING
 # ---------------------------------------------------------
 
 seo_pages = [
