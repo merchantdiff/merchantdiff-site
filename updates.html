@@ -175,7 +175,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .ready-button {
@@ -191,22 +191,6 @@ h1 {
 
 .ready-button:hover {
     opacity: 0.9;
-}
-
-.posted-button {
-    display: inline-block;
-    padding: 8px 12px;
-    border: 1px solid #5a5a5a;
-    border-radius: 9px;
-    background: transparent;
-    color: #d8d8d8;
-    cursor: pointer;
-    font-size: 13px;
-}
-
-.posted-button:hover {
-    border-color: #aaa;
-    color: white;
 }
 
 .ready-page-link {
@@ -230,7 +214,7 @@ h1 {
 }
 
 
-/* NORMAL UPDATE CARDS */
+/* UPDATE CARDS */
 
 .card {
     background: white;
@@ -425,8 +409,8 @@ for Shopify developers.
 <p class="ready-intro">
 Latest high-value Shopify developer changes selected
 automatically by MerchantDiff. Clicking Post on X opens
-a prepared post. After publishing it, return here and
-click Mark as posted.
+a prepared post and immediately removes that item from
+this queue.
 </p>
 
 <div class="queue-toolbar">
@@ -467,16 +451,10 @@ Password Protected Shop Dev flows on Shopify Theme CLI v3.83.x and older to be d
     class="ready-button"
     href="https://x.com/intent/tweet?text=Important+Shopify+developer+change%3A%0A%0APassword+Protected+Shop+Dev+flows+on+Shopify+Theme+CLI+v3.83.x+and+older+to+be+deprecated%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fpassword-protected-shop-dev-flows-on-shopify-theme-cli-v3-83-x-and-older-to-be-deprecated.html%0A%0A%23ShopifyDev"
     target="_blank"
-    rel="noopener noreferrer">
+    rel="noopener noreferrer"
+    onclick="markAsPosted('password-protected-shop-dev-flows-on-shopify-theme-cli-v3-83-x-and-older-to-be-deprecated')">
 Post on X →
 </a>
-
-<button
-    class="posted-button"
-    type="button"
-    onclick="markAsPosted('password-protected-shop-dev-flows-on-shopify-theme-cli-v3-83-x-and-older-to-be-deprecated')">
-✓ Mark as posted
-</button>
 
 <a
     class="ready-page-link"
@@ -506,16 +484,10 @@ Script tags are deprecated and will stop running on March 1, 2027
     class="ready-button"
     href="https://x.com/intent/tweet?text=Important+Shopify+developer+change%3A%0A%0AScript+tags+are+deprecated+and+will+stop+running+on+March+1%2C+2027%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fonline-store-script-tags-deprecation.html%0A%0A%23ShopifyDev"
     target="_blank"
-    rel="noopener noreferrer">
+    rel="noopener noreferrer"
+    onclick="markAsPosted('online-store-script-tags-deprecation')">
 Post on X →
 </a>
-
-<button
-    class="posted-button"
-    type="button"
-    onclick="markAsPosted('online-store-script-tags-deprecation')">
-✓ Mark as posted
-</button>
 
 <a
     class="ready-page-link"
@@ -545,16 +517,10 @@ Updating an order&#x27;s shipping address recalculates taxes as of API version 2
     class="ready-button"
     href="https://x.com/intent/tweet?text=Important+Shopify+developer+change%3A%0A%0AUpdating+an+order%27s+shipping+address+recalculates+taxes+as+of+API+version+2026-10%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fupdating-an-orders-shipping-address-returns-accurate-financial-data.html%0A%0A%23ShopifyDev"
     target="_blank"
-    rel="noopener noreferrer">
+    rel="noopener noreferrer"
+    onclick="markAsPosted('updating-an-orders-shipping-address-returns-accurate-financial-data')">
 Post on X →
 </a>
-
-<button
-    class="posted-button"
-    type="button"
-    onclick="markAsPosted('updating-an-orders-shipping-address-returns-accurate-financial-data')">
-✓ Mark as posted
-</button>
 
 <a
     class="ready-page-link"
@@ -584,16 +550,10 @@ Invalid metafield queries now return errors in the GraphQL Admin API
     class="ready-button"
     href="https://x.com/intent/tweet?text=Important+Shopify+developer+change%3A%0A%0AInvalid+metafield+queries+now+return+errors+in+the+GraphQL+Admin+API%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Finvalid-metafield-queries-now-return-errors-in-the-graphql-admin-api.html%0A%0A%23ShopifyDev"
     target="_blank"
-    rel="noopener noreferrer">
+    rel="noopener noreferrer"
+    onclick="markAsPosted('invalid-metafield-queries-now-return-errors-in-the-graphql-admin-api')">
 Post on X →
 </a>
-
-<button
-    class="posted-button"
-    type="button"
-    onclick="markAsPosted('invalid-metafield-queries-now-return-errors-in-the-graphql-admin-api')">
-✓ Mark as posted
-</button>
 
 <a
     class="ready-page-link"
@@ -612,8 +572,8 @@ Preview MerchantDiff page
 
 <strong>Queue cleared ✓</strong>
 
-All current high-value Shopify updates have been marked
-as posted.
+No current high-value Shopify updates are waiting
+to be posted.
 
 </div>
 
@@ -1923,7 +1883,9 @@ affiliated with Shopify.
 
 
 <script>
-const MERCHANTDIFF_POSTED_KEY = "merchantdiff_posted_x_v1";
+const MERCHANTDIFF_POSTED_KEY =
+    "merchantdiff_posted_x_v2";
+
 
 function getPostedItems() {
     try {
@@ -1945,7 +1907,7 @@ function getPostedItems() {
 
     } catch (error) {
         console.warn(
-            "Could not read MerchantDiff posted state:",
+            "Could not read MerchantDiff X queue:",
             error
         );
 
@@ -1963,10 +1925,21 @@ function savePostedItems(posted) {
 
     } catch (error) {
         console.warn(
-            "Could not save MerchantDiff posted state:",
+            "Could not save MerchantDiff X queue:",
             error
         );
     }
+}
+
+
+function markAsPosted(key) {
+    const posted = getPostedItems();
+
+    posted.add(key);
+
+    savePostedItems(posted);
+
+    refreshReadyQueue();
 }
 
 
@@ -2006,28 +1979,21 @@ function refreshReadyQueue() {
     );
 
     if (counter) {
-        counter.textContent =
-            visibleCount === 1
-                ? "1 post waiting"
-                : `${visibleCount} posts waiting`;
+        if (visibleCount === 0) {
+            counter.textContent = "Queue cleared";
+        } else if (visibleCount === 1) {
+            counter.textContent = "1 post waiting";
+        } else {
+            counter.textContent =
+                `${visibleCount} posts waiting`;
+        }
     }
-}
-
-
-function markAsPosted(key) {
-    const posted = getPostedItems();
-
-    posted.add(key);
-
-    savePostedItems(posted);
-
-    refreshReadyQueue();
 }
 
 
 function resetPostedMarks() {
     const confirmed = window.confirm(
-        "Show all previously marked X posts again?"
+        "Show all hidden X post candidates again?"
     );
 
     if (!confirmed) {
