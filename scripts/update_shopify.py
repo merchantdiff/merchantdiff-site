@@ -21,6 +21,10 @@ CHANGES_DIR = "changes"
 MAX_FEED_ITEMS = 100
 MAX_UPDATES_ON_INDEX = 30
 
+# Сколько важных обновлений показываем
+# в отдельном блоке Ready to post on X
+READY_TO_POST_LIMIT = 5
+
 
 def safe_slug(text):
     text = text.lower().strip()
@@ -383,6 +387,76 @@ h1 {
     font-size: 18px;
     line-height: 1.65;
     color: #555;
+}
+
+.ready-panel {
+    margin: 0 0 38px;
+    padding: 26px;
+    border-radius: 18px;
+    background: #171717;
+    color: white;
+}
+
+.ready-panel h2 {
+    margin: 0 0 8px;
+    font-size: 27px;
+}
+
+.ready-intro {
+    margin: 0 0 22px;
+    max-width: 700px;
+    color: #cfcfcf;
+    line-height: 1.55;
+}
+
+.ready-list {
+    display: grid;
+    gap: 12px;
+}
+
+.ready-item {
+    padding: 17px;
+    border-radius: 12px;
+    background: #262626;
+}
+
+.ready-item-title {
+    margin: 5px 0 12px;
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.ready-meta {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.ready-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.ready-button {
+    display: inline-block;
+    padding: 9px 14px;
+    border-radius: 9px;
+    background: white;
+    color: #111;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.ready-button:hover {
+    opacity: 0.9;
+}
+
+.ready-page-link {
+    color: #ccc;
+    font-size: 13px;
 }
 
 .card {
@@ -794,6 +868,92 @@ with Shopify.
 
 
 # ---------------------------------------------------------
+# READY TO POST ON X
+# ---------------------------------------------------------
+
+ready_updates = [
+    update
+    for update in updates[:MAX_UPDATES_ON_INDEX]
+    if update["seo_worthy"]
+][:READY_TO_POST_LIMIT]
+
+ready_cards = []
+
+for update in ready_updates:
+
+    x_intent = escape(
+        update["x_intent"],
+        quote=True,
+    )
+
+    priority_label = (
+        "HIGH PRIORITY"
+        if update["important"]
+        else "READY"
+    )
+
+    ready_cards.append(
+        f"""
+<div class="ready-item">
+
+<div class="ready-meta">
+{escape(update["date_display"])} · {priority_label}
+</div>
+
+<div class="ready-item-title">
+{escape(update["title"])}
+</div>
+
+<div class="ready-actions">
+
+<a
+    class="ready-button"
+    href="{x_intent}"
+    target="_blank"
+    rel="noopener noreferrer">
+Post on X →
+</a>
+
+<a
+    class="ready-page-link"
+    href="changes/{escape(update["slug"])}.html">
+Preview MerchantDiff page
+</a>
+
+</div>
+
+</div>
+"""
+    )
+
+
+if ready_cards:
+    ready_section = f"""
+<section class="ready-panel">
+
+<h2>Ready to post on X</h2>
+
+<p class="ready-intro">
+Latest high-value Shopify developer changes selected
+automatically by MerchantDiff. Clicking the button opens
+X with a prepared post — nothing is published until you
+press Post.
+</p>
+
+<div class="ready-list">
+
+{''.join(ready_cards)}
+
+</div>
+
+</section>
+"""
+
+else:
+    ready_section = ""
+
+
+# ---------------------------------------------------------
 # GENERATE updates.html
 # ---------------------------------------------------------
 
@@ -954,6 +1114,8 @@ for Shopify developers.
 
 </header>
 
+{ready_section}
+
 <main>
 
 {''.join(cards)}
@@ -1079,5 +1241,5 @@ print(
     f"Processed {len(updates)} Shopify updates. "
     f"Generated individual change pages. "
     f"{len(seo_pages)} pages selected for search indexing. "
-    f"{len(seo_pages)} X post drafts generated."
+    f"{len(ready_updates)} updates ready to post on X."
 )
