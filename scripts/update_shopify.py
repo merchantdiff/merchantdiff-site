@@ -1,29 +1,125 @@
 from urllib.request import Request, urlopen
+from urllib.parse import urlparse
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from html import escape
+import os
+import re
+import hashlib
+
 
 FEED_URL = "https://shopify.dev/changelog/feed.xml"
+
 SITE_URL = "https://merchantdiff.github.io/merchantdiff-site/"
 BOOSTY_URL = "https://boosty.to/merchantdiff"
+X_URL = "https://x.com/MerchantDiff"
+
+ANALYTICS_TOKEN = "44ece3bc3eee498c9bed2bbfd20a997c"
+
+CHANGES_DIR = "changes"
+MAX_FEED_ITEMS = 100
+MAX_UPDATES_ON_INDEX = 30
+
+
+def safe_slug(text):
+    text = text.lower().strip()
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    return text.strip("-")
+
+
+def page_slug(title, link):
+    parsed = urlparse(link)
+    last_part = parsed.path.rstrip("/").split("/")[-1]
+
+    slug = safe_slug(last_part)
+
+    if slug:
+        return slug
+
+    slug = safe_slug(title)
+
+    if slug:
+        return slug
+
+    digest = hashlib.sha1(link.encode("utf-8")).hexdigest()[:10]
+    return f"shopify-change-{digest}"
+
+
+def parse_date(pub_date):
+    try:
+        parsed = parsedate_to_datetime(pub_date)
+
+        return {
+            "display": parsed.strftime("%B %d, %Y"),
+            "iso": parsed.strftime("%Y-%m-%d"),
+        }
+
+    except Exception:
+        return {
+            "display": pub_date,
+            "iso": "",
+        }
+
+
+def is_important(title, categories):
+    values = " ".join(categories).lower()
+    title_lower = title.lower()
+
+    important_signals = [
+        "action required",
+        "breaking api change",
+        "breaking change",
+        "breaking changes",
+        "deprecation announcement",
+        "deprecated",
+        "deprecation",
+    ]
+
+    return any(
+        signal in values or signal in title_lower
+        for signal in important_signals
+    )
+
+
+def analytics_snippet():
+    return f"""
+<!-- Cloudflare Web Analytics -->
+<script
+    type="module"
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{{"token":"{ANALYTICS_TOKEN}"}}'>
+</script>
+<!-- End Cloudflare Web Analytics -->
+"""
+
 
 request = Request(
     FEED_URL,
-    headers={"User-Agent": "MerchantDiff/1.0"}
+    headers={
+        "User-Agent": "MerchantDiff/1.0 (+https://merchantdiff.github.io/merchantdiff-site/)"
+    },
 )
 
 with urlopen(request, timeout=30) as response:
     xml_data = response.read()
 
 root = ET.fromstring(xml_data)
-items = root.findall(".//item")
+items = root.findall(".//item")[:MAX_FEED_ITEMS]
 
 updates = []
 
-for item in items[:20]:
+for item in items:
     title = (item.findtext("title") or "").strip()
-    link = (item.findtext("link") or item.findtext("guid") or "").strip()
+    link = (
+        item.findtext("link")
+        or item.findtext("guid")
+        or ""
+    ).strip()
+
     pub_date = (item.findtext("pubDate") or "").strip()
+
+    if not title or not link:
+        continue
 
     categories = [
         (category.text or "").strip()
@@ -31,235 +127,606 @@ for item in items[:20]:
         if category.text
     ]
 
-    try:
-        date = parsedate_to_datetime(pub_date).strftime("%B %d, %Y")
-    except Exception:
-        date = pub_date
+    date = parse_date(pub_date)
+    slug = page_slug(title, link)
 
-    important_categories = {
-        "Action Required",
-        "Breaking API Change",
-        "Deprecation Announcement",
-    }
-
-    urgent = any(category in important_categories for category in categories)
-
-    updates.append({
-        "title": title,
-        "link": link,
-        "date": date,
-        "categories": categories,
-        "urgent": urgent,
-    })
-
-cards = []
-
-for update in updates:
-    tags = "".join(
-        f'<span class="tag">{escape(category)}</span>'
-        for category in update["categories"][:4]
+    updates.append(
+        {
+            "title": title,
+            "source_url": link,
+            "date_display": date["display"],
+            "date_iso": date["iso"],
+            "categories": categories,
+            "important": is_important(title, categories),
+            "slug": slug,
+            "local_url": f"{SITE_URL}changes/{slug}.html",
+        }
     )
 
-    urgent = (
+
+os.makedirs(CHANGES_DIR, exist_ok=True)
+
+
+COMMON_CSS = """
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+    background: #f7f8fa;
+    color: #161616;
+}
+
+a {
+    color: #1457d9;
+}
+
+.wrap {
+    max-width: 920px;
+    margin: auto;
+    padding: 30px 20px 70px;
+}
+
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 42px;
+}
+
+.brand {
+    font-size: 21px;
+    font-weight: 800;
+    color: #111;
+    text-decoration: none;
+}
+
+.navlinks {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.navlinks a {
+    color: #444;
+    text-decoration: none;
+}
+
+.hero {
+    margin-bottom: 34px;
+}
+
+h1 {
+    font-size: clamp(34px, 6vw, 50px);
+    line-height: 1.08;
+    margin: 0 0 18px;
+    letter-spacing: -0.025em;
+}
+
+.intro {
+    max-width: 760px;
+    font-size: 18px;
+    line-height: 1.65;
+    color: #555;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e3e6ea;
+    border-radius: 16px;
+    padding: 23px;
+    margin: 16px 0;
+}
+
+.card h2 {
+    margin: 11px 0;
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+.card h2 a {
+    color: #161616;
+    text-decoration: none;
+}
+
+.card h2 a:hover {
+    text-decoration: underline;
+}
+
+.meta {
+    font-size: 14px;
+    color: #666;
+}
+
+.tags {
+    margin-top: 10px;
+}
+
+.tag {
+    display: inline-block;
+    margin: 3px 6px 3px 0;
+    padding: 5px 9px;
+    background: #eef1f5;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.urgent {
+    display: inline-block;
+    margin-left: 8px;
+    font-weight: 700;
+    color: #8b2d16;
+}
+
+.actions {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.detail {
+    background: white;
+    border: 1px solid #e3e6ea;
+    border-radius: 18px;
+    padding: 28px;
+    margin: 24px 0;
+}
+
+.detail p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.source-box {
+    margin-top: 24px;
+    padding: 18px;
+    background: #f2f4f7;
+    border-radius: 12px;
+}
+
+.cta {
+    margin-top: 40px;
+    padding: 30px;
+    background: #171717;
+    color: white;
+    border-radius: 18px;
+}
+
+.cta h2 {
+    margin-top: 0;
+}
+
+.cta p {
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.cta a {
+    display: inline-block;
+    margin-top: 7px;
+    color: white;
+    font-weight: 700;
+}
+
+footer {
+    margin-top: 44px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #777;
+}
+
+.back {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+"""
+
+
+for update in updates:
+
+    category_html = "".join(
+        f'<span class="tag">{escape(category)}</span>'
+        for category in update["categories"]
+    )
+
+    important_html = (
         '<span class="urgent">Action / breaking change</span>'
-        if update["urgent"]
+        if update["important"]
         else ""
     )
 
-    cards.append(f"""
-    <article class="card">
-        <div class="meta">
-            <span>{escape(update["date"])}</span>
-            {urgent}
-        </div>
+    title = escape(update["title"])
+    source_url = escape(update["source_url"])
+    local_url = escape(update["local_url"])
 
-        <h2>
-            <a href="{escape(update["link"])}"
-               target="_blank"
-               rel="noopener noreferrer">
-                {escape(update["title"])}
-            </a>
-        </h2>
+    categories_text = ", ".join(update["categories"])
 
-        <div class="tags">{tags}</div>
+    if categories_text:
+        category_sentence = (
+            f"This Shopify update is categorized as "
+            f"{escape(categories_text)}."
+        )
+    else:
+        category_sentence = (
+            "This entry was published in Shopify's official "
+            "developer changelog."
+        )
 
-        <a class="source"
-           href="{escape(update["link"])}"
-           target="_blank"
-           rel="noopener noreferrer">
-            Read on Shopify →
-        </a>
-    </article>
-    """)
+    meta_description = (
+        f"{update['title']} — Shopify developer change tracked by MerchantDiff. "
+        f"Published {update['date_display']}."
+    )
 
-html = f"""<!doctype html>
+    meta_description = escape(meta_description[:155])
+
+    page_html = f"""<!doctype html>
 <html lang="en">
+
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
 
-<title>Latest Shopify Developer Changes | MerchantDiff</title>
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1">
 
-<meta name="description"
-content="Latest Shopify developer changelog updates, API changes, deprecations and platform updates tracked by MerchantDiff.">
+<title>{title} | MerchantDiff</title>
 
-<link rel="canonical"
-href="{SITE_URL}updates.html">
+<meta
+    name="description"
+    content="{meta_description}">
 
-<style>
-body {{
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #f7f8fa;
-    color: #161616;
-}}
+<link
+    rel="canonical"
+    href="{local_url}">
 
-.wrap {{
-    max-width: 900px;
-    margin: auto;
-    padding: 32px 20px 60px;
-}}
+<meta property="og:type" content="article">
+<meta property="og:title" content="{title}">
+<meta property="og:url" content="{local_url}">
 
-header {{
-    margin-bottom: 32px;
-}}
-
-.brand {{
-    font-weight: 700;
-    font-size: 20px;
-}}
-
-h1 {{
-    font-size: 42px;
-    margin-bottom: 12px;
-}}
-
-.intro {{
-    font-size: 18px;
-    line-height: 1.6;
-    color: #555;
-}}
-
-.card {{
-    background: white;
-    border: 1px solid #e5e5e5;
-    border-radius: 14px;
-    padding: 22px;
-    margin: 16px 0;
-}}
-
-.card h2 {{
-    margin: 12px 0;
-    font-size: 22px;
-}}
-
-.card h2 a {{
-    color: #161616;
-    text-decoration: none;
-}}
-
-.card h2 a:hover {{
-    text-decoration: underline;
-}}
-
-.meta {{
-    font-size: 14px;
-    color: #666;
-}}
-
-.tag {{
-    display: inline-block;
-    margin: 4px 6px 4px 0;
-    padding: 5px 9px;
-    border-radius: 20px;
-    background: #eef1f5;
-    font-size: 12px;
-}}
-
-.urgent {{
-    display: inline-block;
-    margin-left: 10px;
-    font-weight: 700;
-}}
-
-.source {{
-    display: inline-block;
-    margin-top: 12px;
-}}
-
-.cta {{
-    margin-top: 40px;
-    padding: 28px;
-    background: #161616;
-    color: white;
-    border-radius: 14px;
-}}
-
-.cta a {{
-    color: white;
-}}
-
-footer {{
-    margin-top: 40px;
-    font-size: 14px;
-    color: #777;
-}}
-</style>
 </head>
 
+<style>
+{COMMON_CSS}
+</style>
+
 <body>
+
 <div class="wrap">
 
-<header>
-    <div class="brand">
-        <a href="{SITE_URL}">MerchantDiff</a>
-    </div>
+<nav class="topnav">
 
-    <h1>Latest Shopify developer changes</h1>
+<a class="brand" href="{SITE_URL}">
+MerchantDiff
+</a>
 
-    <p class="intro">
-        Automatically tracked updates from Shopify's official developer changelog.
-        MerchantDiff monitors API changes, deprecations, deadlines and important
-        ecosystem updates for Shopify developers.
-    </p>
-</header>
+<div class="navlinks">
+<a href="{SITE_URL}updates.html">Shopify changes</a>
+<a href="{X_URL}" target="_blank" rel="noopener">X</a>
+</div>
+
+</nav>
 
 <main>
-{''.join(cards)}
-</main>
 
-<section class="cta">
-    <h2>Need the developer-focused version?</h2>
+<a class="back" href="{SITE_URL}updates.html">
+← Latest Shopify changes
+</a>
 
-    <p>
-        MerchantDiff turns Shopify changes into weekly release intelligence:
-        what changed, who is affected and what action may be needed.
-    </p>
+<div class="meta">
+{escape(update["date_display"])}
+{important_html}
+</div>
 
-    <a href="{BOOSTY_URL}" target="_blank" rel="noopener">
-        Get MerchantDiff →
-    </a>
+<h1>{title}</h1>
+
+<div class="tags">
+{category_html}
+</div>
+
+<section class="detail">
+
+<h2>Shopify developer change</h2>
+
+<p>
+MerchantDiff detected this entry in Shopify's official
+developer changelog on
+<strong>{escape(update["date_display"])}</strong>.
+</p>
+
+<p>
+{category_sentence}
+</p>
+
+<p>
+Use the official Shopify entry below as the source of truth
+for technical implementation details, affected APIs,
+migration instructions and deadlines.
+</p>
+
+<div class="source-box">
+
+<strong>Official source</strong>
+
+<p>
+<a
+    href="{source_url}"
+    target="_blank"
+    rel="noopener noreferrer">
+Read this change on Shopify →
+</a>
+</p>
+
+</div>
+
 </section>
 
+<section class="cta">
+
+<h2>Want the actionable version?</h2>
+
+<p>
+MerchantDiff monitors Shopify API changes, deprecations,
+deadlines and ecosystem updates, then turns them into
+developer-focused release intelligence: what changed,
+who is affected and what action may be needed.
+</p>
+
+<a
+    href="{BOOSTY_URL}"
+    target="_blank"
+    rel="noopener noreferrer">
+Get MerchantDiff →
+</a>
+
+</section>
+
+</main>
+
 <footer>
-    Data source: Shopify Developer Changelog.
-    MerchantDiff is an independent project and is not affiliated with Shopify.
+
+Source metadata comes from the Shopify Developer Changelog.
+MerchantDiff is an independent project and is not affiliated
+with Shopify.
+
 </footer>
 
 </div>
 
-<!-- Cloudflare Web Analytics -->
-<script type="module"
-src="https://static.cloudflareinsights.com/beacon.min.js"
-data-cf-beacon='{{"token":"44ece3bc3eee498c9bed2bbfd20a997c"}}'>
-</script>
-<!-- End Cloudflare Web Analytics -->
+{analytics_snippet()}
 
 </body>
 </html>
 """
 
-with open("updates.html", "w", encoding="utf-8") as file:
-    file.write(html)
+    output_path = os.path.join(
+        CHANGES_DIR,
+        f"{update['slug']}.html",
+    )
 
-print(f"Generated updates.html with {len(updates)} Shopify updates.")
+    with open(output_path, "w", encoding="utf-8") as file:
+        file.write(page_html)
+
+
+cards = []
+
+for update in updates[:MAX_UPDATES_ON_INDEX]:
+
+    tags = "".join(
+        f'<span class="tag">{escape(category)}</span>'
+        for category in update["categories"][:5]
+    )
+
+    important = (
+        '<span class="urgent">Action / breaking change</span>'
+        if update["important"]
+        else ""
+    )
+
+    cards.append(
+        f"""
+<article class="card">
+
+<div class="meta">
+{escape(update["date_display"])}
+{important}
+</div>
+
+<h2>
+<a href="changes/{escape(update["slug"])}.html">
+{escape(update["title"])}
+</a>
+</h2>
+
+<div class="tags">
+{tags}
+</div>
+
+<div class="actions">
+
+<a href="changes/{escape(update["slug"])}.html">
+MerchantDiff page →
+</a>
+
+<a
+    href="{escape(update["source_url"])}"
+    target="_blank"
+    rel="noopener noreferrer">
+Official Shopify source
+</a>
+
+</div>
+
+</article>
+"""
+    )
+
+
+updates_html = f"""<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1">
+
+<title>Latest Shopify Developer Changes | MerchantDiff</title>
+
+<meta
+    name="description"
+    content="Latest Shopify developer changelog updates, API changes, deprecations and platform updates tracked automatically by MerchantDiff.">
+
+<link
+    rel="canonical"
+    href="{SITE_URL}updates.html">
+
+</head>
+
+<style>
+{COMMON_CSS}
+</style>
+
+<body>
+
+<div class="wrap">
+
+<nav class="topnav">
+
+<a class="brand" href="{SITE_URL}">
+MerchantDiff
+</a>
+
+<div class="navlinks">
+<a href="{X_URL}" target="_blank" rel="noopener">X</a>
+<a href="{BOOSTY_URL}" target="_blank" rel="noopener">Subscribe</a>
+</div>
+
+</nav>
+
+<header class="hero">
+
+<h1>Latest Shopify developer changes</h1>
+
+<p class="intro">
+Automatically tracked updates from Shopify's official
+developer changelog. MerchantDiff monitors API changes,
+deprecations, deadlines and important ecosystem updates
+for Shopify developers.
+</p>
+
+</header>
+
+<main>
+
+{''.join(cards)}
+
+</main>
+
+<section class="cta">
+
+<h2>Need the developer-focused version?</h2>
+
+<p>
+MerchantDiff turns Shopify changes into weekly release
+intelligence: what changed, who is affected and what
+action may be needed.
+</p>
+
+<a
+    href="{BOOSTY_URL}"
+    target="_blank"
+    rel="noopener noreferrer">
+Get MerchantDiff →
+</a>
+
+</section>
+
+<footer>
+
+Data source: Shopify Developer Changelog.
+MerchantDiff is an independent project and is not
+affiliated with Shopify.
+
+</footer>
+
+</div>
+
+{analytics_snippet()}
+
+</body>
+</html>
+"""
+
+
+with open("updates.html", "w", encoding="utf-8") as file:
+    file.write(updates_html)
+
+
+change_pages = []
+
+for filename in os.listdir(CHANGES_DIR):
+    if filename.endswith(".html"):
+        change_pages.append(filename)
+
+change_pages.sort()
+
+
+sitemap_entries = [
+    f"""
+<url>
+<loc>{SITE_URL}</loc>
+<changefreq>weekly</changefreq>
+<priority>1.0</priority>
+</url>
+""",
+    f"""
+<url>
+<loc>{SITE_URL}updates.html</loc>
+<changefreq>daily</changefreq>
+<priority>0.9</priority>
+</url>
+""",
+]
+
+
+for filename in change_pages:
+    sitemap_entries.append(
+        f"""
+<url>
+<loc>{SITE_URL}changes/{escape(filename)}</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+"""
+    )
+
+
+sitemap_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+{''.join(sitemap_entries)}
+</urlset>
+"""
+
+
+with open("sitemap.xml", "w", encoding="utf-8") as file:
+    file.write(sitemap_xml)
+
+
+print(
+    f"Processed {len(updates)} Shopify updates. "
+    f"Generated {len(change_pages)} individual change pages."
+)
