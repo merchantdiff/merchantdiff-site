@@ -21,8 +21,8 @@ CHANGES_DIR = "changes"
 MAX_FEED_ITEMS = 100
 MAX_UPDATES_ON_INDEX = 30
 
-# Сколько кандидатов показываем
-# в блоке Ready to post on X
+# Максимальное количество кандидатов
+# в очереди Ready to post on X
 READY_TO_POST_LIMIT = 5
 
 
@@ -206,7 +206,9 @@ def build_x_intent(post_text):
 def x_queue_script():
     return """
 <script>
-const MERCHANTDIFF_POSTED_KEY = "merchantdiff_posted_x_v1";
+const MERCHANTDIFF_POSTED_KEY =
+    "merchantdiff_posted_x_v2";
+
 
 function getPostedItems() {
     try {
@@ -228,7 +230,7 @@ function getPostedItems() {
 
     } catch (error) {
         console.warn(
-            "Could not read MerchantDiff posted state:",
+            "Could not read MerchantDiff X queue:",
             error
         );
 
@@ -246,10 +248,21 @@ function savePostedItems(posted) {
 
     } catch (error) {
         console.warn(
-            "Could not save MerchantDiff posted state:",
+            "Could not save MerchantDiff X queue:",
             error
         );
     }
+}
+
+
+function markAsPosted(key) {
+    const posted = getPostedItems();
+
+    posted.add(key);
+
+    savePostedItems(posted);
+
+    refreshReadyQueue();
 }
 
 
@@ -289,28 +302,21 @@ function refreshReadyQueue() {
     );
 
     if (counter) {
-        counter.textContent =
-            visibleCount === 1
-                ? "1 post waiting"
-                : `${visibleCount} posts waiting`;
+        if (visibleCount === 0) {
+            counter.textContent = "Queue cleared";
+        } else if (visibleCount === 1) {
+            counter.textContent = "1 post waiting";
+        } else {
+            counter.textContent =
+                `${visibleCount} posts waiting`;
+        }
     }
-}
-
-
-function markAsPosted(key) {
-    const posted = getPostedItems();
-
-    posted.add(key);
-
-    savePostedItems(posted);
-
-    refreshReadyQueue();
 }
 
 
 function resetPostedMarks() {
     const confirmed = window.confirm(
-        "Show all previously marked X posts again?"
+        "Show all hidden X post candidates again?"
     );
 
     if (!confirmed) {
@@ -601,7 +607,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 10px;
+    gap: 12px;
 }
 
 .ready-button {
@@ -617,22 +623,6 @@ h1 {
 
 .ready-button:hover {
     opacity: 0.9;
-}
-
-.posted-button {
-    display: inline-block;
-    padding: 8px 12px;
-    border: 1px solid #5a5a5a;
-    border-radius: 9px;
-    background: transparent;
-    color: #d8d8d8;
-    cursor: pointer;
-    font-size: 13px;
-}
-
-.posted-button:hover {
-    border-color: #aaa;
-    color: white;
 }
 
 .ready-page-link {
@@ -656,7 +646,7 @@ h1 {
 }
 
 
-/* NORMAL UPDATE CARDS */
+/* UPDATE CARDS */
 
 .card {
     background: white;
@@ -901,7 +891,9 @@ Post on X →
 
 {robots_meta}
 
-<meta property="og:type" content="article">
+<meta
+    property="og:type"
+    content="article">
 
 <meta
     property="og:title"
@@ -1116,16 +1108,10 @@ for update in ready_updates:
     class="ready-button"
     href="{x_intent}"
     target="_blank"
-    rel="noopener noreferrer">
+    rel="noopener noreferrer"
+    onclick="markAsPosted('{slug_html}')">
 Post on X →
 </a>
-
-<button
-    class="posted-button"
-    type="button"
-    onclick="markAsPosted('{slug_html}')">
-✓ Mark as posted
-</button>
 
 <a
     class="ready-page-link"
@@ -1149,8 +1135,8 @@ if ready_cards:
 <p class="ready-intro">
 Latest high-value Shopify developer changes selected
 automatically by MerchantDiff. Clicking Post on X opens
-a prepared post. After publishing it, return here and
-click Mark as posted.
+a prepared post and immediately removes that item from
+this queue.
 </p>
 
 <div class="queue-toolbar">
@@ -1180,8 +1166,8 @@ Reset posted marks
 
 <strong>Queue cleared ✓</strong>
 
-All current high-value Shopify updates have been marked
-as posted.
+No current high-value Shopify updates are waiting
+to be posted.
 
 </div>
 
