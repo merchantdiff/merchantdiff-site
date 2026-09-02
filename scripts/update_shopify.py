@@ -21,8 +21,8 @@ CHANGES_DIR = "changes"
 MAX_FEED_ITEMS = 100
 MAX_UPDATES_ON_INDEX = 30
 
-# Сколько важных обновлений показываем
-# в отдельном блоке Ready to post on X
+# Сколько кандидатов показываем
+# в блоке Ready to post on X
 READY_TO_POST_LIMIT = 5
 
 
@@ -203,6 +203,136 @@ def build_x_intent(post_text):
     return f"https://x.com/intent/tweet?{query}"
 
 
+def x_queue_script():
+    return """
+<script>
+const MERCHANTDIFF_POSTED_KEY = "merchantdiff_posted_x_v1";
+
+function getPostedItems() {
+    try {
+        const stored = localStorage.getItem(
+            MERCHANTDIFF_POSTED_KEY
+        );
+
+        if (!stored) {
+            return new Set();
+        }
+
+        const values = JSON.parse(stored);
+
+        if (!Array.isArray(values)) {
+            return new Set();
+        }
+
+        return new Set(values);
+
+    } catch (error) {
+        console.warn(
+            "Could not read MerchantDiff posted state:",
+            error
+        );
+
+        return new Set();
+    }
+}
+
+
+function savePostedItems(posted) {
+    try {
+        localStorage.setItem(
+            MERCHANTDIFF_POSTED_KEY,
+            JSON.stringify(Array.from(posted))
+        );
+
+    } catch (error) {
+        console.warn(
+            "Could not save MerchantDiff posted state:",
+            error
+        );
+    }
+}
+
+
+function refreshReadyQueue() {
+    const posted = getPostedItems();
+
+    const items = document.querySelectorAll(
+        ".ready-item[data-post-key]"
+    );
+
+    let visibleCount = 0;
+
+    items.forEach((item) => {
+        const key = item.dataset.postKey;
+
+        if (posted.has(key)) {
+            item.style.display = "none";
+        } else {
+            item.style.display = "";
+            visibleCount += 1;
+        }
+    });
+
+    const emptyState = document.getElementById(
+        "ready-empty-state"
+    );
+
+    if (emptyState) {
+        emptyState.style.display =
+            visibleCount === 0
+                ? "block"
+                : "none";
+    }
+
+    const counter = document.getElementById(
+        "ready-counter"
+    );
+
+    if (counter) {
+        counter.textContent =
+            visibleCount === 1
+                ? "1 post waiting"
+                : `${visibleCount} posts waiting`;
+    }
+}
+
+
+function markAsPosted(key) {
+    const posted = getPostedItems();
+
+    posted.add(key);
+
+    savePostedItems(posted);
+
+    refreshReadyQueue();
+}
+
+
+function resetPostedMarks() {
+    const confirmed = window.confirm(
+        "Show all previously marked X posts again?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    localStorage.removeItem(
+        MERCHANTDIFF_POSTED_KEY
+    );
+
+    refreshReadyQueue();
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    refreshReadyQueue
+);
+</script>
+"""
+
+
 # ---------------------------------------------------------
 # DOWNLOAD SHOPIFY CHANGELOG
 # ---------------------------------------------------------
@@ -339,6 +469,10 @@ a {
     color: #1457d9;
 }
 
+button {
+    font: inherit;
+}
+
 .wrap {
     max-width: 920px;
     margin: auto;
@@ -389,6 +523,9 @@ h1 {
     color: #555;
 }
 
+
+/* READY TO POST QUEUE */
+
 .ready-panel {
     margin: 0 0 38px;
     padding: 26px;
@@ -403,10 +540,38 @@ h1 {
 }
 
 .ready-intro {
-    margin: 0 0 22px;
+    margin: 0 0 12px;
     max-width: 700px;
     color: #cfcfcf;
     line-height: 1.55;
+}
+
+.queue-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 20px;
+}
+
+.queue-counter {
+    color: #9b9b9b;
+    font-size: 13px;
+}
+
+.reset-button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #9b9b9b;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.reset-button:hover {
+    color: white;
 }
 
 .ready-list {
@@ -436,7 +601,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .ready-button {
@@ -454,10 +619,44 @@ h1 {
     opacity: 0.9;
 }
 
+.posted-button {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #5a5a5a;
+    border-radius: 9px;
+    background: transparent;
+    color: #d8d8d8;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.posted-button:hover {
+    border-color: #aaa;
+    color: white;
+}
+
 .ready-page-link {
     color: #ccc;
     font-size: 13px;
 }
+
+.ready-empty {
+    display: none;
+    padding: 22px;
+    border-radius: 12px;
+    background: #262626;
+    color: #cfcfcf;
+    text-align: center;
+}
+
+.ready-empty strong {
+    display: block;
+    margin-bottom: 6px;
+    color: white;
+}
+
+
+/* NORMAL UPDATE CARDS */
 
 .card {
     background: white;
@@ -886,6 +1085,11 @@ for update in ready_updates:
         quote=True,
     )
 
+    slug_html = escape(
+        update["slug"],
+        quote=True,
+    )
+
     priority_label = (
         "HIGH PRIORITY"
         if update["important"]
@@ -894,7 +1098,9 @@ for update in ready_updates:
 
     ready_cards.append(
         f"""
-<div class="ready-item">
+<div
+    class="ready-item"
+    data-post-key="{slug_html}">
 
 <div class="ready-meta">
 {escape(update["date_display"])} · {priority_label}
@@ -914,9 +1120,16 @@ for update in ready_updates:
 Post on X →
 </a>
 
+<button
+    class="posted-button"
+    type="button"
+    onclick="markAsPosted('{slug_html}')">
+✓ Mark as posted
+</button>
+
 <a
     class="ready-page-link"
-    href="changes/{escape(update["slug"])}.html">
+    href="changes/{slug_html}.html">
 Preview MerchantDiff page
 </a>
 
@@ -935,14 +1148,42 @@ if ready_cards:
 
 <p class="ready-intro">
 Latest high-value Shopify developer changes selected
-automatically by MerchantDiff. Clicking the button opens
-X with a prepared post — nothing is published until you
-press Post.
+automatically by MerchantDiff. Clicking Post on X opens
+a prepared post. After publishing it, return here and
+click Mark as posted.
 </p>
+
+<div class="queue-toolbar">
+
+<span
+    class="queue-counter"
+    id="ready-counter">
+{len(ready_updates)} posts waiting
+</span>
+
+<button
+    class="reset-button"
+    type="button"
+    onclick="resetPostedMarks()">
+Reset posted marks
+</button>
+
+</div>
 
 <div class="ready-list">
 
 {''.join(ready_cards)}
+
+<div
+    class="ready-empty"
+    id="ready-empty-state">
+
+<strong>Queue cleared ✓</strong>
+
+All current high-value Shopify updates have been marked
+as posted.
+
+</div>
 
 </div>
 
@@ -1153,6 +1394,8 @@ affiliated with Shopify.
 
 </div>
 
+{x_queue_script()}
+
 {analytics_snippet()}
 
 </body>
@@ -1237,9 +1480,13 @@ with open(
     )
 
 
+# ---------------------------------------------------------
+# RESULT
+# ---------------------------------------------------------
+
 print(
     f"Processed {len(updates)} Shopify updates. "
     f"Generated individual change pages. "
     f"{len(seo_pages)} pages selected for search indexing. "
-    f"{len(ready_updates)} updates ready to post on X."
+    f"{len(ready_updates)} updates available in X queue."
 )
