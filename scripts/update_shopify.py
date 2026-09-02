@@ -1,5 +1,5 @@
 from urllib.request import Request, urlopen
-from urllib.parse import urlparse
+from urllib.parse import urlparse, urlencode
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
 from html import escape
@@ -18,10 +18,7 @@ ANALYTICS_TOKEN = "44ece3bc3eee498c9bed2bbfd20a997c"
 
 CHANGES_DIR = "changes"
 
-# Сколько последних записей Shopify обрабатываем
 MAX_FEED_ITEMS = 100
-
-# Сколько записей показываем на updates.html
 MAX_UPDATES_ON_INDEX = 30
 
 
@@ -89,13 +86,6 @@ def is_important(title, categories):
 
 
 def is_seo_worthy(title, categories):
-    """
-    В sitemap попадают только более важные изменения Shopify.
-
-    Остальные страницы продолжают существовать,
-    но получают noindex,follow.
-    """
-
     category_text = " ".join(categories).lower()
     title_text = title.lower()
 
@@ -180,6 +170,35 @@ def analytics_snippet():
 """
 
 
+def build_x_post(title, local_url, important):
+    title = title.strip()
+
+    if len(title) > 155:
+        title = title[:152].rstrip() + "..."
+
+    if important:
+        intro = "Important Shopify developer change:"
+    else:
+        intro = "Shopify developer update:"
+
+    return (
+        f"{intro}\n\n"
+        f"{title}\n\n"
+        f"{local_url}\n\n"
+        "#ShopifyDev"
+    )
+
+
+def build_x_intent(post_text):
+    query = urlencode(
+        {
+            "text": post_text,
+        }
+    )
+
+    return f"https://x.com/intent/tweet?{query}"
+
+
 # ---------------------------------------------------------
 # DOWNLOAD SHOPIFY CHANGELOG
 # ---------------------------------------------------------
@@ -240,6 +259,30 @@ for item in items:
         link,
     )
 
+    local_url = (
+        f"{SITE_URL}changes/{slug}.html"
+    )
+
+    important = is_important(
+        title,
+        categories,
+    )
+
+    seo_worthy = is_seo_worthy(
+        title,
+        categories,
+    )
+
+    x_post = build_x_post(
+        title,
+        local_url,
+        important,
+    )
+
+    x_intent = build_x_intent(
+        x_post
+    )
+
     updates.append(
         {
             "title": title,
@@ -247,17 +290,12 @@ for item in items:
             "date_display": date["display"],
             "date_iso": date["iso"],
             "categories": categories,
-            "important": is_important(
-                title,
-                categories,
-            ),
-            "seo_worthy": is_seo_worthy(
-                title,
-                categories,
-            ),
+            "important": important,
+            "seo_worthy": seo_worthy,
             "slug": slug,
-            "local_url":
-                f"{SITE_URL}changes/{slug}.html",
+            "local_url": local_url,
+            "x_post": x_post,
+            "x_intent": x_intent,
         }
     )
 
@@ -396,10 +434,30 @@ h1 {
 }
 
 .actions {
-    margin-top: 15px;
+    margin-top: 16px;
     display: flex;
     flex-wrap: wrap;
-    gap: 14px;
+    gap: 12px;
+    align-items: center;
+}
+
+.action-button {
+    display: inline-block;
+    padding: 9px 13px;
+    border-radius: 9px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.action-button:hover {
+    opacity: 0.85;
+}
+
+.secondary-link {
+    font-size: 14px;
 }
 
 .detail {
@@ -494,6 +552,11 @@ for update in updates:
         update["local_url"]
     )
 
+    x_intent = escape(
+        update["x_intent"],
+        quote=True,
+    )
+
     categories_text = ", ".join(
         update["categories"]
     )
@@ -529,6 +592,19 @@ for update in updates:
         )
     )
 
+    x_button = ""
+
+    if update["seo_worthy"]:
+        x_button = f"""
+<a
+    class="action-button"
+    href="{x_intent}"
+    target="_blank"
+    rel="noopener noreferrer">
+Post on X →
+</a>
+"""
+
     page_html = f"""<!doctype html>
 <html lang="en">
 
@@ -552,9 +628,7 @@ for update in updates:
 
 {robots_meta}
 
-<meta
-    property="og:type"
-    content="article">
+<meta property="og:type" content="article">
 
 <meta
     property="og:title"
@@ -658,6 +732,12 @@ Read this change on Shopify →
 
 </div>
 
+<div class="actions">
+
+{x_button}
+
+</div>
+
 </section>
 
 <section class="cta">
@@ -734,6 +814,24 @@ for update in updates[:MAX_UPDATES_ON_INDEX]:
         else ""
     )
 
+    x_button = ""
+
+    if update["seo_worthy"]:
+        x_intent = escape(
+            update["x_intent"],
+            quote=True,
+        )
+
+        x_button = f"""
+<a
+    class="action-button"
+    href="{x_intent}"
+    target="_blank"
+    rel="noopener noreferrer">
+Post on X →
+</a>
+"""
+
     cards.append(
         f"""
 <article class="card">
@@ -757,16 +855,21 @@ for update in updates[:MAX_UPDATES_ON_INDEX]:
 
 <div class="actions">
 
-<a href="changes/{escape(update["slug"])}.html">
+<a
+    class="secondary-link"
+    href="changes/{escape(update["slug"])}.html">
 MerchantDiff page →
 </a>
 
 <a
+    class="secondary-link"
     href="{escape(update["source_url"])}"
     target="_blank"
     rel="noopener noreferrer">
 Official Shopify source
 </a>
+
+{x_button}
 
 </div>
 
@@ -906,7 +1009,7 @@ with open(
 
 
 # ---------------------------------------------------------
-# SELECT ONLY IMPORTANT PAGES FOR SEARCH INDEXING
+# SELECT IMPORTANT PAGES FOR SEARCH INDEXING
 # ---------------------------------------------------------
 
 seo_pages = [
@@ -972,12 +1075,9 @@ with open(
     )
 
 
-# ---------------------------------------------------------
-# RESULT
-# ---------------------------------------------------------
-
 print(
     f"Processed {len(updates)} Shopify updates. "
     f"Generated individual change pages. "
-    f"{len(seo_pages)} pages selected for search indexing."
+    f"{len(seo_pages)} pages selected for search indexing. "
+    f"{len(seo_pages)} X post drafts generated."
 )
