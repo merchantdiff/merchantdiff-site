@@ -28,17 +28,43 @@ jobs:
       - name: Generate Shopify updates page
         run: python scripts/update_shopify.py
 
-      - name: Commit changes if Shopify changed
+      - name: Check for changes
+        id: changes
         run: |
           git add updates.html
 
           if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No Shopify changelog changes."
-            exit 0
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "Shopify changelog changed."
           fi
 
+      - name: Commit updated page
+        if: steps.changes.outputs.changed == 'true'
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git commit -m "Update Shopify changelog"
           git push
+
+      - name: Wait for GitHub Pages
+        if: steps.changes.outputs.changed == 'true'
+        run: sleep 60
+
+      - name: Notify IndexNow
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          curl --fail-with-body --retry 3 --retry-delay 10 \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "merchantdiff.github.io",
+              "key": "ea135eb8f61d4600a04e289be17b8956",
+              "keyLocation": "https://merchantdiff.github.io/merchantdiff-site/ea135eb8f61d4600a04e289be17b8956.txt",
+              "urlList": [
+                "https://merchantdiff.github.io/merchantdiff-site/updates.html"
+              ]
+            }' \
+            https://api.indexnow.org/indexnow
