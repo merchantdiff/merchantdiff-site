@@ -17,7 +17,11 @@ X_URL = "https://x.com/MerchantDiff"
 ANALYTICS_TOKEN = "44ece3bc3eee498c9bed2bbfd20a997c"
 
 CHANGES_DIR = "changes"
+
+# Сколько последних записей Shopify обрабатываем
 MAX_FEED_ITEMS = 100
+
+# Сколько записей показываем на updates.html
 MAX_UPDATES_ON_INDEX = 30
 
 
@@ -41,7 +45,10 @@ def page_slug(title, link):
     if slug:
         return slug
 
-    digest = hashlib.sha1(link.encode("utf-8")).hexdigest()[:10]
+    digest = hashlib.sha1(
+        link.encode("utf-8")
+    ).hexdigest()[:10]
+
     return f"shopify-change-{digest}"
 
 
@@ -81,6 +88,57 @@ def is_important(title, categories):
     )
 
 
+def is_seo_worthy(title, categories):
+    """
+    Only the Shopify changes with stronger developer/search value
+    are allowed into sitemap.xml.
+
+    Other pages still exist and are linked from updates.html,
+    but receive noindex,follow.
+    """
+
+    category_text = " ".join(categories).lower()
+    title_text = title.lower()
+
+    category_signals = [
+        "api",
+        "graphql",
+        "rest",
+        "webhook",
+        "checkout",
+        "shopify functions",
+        "function",
+        "action required",
+        "breaking",
+        "deprecation",
+    ]
+
+    title_signals = [
+        "deprecated",
+        "deprecation",
+        "breaking",
+        "removed",
+        "removal",
+        "sunset",
+        "deadline",
+        "api version",
+        "graphql",
+        "rest api",
+        "webhook",
+    ]
+
+    return (
+        any(
+            signal in category_text
+            for signal in category_signals
+        )
+        or any(
+            signal in title_text
+            for signal in title_signals
+        )
+    )
+
+
 def analytics_snippet():
     return f"""
 <!-- Cloudflare Web Analytics -->
@@ -93,30 +151,49 @@ def analytics_snippet():
 """
 
 
+# ---------------------------------------------------------
+# DOWNLOAD SHOPIFY CHANGELOG
+# ---------------------------------------------------------
+
 request = Request(
     FEED_URL,
     headers={
-        "User-Agent": "MerchantDiff/1.0 (+https://merchantdiff.github.io/merchantdiff-site/)"
+        "User-Agent":
+            "MerchantDiff/1.0 "
+            "(+https://merchantdiff.github.io/merchantdiff-site/)"
     },
 )
 
 with urlopen(request, timeout=30) as response:
     xml_data = response.read()
 
+
+# ---------------------------------------------------------
+# PARSE FEED
+# ---------------------------------------------------------
+
 root = ET.fromstring(xml_data)
+
 items = root.findall(".//item")[:MAX_FEED_ITEMS]
 
 updates = []
 
 for item in items:
-    title = (item.findtext("title") or "").strip()
+    title = (
+        item.findtext("title")
+        or ""
+    ).strip()
+
     link = (
         item.findtext("link")
         or item.findtext("guid")
         or ""
     ).strip()
 
-    pub_date = (item.findtext("pubDate") or "").strip()
+    pub_date = (
+        item.findtext("pubDate")
+        or ""
+    ).strip()
 
     if not title or not link:
         continue
@@ -128,7 +205,11 @@ for item in items:
     ]
 
     date = parse_date(pub_date)
-    slug = page_slug(title, link)
+
+    slug = page_slug(
+        title,
+        link,
+    )
 
     updates.append(
         {
@@ -137,15 +218,34 @@ for item in items:
             "date_display": date["display"],
             "date_iso": date["iso"],
             "categories": categories,
-            "important": is_important(title, categories),
+            "important": is_important(
+                title,
+                categories,
+            ),
+            "seo_worthy": is_seo_worthy(
+                title,
+                categories,
+            ),
             "slug": slug,
-            "local_url": f"{SITE_URL}changes/{slug}.html",
+            "local_url":
+                f"{SITE_URL}changes/{slug}.html",
         }
     )
 
 
-os.makedirs(CHANGES_DIR, exist_ok=True)
+# ---------------------------------------------------------
+# CREATE CHANGES DIRECTORY
+# ---------------------------------------------------------
 
+os.makedirs(
+    CHANGES_DIR,
+    exist_ok=True,
+)
+
+
+# ---------------------------------------------------------
+# COMMON CSS
+# ---------------------------------------------------------
 
 COMMON_CSS = """
 * {
@@ -334,6 +434,10 @@ footer {
 """
 
 
+# ---------------------------------------------------------
+# GENERATE INDIVIDUAL SHOPIFY CHANGE PAGES
+# ---------------------------------------------------------
+
 for update in updates:
 
     category_html = "".join(
@@ -342,39 +446,68 @@ for update in updates:
     )
 
     important_html = (
-        '<span class="urgent">Action / breaking change</span>'
+        '<span class="urgent">'
+        'Action / breaking change'
+        '</span>'
         if update["important"]
         else ""
     )
 
-    title = escape(update["title"])
-    source_url = escape(update["source_url"])
-    local_url = escape(update["local_url"])
+    title = escape(
+        update["title"]
+    )
 
-    categories_text = ", ".join(update["categories"])
+    source_url = escape(
+        update["source_url"]
+    )
+
+    local_url = escape(
+        update["local_url"]
+    )
+
+    categories_text = ", ".join(
+        update["categories"]
+    )
 
     if categories_text:
         category_sentence = (
-            f"This Shopify update is categorized as "
+            "This Shopify update is categorized as "
             f"{escape(categories_text)}."
         )
+
     else:
         category_sentence = (
-            "This entry was published in Shopify's official "
-            "developer changelog."
+            "This entry was published in Shopify's "
+            "official developer changelog."
         )
 
     meta_description = (
-        f"{update['title']} — Shopify developer change tracked by MerchantDiff. "
+        f"{update['title']} — Shopify developer change "
+        f"tracked by MerchantDiff. "
         f"Published {update['date_display']}."
     )
 
-    meta_description = escape(meta_description[:155])
+    meta_description = escape(
+        meta_description[:155]
+    )
+
+    # Important SEO logic:
+    # weaker/template pages remain accessible,
+    # but Google/Bing should not index them.
+    robots_meta = (
+        ""
+        if update["seo_worthy"]
+        else (
+            '<meta name="robots" '
+            'content="noindex,follow">'
+        )
+    )
 
     page_html = f"""<!doctype html>
 <html lang="en">
 
 <head>
+
 <meta charset="utf-8">
 
 <meta
@@ -391,15 +524,25 @@ for update in updates:
     rel="canonical"
     href="{local_url}">
 
-<meta property="og:type" content="article">
-<meta property="og:title" content="{title}">
-<meta property="og:url" content="{local_url}">
+{robots_meta}
 
-</head>
+<meta
+    property="og:type"
+    content="article">
+
+<meta
+    property="og:title"
+    content="{title}">
+
+<meta
+    property="og:url"
+    content="{local_url}">
 
 <style>
 {COMMON_CSS}
 </style>
+
+</head>
 
 <body>
 
@@ -407,26 +550,43 @@ for update in updates:
 
 <nav class="topnav">
 
-<a class="brand" href="{SITE_URL}">
+<a
+    class="brand"
+    href="{SITE_URL}">
 MerchantDiff
 </a>
 
 <div class="navlinks">
-<a href="{SITE_URL}updates.html">Shopify changes</a>
-<a href="{X_URL}" target="_blank" rel="noopener">X</a>
+
+<a href="{SITE_URL}updates.html">
+Shopify changes
+</a>
+
+<a
+    href="{X_URL}"
+    target="_blank"
+    rel="noopener">
+X
+</a>
+
 </div>
 
 </nav>
 
 <main>
 
-<a class="back" href="{SITE_URL}updates.html">
+<a
+    class="back"
+    href="{SITE_URL}updates.html">
 ← Latest Shopify changes
 </a>
 
 <div class="meta">
+
 {escape(update["date_display"])}
+
 {important_html}
+
 </div>
 
 <h1>{title}</h1>
@@ -460,12 +620,14 @@ migration instructions and deadlines.
 <strong>Official source</strong>
 
 <p>
+
 <a
     href="{source_url}"
     target="_blank"
     rel="noopener noreferrer">
 Read this change on Shopify →
 </a>
+
 </p>
 
 </div>
@@ -515,9 +677,19 @@ with Shopify.
         f"{update['slug']}.html",
     )
 
-    with open(output_path, "w", encoding="utf-8") as file:
-        file.write(page_html)
+    with open(
+        output_path,
+        "w",
+        encoding="utf-8",
+    ) as file:
+        file.write(
+            page_html
+        )
 
+
+# ---------------------------------------------------------
+# GENERATE updates.html
+# ---------------------------------------------------------
 
 cards = []
 
@@ -529,7 +701,9 @@ for update in updates[:MAX_UPDATES_ON_INDEX]:
     )
 
     important = (
-        '<span class="urgent">Action / breaking change</span>'
+        '<span class="urgent">'
+        'Action / breaking change'
+        '</span>'
         if update["important"]
         else ""
     )
@@ -544,9 +718,11 @@ for update in updates[:MAX_UPDATES_ON_INDEX]:
 </div>
 
 <h2>
+
 <a href="changes/{escape(update["slug"])}.html">
 {escape(update["title"])}
 </a>
+
 </h2>
 
 <div class="tags">
@@ -584,7 +760,9 @@ updates_html = f"""<!doctype html>
     name="viewport"
     content="width=device-width,initial-scale=1">
 
-<title>Latest Shopify Developer Changes | MerchantDiff</title>
+<title>
+Latest Shopify Developer Changes | MerchantDiff
+</title>
 
 <meta
     name="description"
@@ -594,11 +772,11 @@ updates_html = f"""<!doctype html>
     rel="canonical"
     href="{SITE_URL}updates.html">
 
-</head>
-
 <style>
 {COMMON_CSS}
 </style>
+
+</head>
 
 <body>
 
@@ -606,20 +784,37 @@ updates_html = f"""<!doctype html>
 
 <nav class="topnav">
 
-<a class="brand" href="{SITE_URL}">
+<a
+    class="brand"
+    href="{SITE_URL}">
 MerchantDiff
 </a>
 
 <div class="navlinks">
-<a href="{X_URL}" target="_blank" rel="noopener">X</a>
-<a href="{BOOSTY_URL}" target="_blank" rel="noopener">Subscribe</a>
+
+<a
+    href="{X_URL}"
+    target="_blank"
+    rel="noopener">
+X
+</a>
+
+<a
+    href="{BOOSTY_URL}"
+    target="_blank"
+    rel="noopener">
+Subscribe
+</a>
+
 </div>
 
 </nav>
 
 <header class="hero">
 
-<h1>Latest Shopify developer changes</h1>
+<h1>
+Latest Shopify developer changes
+</h1>
 
 <p class="intro">
 Automatically tracked updates from Shopify's official
@@ -638,7 +833,9 @@ for Shopify developers.
 
 <section class="cta">
 
-<h2>Need the developer-focused version?</h2>
+<h2>
+Need the developer-focused version?
+</h2>
 
 <p>
 MerchantDiff turns Shopify changes into weekly release
@@ -672,18 +869,30 @@ affiliated with Shopify.
 """
 
 
-with open("updates.html", "w", encoding="utf-8") as file:
-    file.write(updates_html)
+with open(
+    "updates.html",
+    "w",
+    encoding="utf-8",
+) as file:
+    file.write(
+        updates_html
+    )
 
 
-change_pages = []
+# ---------------------------------------------------------
+# SELECT ONLY STRONGER PAGES FOR SEARCH INDEXING
+# ---------------------------------------------------------
 
-for filename in os.listdir(CHANGES_DIR):
-    if filename.endswith(".html"):
-        change_pages.append(filename)
+seo_pages = [
+    update
+    for update in updates
+    if update["seo_worthy"]
+]
 
-change_pages.sort()
 
+# ---------------------------------------------------------
+# GENERATE sitemap.xml
+# ---------------------------------------------------------
 
 sitemap_entries = [
     f"""
@@ -703,11 +912,12 @@ sitemap_entries = [
 ]
 
 
-for filename in change_pages:
+for update in seo_pages:
+
     sitemap_entries.append(
         f"""
 <url>
-<loc>{SITE_URL}changes/{escape(filename)}</loc>
+<loc>{escape(update["local_url"])}</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
@@ -716,17 +926,32 @@ for filename in change_pages:
 
 
 sitemap_xml = f"""<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
 {''.join(sitemap_entries)}
+
 </urlset>
 """
 
 
-with open("sitemap.xml", "w", encoding="utf-8") as file:
-    file.write(sitemap_xml)
+with open(
+    "sitemap.xml",
+    "w",
+    encoding="utf-8",
+) as file:
+    file.write(
+        sitemap_xml
+    )
 
+
+# ---------------------------------------------------------
+# RESULT
+# ---------------------------------------------------------
 
 print(
     f"Processed {len(updates)} Shopify updates. "
-    f"Generated {len(change_pages)} individual change pages."
+    f"Generated individual change pages. "
+    f"{len(seo_pages)} pages selected for search indexing."
 )
