@@ -43,6 +43,10 @@ a {
     color: #1457d9;
 }
 
+button {
+    font: inherit;
+}
+
 .wrap {
     max-width: 920px;
     margin: auto;
@@ -93,6 +97,9 @@ h1 {
     color: #555;
 }
 
+
+/* READY TO POST QUEUE */
+
 .ready-panel {
     margin: 0 0 38px;
     padding: 26px;
@@ -107,10 +114,38 @@ h1 {
 }
 
 .ready-intro {
-    margin: 0 0 22px;
+    margin: 0 0 12px;
     max-width: 700px;
     color: #cfcfcf;
     line-height: 1.55;
+}
+
+.queue-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 20px;
+}
+
+.queue-counter {
+    color: #9b9b9b;
+    font-size: 13px;
+}
+
+.reset-button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #9b9b9b;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.reset-button:hover {
+    color: white;
 }
 
 .ready-list {
@@ -140,7 +175,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 12px;
+    gap: 10px;
 }
 
 .ready-button {
@@ -158,10 +193,44 @@ h1 {
     opacity: 0.9;
 }
 
+.posted-button {
+    display: inline-block;
+    padding: 8px 12px;
+    border: 1px solid #5a5a5a;
+    border-radius: 9px;
+    background: transparent;
+    color: #d8d8d8;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.posted-button:hover {
+    border-color: #aaa;
+    color: white;
+}
+
 .ready-page-link {
     color: #ccc;
     font-size: 13px;
 }
+
+.ready-empty {
+    display: none;
+    padding: 22px;
+    border-radius: 12px;
+    background: #262626;
+    color: #cfcfcf;
+    text-align: center;
+}
+
+.ready-empty strong {
+    display: block;
+    margin-bottom: 6px;
+    color: white;
+}
+
+
+/* NORMAL UPDATE CARDS */
 
 .card {
     background: white;
@@ -355,15 +424,34 @@ for Shopify developers.
 
 <p class="ready-intro">
 Latest high-value Shopify developer changes selected
-automatically by MerchantDiff. Clicking the button opens
-X with a prepared post — nothing is published until you
-press Post.
+automatically by MerchantDiff. Clicking Post on X opens
+a prepared post. After publishing it, return here and
+click Mark as posted.
 </p>
+
+<div class="queue-toolbar">
+
+<span
+    class="queue-counter"
+    id="ready-counter">
+4 posts waiting
+</span>
+
+<button
+    class="reset-button"
+    type="button"
+    onclick="resetPostedMarks()">
+Reset posted marks
+</button>
+
+</div>
 
 <div class="ready-list">
 
 
-<div class="ready-item">
+<div
+    class="ready-item"
+    data-post-key="password-protected-shop-dev-flows-on-shopify-theme-cli-v3-83-x-and-older-to-be-deprecated">
 
 <div class="ready-meta">
 August 27, 2026 · HIGH PRIORITY
@@ -383,6 +471,13 @@ Password Protected Shop Dev flows on Shopify Theme CLI v3.83.x and older to be d
 Post on X →
 </a>
 
+<button
+    class="posted-button"
+    type="button"
+    onclick="markAsPosted('password-protected-shop-dev-flows-on-shopify-theme-cli-v3-83-x-and-older-to-be-deprecated')">
+✓ Mark as posted
+</button>
+
 <a
     class="ready-page-link"
     href="changes/password-protected-shop-dev-flows-on-shopify-theme-cli-v3-83-x-and-older-to-be-deprecated.html">
@@ -393,7 +488,9 @@ Preview MerchantDiff page
 
 </div>
 
-<div class="ready-item">
+<div
+    class="ready-item"
+    data-post-key="online-store-script-tags-deprecation">
 
 <div class="ready-meta">
 August 24, 2026 · HIGH PRIORITY
@@ -413,6 +510,13 @@ Script tags are deprecated and will stop running on March 1, 2027
 Post on X →
 </a>
 
+<button
+    class="posted-button"
+    type="button"
+    onclick="markAsPosted('online-store-script-tags-deprecation')">
+✓ Mark as posted
+</button>
+
 <a
     class="ready-page-link"
     href="changes/online-store-script-tags-deprecation.html">
@@ -423,7 +527,9 @@ Preview MerchantDiff page
 
 </div>
 
-<div class="ready-item">
+<div
+    class="ready-item"
+    data-post-key="updating-an-orders-shipping-address-returns-accurate-financial-data">
 
 <div class="ready-meta">
 July 30, 2026 · HIGH PRIORITY
@@ -443,6 +549,13 @@ Updating an order&#x27;s shipping address recalculates taxes as of API version 2
 Post on X →
 </a>
 
+<button
+    class="posted-button"
+    type="button"
+    onclick="markAsPosted('updating-an-orders-shipping-address-returns-accurate-financial-data')">
+✓ Mark as posted
+</button>
+
 <a
     class="ready-page-link"
     href="changes/updating-an-orders-shipping-address-returns-accurate-financial-data.html">
@@ -453,7 +566,9 @@ Preview MerchantDiff page
 
 </div>
 
-<div class="ready-item">
+<div
+    class="ready-item"
+    data-post-key="invalid-metafield-queries-now-return-errors-in-the-graphql-admin-api">
 
 <div class="ready-meta">
 July 24, 2026 · HIGH PRIORITY
@@ -473,6 +588,13 @@ Invalid metafield queries now return errors in the GraphQL Admin API
 Post on X →
 </a>
 
+<button
+    class="posted-button"
+    type="button"
+    onclick="markAsPosted('invalid-metafield-queries-now-return-errors-in-the-graphql-admin-api')">
+✓ Mark as posted
+</button>
+
 <a
     class="ready-page-link"
     href="changes/invalid-metafield-queries-now-return-errors-in-the-graphql-admin-api.html">
@@ -483,6 +605,17 @@ Preview MerchantDiff page
 
 </div>
 
+
+<div
+    class="ready-empty"
+    id="ready-empty-state">
+
+<strong>Queue cleared ✓</strong>
+
+All current high-value Shopify updates have been marked
+as posted.
+
+</div>
 
 </div>
 
@@ -1787,6 +1920,134 @@ affiliated with Shopify.
 </footer>
 
 </div>
+
+
+<script>
+const MERCHANTDIFF_POSTED_KEY = "merchantdiff_posted_x_v1";
+
+function getPostedItems() {
+    try {
+        const stored = localStorage.getItem(
+            MERCHANTDIFF_POSTED_KEY
+        );
+
+        if (!stored) {
+            return new Set();
+        }
+
+        const values = JSON.parse(stored);
+
+        if (!Array.isArray(values)) {
+            return new Set();
+        }
+
+        return new Set(values);
+
+    } catch (error) {
+        console.warn(
+            "Could not read MerchantDiff posted state:",
+            error
+        );
+
+        return new Set();
+    }
+}
+
+
+function savePostedItems(posted) {
+    try {
+        localStorage.setItem(
+            MERCHANTDIFF_POSTED_KEY,
+            JSON.stringify(Array.from(posted))
+        );
+
+    } catch (error) {
+        console.warn(
+            "Could not save MerchantDiff posted state:",
+            error
+        );
+    }
+}
+
+
+function refreshReadyQueue() {
+    const posted = getPostedItems();
+
+    const items = document.querySelectorAll(
+        ".ready-item[data-post-key]"
+    );
+
+    let visibleCount = 0;
+
+    items.forEach((item) => {
+        const key = item.dataset.postKey;
+
+        if (posted.has(key)) {
+            item.style.display = "none";
+        } else {
+            item.style.display = "";
+            visibleCount += 1;
+        }
+    });
+
+    const emptyState = document.getElementById(
+        "ready-empty-state"
+    );
+
+    if (emptyState) {
+        emptyState.style.display =
+            visibleCount === 0
+                ? "block"
+                : "none";
+    }
+
+    const counter = document.getElementById(
+        "ready-counter"
+    );
+
+    if (counter) {
+        counter.textContent =
+            visibleCount === 1
+                ? "1 post waiting"
+                : `${visibleCount} posts waiting`;
+    }
+}
+
+
+function markAsPosted(key) {
+    const posted = getPostedItems();
+
+    posted.add(key);
+
+    savePostedItems(posted);
+
+    refreshReadyQueue();
+}
+
+
+function resetPostedMarks() {
+    const confirmed = window.confirm(
+        "Show all previously marked X posts again?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    localStorage.removeItem(
+        MERCHANTDIFF_POSTED_KEY
+    );
+
+    refreshReadyQueue();
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    refreshReadyQueue
+);
+</script>
+
 
 
 <!-- Cloudflare Web Analytics -->
