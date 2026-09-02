@@ -1,0 +1,33 @@
+name: Notify IndexNow
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "*.html"
+      - "**/*.html"
+      - "sitemap.xml"
+  workflow_dispatch:
+
+jobs:
+  notify-indexnow:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Wait for GitHub Pages
+        run: sleep 60
+
+      - name: Notify IndexNow
+        run: |
+          curl --fail-with-body --retry 3 --retry-delay 10 \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d '{
+              "host": "merchantdiff.github.io",
+              "key": "ea135eb8f61d4600a04e289be17b8956",
+              "keyLocation": "https://merchantdiff.github.io/merchantdiff-site/ea135eb8f61d4600a04e289be17b8956.txt",
+              "urlList": [
+                "https://merchantdiff.github.io/merchantdiff-site/"
+              ]
+            }' \
+            https://api.indexnow.org/indexnow
