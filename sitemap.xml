@@ -17,6 +17,18 @@
 </url>
 
 <url>
+<loc>https://merchantdiff.github.io/merchantdiff-site/changes/product-variant-barcode-is-being-replaced-by-barcodes.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>https://merchantdiff.github.io/merchantdiff-site/changes/customer-address-apis-now-support-countrycode.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>https://merchantdiff.github.io/merchantdiff-site/changes/password-protected-shop-dev-flows-on-shopify-theme-cli-v3-83-x-and-older-to-be-deprecated.html</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
