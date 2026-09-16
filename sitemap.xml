@@ -17,6 +17,12 @@
 </url>
 
 <url>
+<loc>https://merchantdiff.github.io/merchantdiff-site/changes/updates-to-events-payloads-and-subscription-configuration.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>https://merchantdiff.github.io/merchantdiff-site/changes/discounts-allocator-function-api-developer-preview-has-ended.html</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
