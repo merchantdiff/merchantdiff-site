@@ -17,6 +17,12 @@
 </url>
 
 <url>
+<loc>https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>https://merchantdiff.github.io/merchantdiff-site/changes/removed-session-currentsession-staffmemberid-from-pos-ui-extensions-2026-10.html</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
@@ -156,12 +162,6 @@
 
 <url>
 <loc>https://merchantdiff.github.io/merchantdiff-site/changes/whatsapp-marketing-consent-now-available.html</loc>
-<changefreq>monthly</changefreq>
-<priority>0.7</priority>
-</url>
-
-<url>
-<loc>https://merchantdiff.github.io/merchantdiff-site/changes/built-for-shopify-requirements-for-returns-and-exchanges-and-subscription-apps.html</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
