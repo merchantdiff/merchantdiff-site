@@ -25,13 +25,16 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Validate generator
+        run: python -m py_compile scripts/update_shopify.py
+
       - name: Generate Shopify content
         run: python scripts/update_shopify.py
 
       - name: Check for changes
         id: changes
         run: |
-          git add updates.html sitemap.xml changes/
+          git add index.html updates.html sitemap.xml robots.txt changes/
 
           if git diff --cached --quiet; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
@@ -39,7 +42,6 @@ jobs:
           else
             echo "changed=true" >> "$GITHUB_OUTPUT"
             git diff --cached --name-only > "$RUNNER_TEMP/changed-files.txt"
-
             echo "Changed files:"
             cat "$RUNNER_TEMP/changed-files.txt"
           fi
@@ -78,7 +80,10 @@ jobs:
           urls = []
 
           for path in paths:
-              if path == "updates.html":
+              if path == "index.html":
+                  urls.append(base)
+
+              elif path == "updates.html":
                   urls.append(base + "updates.html")
 
               elif (
@@ -95,9 +100,10 @@ jobs:
           payload = {
               "host": "merchantdiff.github.io",
               "key": "ea135eb8f61d4600a04e289be17b8956",
-              "keyLocation":
+              "keyLocation": (
                   base
-                  + "ea135eb8f61d4600a04e289be17b8956.txt",
+                  + "ea135eb8f61d4600a04e289be17b8956.txt"
+              ),
               "urlList": urls,
           }
 
@@ -107,7 +113,7 @@ jobs:
 
           output.write_text(
               json.dumps(payload),
-              encoding="utf-8"
+              encoding="utf-8",
           )
 
           print(
