@@ -2,7 +2,7 @@ from urllib.request import Request, urlopen
 from urllib.parse import urlparse, urlencode
 import xml.etree.ElementTree as ET
 from email.utils import parsedate_to_datetime
-from html import escape
+from html import escape, unescape
 import os
 import re
 import hashlib
@@ -51,6 +51,228 @@ def page_slug(title, link):
     ).hexdigest()[:10]
 
     return f"shopify-change-{digest}"
+
+
+def clean_description(html_text):
+    if not html_text:
+        return ""
+
+    text = re.sub(r"<[^>]+>", " ", html_text)
+    text = unescape(text)
+    text = re.sub(r"\s+", " ", text)
+
+    return text.strip()
+
+
+def truncate_text(text, limit):
+    text = (text or "").strip()
+
+    if len(text) <= limit:
+        return text
+
+    shortened = text[: limit - 1].rsplit(" ", 1)[0].strip()
+
+    if not shortened:
+        shortened = text[: limit - 1].strip()
+
+    return shortened + "…"
+
+
+def extract_api_versions(title, description):
+    combined = f"{title} {description}"
+
+    versions = re.findall(
+        r"\b20\d{2}-(?:01|04|07|10)\b",
+        combined,
+    )
+
+    return list(dict.fromkeys(versions))
+
+
+def build_audience_text(title, description):
+    combined = f"{title} {description}".lower()
+
+    audience_rules = [
+        (
+            ["pos ui extension", "pos ui extensions"],
+            "Developers maintaining Shopify POS UI extensions "
+            "should review this change.",
+        ),
+        (
+            ["webhook", "webhooks"],
+            "Apps that subscribe to or process Shopify webhooks "
+            "should review this change.",
+        ),
+        (
+            ["graphql"],
+            "Apps using the affected Shopify GraphQL API surface "
+            "should review this change.",
+        ),
+        (
+            ["rest api"],
+            "Apps still using the affected Shopify REST API "
+            "surface should review this change.",
+        ),
+        (
+            ["checkout"],
+            "Developers building or maintaining checkout "
+            "customizations should review this change.",
+        ),
+        (
+            ["shopify function", "shopify functions", "function api"],
+            "Developers building Shopify Functions should review "
+            "this change.",
+        ),
+        (
+            ["discount", "discounts"],
+            "Apps that create, manage or depend on Shopify "
+            "discount functionality should review this change.",
+        ),
+        (
+            ["access token", "access tokens"],
+            "Apps that create, store or refresh Shopify access "
+            "tokens should review this change.",
+        ),
+        (
+            ["event payload", "events payload", "subscription configuration"],
+            "Apps that consume Shopify event payloads or manage "
+            "event subscriptions should review this change.",
+        ),
+    ]
+
+    for signals, message in audience_rules:
+        if any(signal in combined for signal in signals):
+            return message
+
+    return (
+        "Shopify app developers using the API or platform feature "
+        "named in this update should review the official change."
+    )
+
+
+def build_action_text(title, description, versions):
+    combined = f"{title} {description}".lower()
+
+    removal_signals = [
+        "removed",
+        "removal",
+        "no longer supported",
+        "no longer available",
+        "sunset",
+    ]
+
+    deprecation_signals = [
+        "deprecated",
+        "deprecation",
+    ]
+
+    if any(signal in combined for signal in removal_signals):
+        action = (
+            "Check your codebase for use of the affected surface. "
+            "If it is in use, review Shopify's official migration "
+            "guidance and replace or remove the dependency."
+        )
+
+    elif any(signal in combined for signal in deprecation_signals):
+        action = (
+            "Check whether your app uses the deprecated surface. "
+            "If it does, plan the migration using Shopify's "
+            "official guidance before the applicable cutoff."
+        )
+
+    elif "action required" in combined or "breaking" in combined:
+        action = (
+            "Review the official Shopify entry and test the affected "
+            "integration. Apply any required code or configuration "
+            "changes before deploying."
+        )
+
+    else:
+        action = (
+            "Review the official Shopify entry, confirm whether the "
+            "change touches your app, and test the affected workflow "
+            "before your next relevant deployment."
+        )
+
+    if versions:
+        version_text = ", ".join(versions)
+
+        action += (
+            f" The update references API version {version_text}; "
+            "verify the version used by your app."
+        )
+
+    return action
+
+
+def related_score(current, candidate):
+    if current["slug"] == candidate["slug"]:
+        return -1
+
+    score = 0
+
+    current_categories = {
+        value.lower()
+        for value in current["categories"]
+        if value
+    }
+
+    candidate_categories = {
+        value.lower()
+        for value in candidate["categories"]
+        if value
+    }
+
+    score += 4 * len(
+        current_categories & candidate_categories
+    )
+
+    stop_words = {
+        "shopify",
+        "api",
+        "version",
+        "update",
+        "updates",
+        "change",
+        "changes",
+        "developer",
+        "developers",
+        "the",
+        "and",
+        "for",
+        "from",
+        "with",
+        "this",
+        "that",
+        "has",
+        "have",
+        "are",
+        "was",
+        "were",
+        "into",
+        "removed",
+        "deprecated",
+    }
+
+    def title_words(value):
+        return {
+            word
+            for word in re.findall(
+                r"[a-z0-9]+",
+                value.lower(),
+            )
+            if len(word) >= 4
+            and word not in stop_words
+        }
+
+    shared_words = (
+        title_words(current["title"])
+        & title_words(candidate["title"])
+    )
+
+    score += len(shared_words)
+
+    return score
 
 
 def parse_date(pub_date):
@@ -383,6 +605,15 @@ for item in items:
         or ""
     ).strip()
 
+    description = (
+        item.findtext("description")
+        or ""
+    ).strip()
+
+    description = clean_description(
+        description
+    )
+
     if not title or not link:
         continue
 
@@ -429,6 +660,11 @@ for item in items:
             "source_url": link,
             "date_display": date["display"],
             "date_iso": date["iso"],
+            "description": description,
+            "api_versions": extract_api_versions(
+                title,
+                description,
+            ),
             "categories": categories,
             "important": important,
             "seo_worthy": seo_worthy,
@@ -737,6 +973,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -836,14 +1119,100 @@ for update in updates:
             "official developer changelog."
         )
 
-    meta_description = (
-        f"{update['title']} — Shopify developer change "
-        f"tracked by MerchantDiff. "
-        f"Published {update['date_display']}."
+    what_changed = (
+        truncate_text(
+            update["description"],
+            1200,
+        )
+        if update["description"]
+        else (
+            f"Shopify published a developer changelog entry "
+            f"for: {update['title']}."
+        )
+    )
+
+    audience_text = build_audience_text(
+        update["title"],
+        update["description"],
+    )
+
+    action_text = build_action_text(
+        update["title"],
+        update["description"],
+        update["api_versions"],
+    )
+
+    version_html = ""
+
+    if update["api_versions"]:
+        versions = ", ".join(
+            escape(version)
+            for version in update["api_versions"]
+        )
+
+        version_html = f"""
+<div class="version-note">
+<strong>Referenced API version:</strong> {versions}
+</div>
+"""
+
+    related_candidates = []
+
+    for candidate in updates:
+        if not candidate["seo_worthy"]:
+            continue
+
+        score = related_score(
+            update,
+            candidate,
+        )
+
+        if score > 0:
+            related_candidates.append(
+                (score, candidate)
+            )
+
+    related_candidates.sort(
+        key=lambda item: item[0],
+        reverse=True,
+    )
+
+    related_items = []
+
+    for _, candidate in related_candidates[:3]:
+        related_items.append(
+            '<li><a href="'
+            f'{SITE_URL}changes/'
+            f'{escape(candidate["slug"], quote=True)}.html">'
+            f'{escape(candidate["title"])}</a></li>'
+        )
+
+    related_html = ""
+
+    if related_items:
+        related_html = f"""
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+{''.join(related_items)}
+</ul>
+</section>
+"""
+
+    description_for_meta = (
+        update["description"]
+        or (
+            f"{update['title']} — Shopify developer change "
+            f"tracked by MerchantDiff."
+        )
     )
 
     meta_description = escape(
-        meta_description[:155]
+        truncate_text(
+            description_for_meta,
+            155,
+        ),
+        quote=True,
     )
 
     robots_meta = (
@@ -974,6 +1343,27 @@ developer changelog on
 {category_sentence}
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>{escape(what_changed)}</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>{escape(audience_text)}</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>{escape(action_text)}</p>
+</div>
+
+</div>
+
+{version_html}
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -996,6 +1386,8 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+{related_html}
 
 <div class="actions">
 
