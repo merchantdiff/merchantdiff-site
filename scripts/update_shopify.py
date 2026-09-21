@@ -78,15 +78,41 @@ def truncate_text(text, limit):
     return shortened + "…"
 
 
-def extract_api_versions(title, description):
-    combined = f"{title} {description}"
+def extract_api_versions(title, categories, description):
+    pattern = r"\b20\d{2}-(?:01|04|07|10)\b"
 
-    versions = re.findall(
-        r"\b20\d{2}-(?:01|04|07|10)\b",
-        combined,
+    primary_text = " ".join(
+        [
+            title or "",
+            " ".join(categories or []),
+        ]
     )
 
-    return list(dict.fromkeys(versions))
+    primary_versions = list(
+        dict.fromkeys(
+            re.findall(
+                pattern,
+                primary_text,
+            )
+        )
+    )
+
+    if primary_versions:
+        return primary_versions
+
+    description_versions = list(
+        dict.fromkeys(
+            re.findall(
+                pattern,
+                description or "",
+            )
+        )
+    )
+
+    if len(description_versions) == 1:
+        return description_versions
+
+    return []
 
 
 def build_audience_text(title, description):
@@ -150,8 +176,13 @@ def build_audience_text(title, description):
     )
 
 
-def build_action_text(title, description, versions):
-    combined = f"{title} {description}".lower()
+def build_action_text(title, categories, description, versions):
+    classification_text = " ".join(
+        [
+            title or "",
+            " ".join(categories or []),
+        ]
+    ).lower()
 
     removal_signals = [
         "removed",
@@ -166,25 +197,54 @@ def build_action_text(title, description, versions):
         "deprecation",
     ]
 
-    if any(signal in combined for signal in removal_signals):
+    additive_signals = [
+        "new",
+        "adds",
+        "added",
+        "introduces",
+        "available",
+        "now supports",
+        "support for",
+    ]
+
+    if any(
+        signal in classification_text
+        for signal in removal_signals
+    ):
         action = (
             "Check your codebase for use of the affected surface. "
             "If it is in use, review Shopify's official migration "
             "guidance and replace or remove the dependency."
         )
 
-    elif any(signal in combined for signal in deprecation_signals):
+    elif any(
+        signal in classification_text
+        for signal in deprecation_signals
+    ):
         action = (
             "Check whether your app uses the deprecated surface. "
             "If it does, plan the migration using Shopify's "
             "official guidance before the applicable cutoff."
         )
 
-    elif "action required" in combined or "breaking" in combined:
+    elif (
+        "action required" in classification_text
+        or "breaking" in classification_text
+    ):
         action = (
             "Review the official Shopify entry and test the affected "
             "integration. Apply any required code or configuration "
             "changes before deploying."
+        )
+
+    elif any(
+        signal in classification_text
+        for signal in additive_signals
+    ):
+        action = (
+            "Review whether the new capability is relevant to your app. "
+            "If you plan to use it, test the affected API or workflow "
+            "before adopting it in production."
         )
 
     else:
@@ -663,6 +723,7 @@ for item in items:
             "description": description,
             "api_versions": extract_api_versions(
                 title,
+                categories,
                 description,
             ),
             "categories": categories,
@@ -1138,6 +1199,7 @@ for update in updates:
 
     action_text = build_action_text(
         update["title"],
+        update["categories"],
         update["description"],
         update["api_versions"],
     )
