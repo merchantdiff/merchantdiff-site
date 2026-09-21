@@ -17,6 +17,12 @@
 </url>
 
 <url>
+<loc>https://merchantdiff.github.io/merchantdiff-site/changes/is-translatable-metafield-field.html</loc>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html</loc>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
