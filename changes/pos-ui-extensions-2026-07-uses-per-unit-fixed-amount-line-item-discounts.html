@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="POS UI extensions 2026-07 uses per-unit fixed-amount line item discounts — Shopify developer change tracked by MerchantDiff. Published July 08, 2026.">
+    content="Starting with POS UI extensions API version 2026-07, FixedAmount line item discounts passed to setLineItemDiscount and bulkSetLineItemDiscounts from the…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,31 @@ developer changelog on
 This Shopify update is categorized as Action Required, API, Breaking API Change, POS Extensions, 2026-07.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>Starting with POS UI extensions API version 2026-07, FixedAmount line item discounts passed to setLineItemDiscount and bulkSetLineItemDiscounts from the Cart API must represent a per-unit discount. Why it&#x27;s changing In API version 2026-04 and earlier, apps could pass a total fixed discount for the entire line item, and Shopify POS automatically converted it to a per-unit value. In API version 2026-07, this conversion no longer occurs. The value you pass is interpreted directly as the discount applied to each unit in the line item. For example, in API version 2026-07, if you pass &#x27;5.00&#x27; on a line item with quantity 2, POS applies a $5.00 discount to each unit, for a $10.00 total discount. To apply a $5.00 total discount to a line item with quantity 2, you must instead pass &#x27;2.50&#x27; as the per-unit discount. What you need to do This change only affects FixedAmount line item discounts. Percentage discounts are not affected. Apps using API version 2026-04 or earlier do not need to make any changes. Apps adopting API version 2026-07 must update their discount calculations before using the new version. If your app currently calculates discounts as a total line discount, compute the…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Developers maintaining Shopify POS UI extensions should review this change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Review the official Shopify entry, confirm whether the change touches your app, and test the affected workflow before your next relevant deployment. The update references API version 2026-07, 2026-04; verify the version used by your app.</p>
+</div>
+
+</div>
+
+
+<div class="version-note">
+<strong>Referenced API version:</strong> 2026-07, 2026-04
+</div>
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +525,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/removed-session-currentsession-staffmemberid-from-pos-ui-extensions-2026-10.html">Removed session.currentSession.staffMemberId from POS UI Extensions (2026-10)</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updating-an-orders-shipping-address-returns-accurate-financial-data.html">Updating an order&#x27;s shipping address recalculates taxes as of API version 2026-10</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/customer-account-api-last-incomplete-checkout-and-checkout-types-removed.html">Customer Account API Customer.lastIncompleteCheckout and Checkout types removed in 2026-10</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

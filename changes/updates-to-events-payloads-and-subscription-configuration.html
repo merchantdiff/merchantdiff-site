@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="Updates to Events payloads and subscription configuration — Shopify developer change tracked by MerchantDiff. Published September 16, 2026.">
+    content="Starting today, we&#x27;re updating Events payloads, trigger syntax, and delivery headers. Classic Webhook subscriptions are unaffected. What&#x27;s changed…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,27 @@ developer changelog on
 This Shopify update is categorized as Action Required, API, Update, Events &amp; webhooks.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>Starting today, we&#x27;re updating Events payloads, trigger syntax, and delivery headers. Classic Webhook subscriptions are unaffected. What&#x27;s changed fields_changed now describes how each path changed The flat array becomes an object containing three arrays: added , updated , and removed . Developers can distinguish a resource or relationship being added, a value being updated, or a resource or relationship being removed without querying just to infer what happened. Update payload handling to read fields_changed.added , fields_changed.updated , and fields_changed.removed . Adding a variant to a Product, for example, keeps the Product&#x27;s action as update and places the variant path in fields_changed.added . Before: { &quot;topic&quot;: &quot;Product&quot;, &quot;action&quot;: &quot;update&quot;, &quot;fields_changed&quot;: [ &quot;product[id: &#x27;gid://shopify/Product/123&#x27;].variants[id: &#x27;gid://shopify/ProductVariant/456&#x27;]&quot; ] } After: { &quot;topic&quot;: &quot;Product&quot;, &quot;action&quot;: &quot;update&quot;, &quot;fields_changed&quot;: { &quot;added&quot;: [ &quot;product[id: &#x27;gid://shopify/Product/123&#x27;].variants[id: &#x27;gid://shopify/ProductVariant/456&#x27;]&quot; ], &quot;updated&quot;: [], &quot;removed&quot;: [] } } Parent triggers use an explicit wildcard To subscribe to all supported fields below a parent path, use a…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Apps that subscribe to or process Shopify webhooks should review this change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Check your codebase for use of the affected surface. If it is in use, review Shopify&#x27;s official migration guidance and replace or remove the dependency.</p>
+</div>
+
+</div>
+
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +521,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/discounts-allocator-function-api-developer-preview-has-ended.html">Discounts Allocator Function API developer preview has ended</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/whatsapp-marketing-consent-now-available.html">WhatsApp marketing consent now available in the Admin API and Customer Account API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html">The `automaticDiscounts` query is removed in API version 2027-01</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="Flow action extensions now support relative paths for endpoint URLs — Shopify developer change tracked by MerchantDiff. Published June 18, 2026.">
+    content="You can now use relative paths for endpoint URLs in your Flow action extension configuration . The runtime_url , validation_url , config_page_url , and…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,27 @@ developer changelog on
 This Shopify update is categorized as Tools, Update.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>You can now use relative paths for endpoint URLs in your Flow action extension configuration . The runtime_url , validation_url , config_page_url , and config_page_preview_url properties accept either an absolute HTTPS URL, such as https://example.com/api/flow/actions/place-bid , or a relative path that starts with a single / , such as /api/flow/actions/place-bid . When you use a relative path, Shopify CLI resolves it against your development tunnel URL while shopify app dev is running, and against your app’s application_url after you deploy. This means you no longer need to update your runtime_url each time your development tunnel URL changes, making it easier to point Flow actions at routes hosted by your own app. Use an absolute HTTPS URL when your endpoint is hosted on a different domain or service than your app, or when you want Flow to call the same URL in every environment. Protocol-relative URLs (such as //example.com/api/execute ) aren’t supported, and your app configuration must include an HTTPS application_url before you deploy with relative paths. For more details, see the Flow action configuration reference and Create a Flow action .</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Shopify app developers using the API or platform feature named in this update should review the official change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Review the official Shopify entry, confirm whether the change touches your app, and test the affected workflow before your next relevant deployment.</p>
+</div>
+
+</div>
+
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +521,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/shopify-flow-changes-to-action-extensions-result-in-fewer-breaking-changes.html">Shopify Flow: Changes to Action extensions result in fewer breaking changes</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updates-to-events-payloads-and-subscription-configuration.html">Updates to Events payloads and subscription configuration</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/discounts-allocator-function-api-developer-preview-has-ended.html">Discounts Allocator Function API developer preview has ended</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

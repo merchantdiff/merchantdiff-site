@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="Shopify Flow: Changes to Action extensions result in fewer breaking changes — Shopify developer change tracked by MerchantDiff. Published July 07, 2026.">
+    content="Your server-side code now has more control over how breaking changes to an action’s configuration fields are handled. Instead of failing validation when…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,27 @@ developer changelog on
 This Shopify update is categorized as Tools, Update, 2026-07.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>Your server-side code now has more control over how breaking changes to an action’s configuration fields are handled. Instead of failing validation when there’s a field mismatch, workflows that use older versions of an action will continue to execute, and Shopify will still send the request to the configured endpoint URL. Your server can then decide how to handle schema differences: for example, it can set default values for new required fields, ignore fields that were removed, or reject the request. Why it’s changing Previously, any change to an action’s configuration fields was treated as a breaking change in merchant workflows. Runtime validation would fail, and Shopify wouldn’t send the request to the partner server. For example, if a new required field was added or an existing field was removed, any workflows using an older version of that action would always fail and never reach your endpoint. With this change, those workflows continue to run, and your endpoint receives the request even when the payload is based on an older configuration. What you need to do Your action’s endpoint may now receive payloads that don’t exactly match the action’s current configuration, but…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Shopify app developers using the API or platform feature named in this update should review the official change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Check your codebase for use of the affected surface. If it is in use, review Shopify&#x27;s official migration guidance and replace or remove the dependency.</p>
+</div>
+
+</div>
+
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +521,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/pos-ui-extensions-2026-07-uses-per-unit-fixed-amount-line-item-discounts.html">POS UI extensions 2026-07 uses per-unit fixed-amount line item discounts</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html">Deprecating the useBuyerJourneyIntercept API on checkout UI extensions</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updates-to-events-payloads-and-subscription-configuration.html">Updates to Events payloads and subscription configuration</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="Deprecating the useBuyerJourneyIntercept API on checkout UI extensions — Shopify developer change tracked by MerchantDiff. Published July 02, 2026.">
+    content="Starting in version 2026-07 , the useBuyerJourneyIntercept hook on checkout UI extensions, and the block_progress capability it depends on, are…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,31 @@ developer changelog on
 This Shopify update is categorized as Action Required, Polaris, Deprecation announcement, 2026-07.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>Starting in version 2026-07 , the useBuyerJourneyIntercept hook on checkout UI extensions, and the block_progress capability it depends on, are deprecated. Existing extensions will continue to work on current and prior API versions, but this API will be removed in a future version , so you should plan to migrate. The following are deprecated: useBuyerJourneyIntercept (Preact hook) in checkout UI extensions The block_progress capability in the extension’s shopify.extension.toml configuration file If you currently use useBuyerJourneyIntercept to enforce merchant business rules, migrate to a cart and checkout validation Function . These Functions run server-side and apply your rules consistently across all checkout surfaces, including express wallets and agentic checkout. If you use useBuyerJourneyIntercept to reject discount codes, migrate that logic to the discount Function API, which now supports rejecting discount codes with a custom message . To learn more and if you&#x27;ve got a use case that&#x27;s keeping you from moving to Shopify Functions: https://community.shopify.dev/t/the-buyer-journey-intercept-api-is-now-deprecated/35930 .</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Developers building or maintaining checkout customizations should review this change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Check your codebase for use of the affected surface. If it is in use, review Shopify&#x27;s official migration guidance and replace or remove the dependency. The update references API version 2026-07; verify the version used by your app.</p>
+</div>
+
+</div>
+
+
+<div class="version-note">
+<strong>Referenced API version:</strong> 2026-07
+</div>
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +525,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/deprecation-of-cumulative-marketing-engagements.html">Deprecation of cumulative marketing engagements</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/merchant-owned-delivery-profile-apis-are-deprecated-for-market-driven-shipping.html">Merchant-owned delivery profile APIs are deprecated for market-driven shipping</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/pos-ui-extensions-2026-07-uses-per-unit-fixed-amount-line-item-discounts.html">POS UI extensions 2026-07 uses per-unit fixed-amount line item discounts</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

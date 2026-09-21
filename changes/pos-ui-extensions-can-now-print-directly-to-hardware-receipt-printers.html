@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="POS UI extensions can now print directly to hardware receipt printers — Shopify developer change tracked by MerchantDiff. Published July 27, 2026.">
+    content="POS UI Extensions 2026-07 introduces the Printing API ( shopify.printing ), which enables extensions to discover hardware printers with getPrinters() and…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,31 @@ developer changelog on
 This Shopify update is categorized as API, New, POS Extensions, 2026-07.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>POS UI Extensions 2026-07 introduces the Printing API ( shopify.printing ), which enables extensions to discover hardware printers with getPrinters() and send documents directly to a connected receipt printer with print() . The Printing API supersedes shopify.print , which is now deprecated. No immediate action is required; plan to migrate when you adopt 2026-07 . What changed shopify.printing.getPrinters() returns the hardware printers available to the device. Each printer includes an id , name , and connected status. shopify.printing.print(src, options?) prints the document at src . If you omit options.printer , the system print dialog opens. If you pass a printer returned by getPrinters() , the document prints directly to that printer with no dialog. The src must be either a relative path appended to your app’s application_url , or a full URL on the same origin. The document is fetched using the extension’s session token. Receipt printers can render HTML and images directly. PDFs require the system print dialog: if you pass a printer when src points to a PDF, shopify.printing.print throws an error. For PDFs, always omit options.printer and rely on the system print dialog.…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Developers maintaining Shopify POS UI extensions should review this change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Check whether your app uses the deprecated surface. If it does, plan the migration using Shopify&#x27;s official guidance before the applicable cutoff. The update references API version 2026-07; verify the version used by your app.</p>
+</div>
+
+</div>
+
+
+<div class="version-note">
+<strong>Referenced API version:</strong> 2026-07
+</div>
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +525,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/pos-ui-extensions-2026-07-uses-per-unit-fixed-amount-line-item-discounts.html">POS UI extensions 2026-07 uses per-unit fixed-amount line item discounts</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/market-driven-shipping-now-available-in-feature-preview.html">Market-driven shipping now available in feature preview</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/whatsapp-marketing-consent-now-available.html">WhatsApp marketing consent now available in the Admin API and Customer Account API</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="Merchant-owned delivery profile APIs are deprecated for market-driven shipping — Shopify developer change tracked by MerchantDiff. Published July 01, 2026.">
+    content="What&#x27;s changing We’re moving merchant-owned shipping configuration from legacy delivery profiles to Markets as part of market-driven shipping, a new…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,27 @@ developer changelog on
 This Shopify update is categorized as Action Required, API, Deprecation announcement, Admin GraphQL API, 2026-07.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>What&#x27;s changing We’re moving merchant-owned shipping configuration from legacy delivery profiles to Markets as part of market-driven shipping, a new model where shipping is configured per Market. When a shop uses market-driven shipping, the legacy delivery profile fields and mutations in the Admin GraphQL API no longer represent the shop’s live merchant-owned shipping configuration. Reads may return a stale snapshot of the legacy configuration, and writes may succeed without errors but will not update the merchant’s live shipping settings. This affects merchant-owned usage of the following Admin GraphQL delivery profile APIs: deliveryProfile deliveryProfiles deliveryProfilesCount deliveryProfileLocationGroup deliveryProfileLocationGroups deliveryProfileCreate deliveryProfileUpdate deliveryProfileRemove App-owned delivery profiles aren’t affected and continue to function as before. What to do If your app currently reads or manages merchant-owned shipping configuration, you must follow the upgrade guide for market-driven shipping . The guide explains how to: Detect shops that are using market-driven shipping. Stop relying on merchant-owned delivery profile APIs for those shops.…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Apps using the affected Shopify GraphQL API surface should review this change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Check whether your app uses the deprecated surface. If it does, plan the migration using Shopify&#x27;s official guidance before the applicable cutoff.</p>
+</div>
+
+</div>
+
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +521,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/deprecation-of-cumulative-marketing-engagements.html">Deprecation of cumulative marketing engagements</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/market-driven-shipping-now-available-in-feature-preview.html">Market-driven shipping now available in feature preview</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/product-variant-barcode-is-being-replaced-by-barcodes.html">Variants now support multiple barcodes</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

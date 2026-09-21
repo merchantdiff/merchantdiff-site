@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="family_name is optional for B2B orders in Payments Apps API requests — Shopify developer change tracked by MerchantDiff. Published September 15, 2026.">
+    content="B2B checkout treats the buyer’s surname as optional, so payment session requests for B2B orders can omit family_name in shipping_address and…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,27 @@ developer changelog on
 This Shopify update is categorized as API, Update, Payments Apps API.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>B2B checkout treats the buyer’s surname as optional, so payment session requests for B2B orders can omit family_name in shipping_address and billing_address . This affects payments apps that handle B2B orders through the Payments Apps API and currently require family_name in these addresses. What changed B2B checkout doesn’t require a buyer surname, and the Payments Apps API already accepts payment session requests for B2B orders without family_name in the shipping_address or billing_address . The Payments app request reference now documents family_name as optional for B2B orders to match this behavior. Who&#x27;s affected Payments apps that use the Payments Apps API to process B2B checkouts and validate that shipping_address.family_name or billing_address.family_name is always present are affected. Payments apps that already accept requests without family_name for B2B orders don’t need to change anything. What to do If your app currently requires family_name in the shipping_address or billing_address for B2B orders, update your validation so it accepts payment session requests where that field is absent for B2B checkouts. Confirm that your app still behaves as expected when…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Developers building or maintaining checkout customizations should review this change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Review the official Shopify entry, confirm whether the change touches your app, and test the affected workflow before your next relevant deployment.</p>
+</div>
+
+</div>
+
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +521,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updates-to-events-payloads-and-subscription-configuration.html">Updates to Events payloads and subscription configuration</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/discounts-allocator-function-api-developer-preview-has-ended.html">Discounts Allocator Function API developer preview has ended</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/orderdisplayfulfillmentstatus-now-returns-fulfillmentnotrequired.html">OrderDisplayFulfillmentStatus now returns FULFILLMENT_NOT_REQUIRED for orders with no items to fulfill</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

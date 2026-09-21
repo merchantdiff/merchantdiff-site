@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="Customer Address APIs now support countryCode — Shopify developer change tracked by MerchantDiff. Published September 08, 2026.">
+    content="Starting with Customer Account API version 2026-10, customer address inputs and objects support countryCode . The existing territoryCode field is…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,31 @@ developer changelog on
 This Shopify update is categorized as API, Deprecation announcement, Checkout UI, Customer Account API, Customer Accounts, 2026-10.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>Starting with Customer Account API version 2026-10, customer address inputs and objects support countryCode . The existing territoryCode field is deprecated but remains fully supported, so current integrations continue working without interruption. Developers should migrate to countryCode when adopting API version 2026-10. What changed The CustomerAddressInput input object and CustomerAddress object now include countryCode . Use countryCode when creating, updating, or reading a customer address. It uses the CountryCode enum and accepts ISO 3166-1 alpha-2 country codes such as US or CA . The existing territoryCode field is marked as deprecated in API version 2026-10. Note: territoryCode has not been removed. Existing queries and mutations that use it continue to work as before, including integrations using older API versions. If both fields are supplied in an address input, countryCode takes precedence. Who’s affected This change affects apps using the Customer Account API to create, update, or read customer addresses. Apps using API version 2026-10 or later can use countryCode and will see territoryCode marked as deprecated. Apps using API version 2026-07 or earlier are unchanged…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Shopify app developers using the API or platform feature named in this update should review the official change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Check your codebase for use of the affected surface. If it is in use, review Shopify&#x27;s official migration guidance and replace or remove the dependency. The update references API version 2026-10, 2026-07; verify the version used by your app.</p>
+</div>
+
+</div>
+
+
+<div class="version-note">
+<strong>Referenced API version:</strong> 2026-10, 2026-07
+</div>
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +525,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/product-variant-barcode-is-being-replaced-by-barcodes.html">Variants now support multiple barcodes</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/customer-account-api-last-incomplete-checkout-and-checkout-types-removed.html">Customer Account API Customer.lastIncompleteCheckout and Checkout types removed in 2026-10</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/discountedunitprice-on-draftorderlineitem-customer-account-api-deprecation.html">`discountedUnitPrice` on `DraftOrderLineItem` Customer Account API deprecation</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

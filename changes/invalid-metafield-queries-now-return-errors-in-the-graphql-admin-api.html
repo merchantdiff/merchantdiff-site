@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="Invalid metafield queries now return errors in the GraphQL Admin API — Shopify developer change tracked by MerchantDiff. Published July 24, 2026.">
+    content="Starting in API version 2026-10, the GraphQL Admin API returns an error when a query filters by a metafield that isn&#x27;t set up for filtering, instead of…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,31 @@ developer changelog on
 This Shopify update is categorized as Action Required, API, Breaking API Change, Admin GraphQL API, Metafields and metaobjects, 2026-10.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>Starting in API version 2026-10, the GraphQL Admin API returns an error when a query filters by a metafield that isn&#x27;t set up for filtering, instead of silently returning incorrect results. This is a breaking change. It affects apps that filter resources by metafield on version 2026-10 or later, and you&#x27;ll need to update affected queries before you upgrade. What changed In API version 2026-10 and later, the GraphQL Admin API checks metafield filters before it runs a query. If a query filters by a metafield that can&#x27;t be used for filtering, the query returns an error explaining the problem instead of ignoring the invalid predicate and returning an incorrect result. A metafield filter commonly fails when: The metafield doesn&#x27;t have a definition. The metafield&#x27;s definition isn&#x27;t configured to allow filtering. The metafield&#x27;s type doesn&#x27;t support the filter or comparison you used. Previously, invalid predicates in metafield filters were silently ignored, so a query with an invalid filter could return misleading results. Now the response tells you the filter is the problem, so you can correct it. Who&#x27;s affected This change affects apps and integrations that filter by metafields in the…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Apps using the affected Shopify GraphQL API surface should review this change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Review the official Shopify entry and test the affected integration. Apply any required code or configuration changes before deploying. The update references API version 2026-10, 2026-07; verify the version used by your app.</p>
+</div>
+
+</div>
+
+
+<div class="version-note">
+<strong>Referenced API version:</strong> 2026-10, 2026-07
+</div>
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +525,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/remove-pricerule-from-draft-order-discount-warning.html">`DraftOrderDiscountNotAppliedWarning.priceRule` removed in GraphQL Admin API 2026-10</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updating-an-orders-shipping-address-returns-accurate-financial-data.html">Updating an order&#x27;s shipping address recalculates taxes as of API version 2026-10</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/orderdisplayfulfillmentstatus-now-returns-fulfillmentnotrequired.html">OrderDisplayFulfillmentStatus now returns FULFILLMENT_NOT_REQUIRED for orders with no items to fulfill</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

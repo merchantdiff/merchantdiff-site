@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="New translatable boolean field for Metafield GraphQL Object — Shopify developer change tracked by MerchantDiff. Published September 21, 2026.">
+    content="API version 2026-10 adds a non-null translatable field to the Metafield object in the GraphQL Admin API. Apps that fetch translatable metafields and…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,31 @@ developer changelog on
 This Shopify update is categorized as API, New, Admin GraphQL API, 2026-10.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>API version 2026-10 adds a non-null translatable field to the Metafield object in the GraphQL Admin API. Apps that fetch translatable metafields and migrate to 2026-10 can now see whether a metafield’s value is translatable directly on the metafield itself. If your app doesn’t query for translatable metafields by shop, you don’t need to change anything. What changed The Metafield object in the GraphQL Admin API exposes a new non-null field, translatable: Boolean! , in API version 2026-10 : { product(id: &quot;gid://shopify/Product/1&quot;) { metafield(namespace: &quot;custom&quot;, key: &quot;care_guide&quot;) { type # &quot;single_line_text_field&quot; translatable # true } } } translatable returns the result that the platform already enforces when it decides whether a metafield’s value can be translated. Before this change, apps had to use the deprecated TranslatableResourceType.METAFIELD enum on translatableResources to query for translatable metafields. On API version 2026-10 and later, you should read translatable on the Metafield object instead of querying metafields through translatableResources . Who&#x27;s affected This applies to apps that: Call the GraphQL Admin API on version 2026-10 or later, and Fetch…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Apps using the affected Shopify GraphQL API surface should review this change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Check whether your app uses the deprecated surface. If it does, plan the migration using Shopify&#x27;s official guidance before the applicable cutoff. The update references API version 2026-10, 2026-07; verify the version used by your app.</p>
+</div>
+
+</div>
+
+
+<div class="version-note">
+<strong>Referenced API version:</strong> 2026-10, 2026-07
+</div>
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +525,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/invalid-metafield-queries-now-return-errors-in-the-graphql-admin-api.html">Invalid metafield queries now return errors in the GraphQL Admin API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/remove-pricerule-from-draft-order-discount-warning.html">`DraftOrderDiscountNotAppliedWarning.priceRule` removed in GraphQL Admin API 2026-10</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/product-variant-barcode-is-being-replaced-by-barcodes.html">Variants now support multiple barcodes</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

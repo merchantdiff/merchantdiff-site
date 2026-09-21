@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="Markets APIs now support MarketRegionSubdivision — Shopify developer change tracked by MerchantDiff. Published July 03, 2026.">
+    content="Sub-region Markets are available in the Admin GraphQL API 2026-07 Apps using Admin GraphQL 2026-07 can encounter Markets configured with…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,31 @@ developer changelog on
 This Shopify update is categorized as API, Update.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>Sub-region Markets are available in the Admin GraphQL API 2026-07 Apps using Admin GraphQL 2026-07 can encounter Markets configured with country-subdivision regions, such as states and provinces as merchants upgrade to market-driven shipping. Apps can get more informtion about market-drive shipping feature preview shipping upgrade guide Use MarketRegionSubdivision as the stable country-subdivision region type, and read sub-region membership through market.conditions.regionsCondition.regions . Do not use deprecated market.regions as the source of truth for sub-region membership, because it may omit subdivision regions. Sub-region Markets support shipping first. Other configurations including Discounts, Catalogs, Theme contextualization, Market metafields, are not yet supported. Unsupported API paths will return validation errors instead of allowing unsupported configurations.</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Apps using the affected Shopify GraphQL API surface should review this change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Check whether your app uses the deprecated surface. If it does, plan the migration using Shopify&#x27;s official guidance before the applicable cutoff. The update references API version 2026-07; verify the version used by your app.</p>
+</div>
+
+</div>
+
+
+<div class="version-note">
+<strong>Referenced API version:</strong> 2026-07
+</div>
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +525,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updates-to-events-payloads-and-subscription-configuration.html">Updates to Events payloads and subscription configuration</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/discounts-allocator-function-api-developer-preview-has-ended.html">Discounts Allocator Function API developer preview has ended</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/customer-address-apis-now-support-countrycode.html">Customer Address APIs now support countryCode</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="Prepare your app for the Shopify admin&#x27;s new look — Shopify developer change tracked by MerchantDiff. Published September 15, 2026.">
+    content="Starting September 15, 2026, the Shopify admin has a new look, rolling out progressively to merchants. Apps that use Admin UI extensions and App Home UI…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,27 @@ developer changelog on
 This Shopify update is categorized as Polaris, Update.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>Starting September 15, 2026, the Shopify admin has a new look, rolling out progressively to merchants. Apps that use Admin UI extensions and App Home UI extensions pick up the new styles automatically. Apps that render their own interface in App Home keep their current styles until you choose to move to Polaris 2.0. What merchants will see A new look across every page: new color, type, spacing, and icons, inside a new frame Search, notifications, and the store picker now in the side navigation, which collapses for more room on the page Sidekick moved from a side panel to a floating chat at the bottom of the page What this means for your app Admin UI extensions and App Home UI extensions automatically receive the new styles during the rollout. Functionality doesn&#x27;t change, and you don&#x27;t need to update extension code to adopt the new appearance. Apps that render their own interface in App Home keep their existing styles until you choose to adopt Polaris 2.0. The current Polaris Web Components release candidate is 1.1. A Polaris 2.0 release candidate will be available soon with styles that align App Home interfaces with the refreshed admin. Under the Polaris CDN semantic-versioning…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Shopify app developers using the API or platform feature named in this update should review the official change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Review the official Shopify entry, confirm whether the change touches your app, and test the affected workflow before your next relevant deployment.</p>
+</div>
+
+</div>
+
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +521,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updates-to-events-payloads-and-subscription-configuration.html">Updates to Events payloads and subscription configuration</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/discounts-allocator-function-api-developer-preview-has-ended.html">Discounts Allocator Function API developer preview has ended</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/shopify-flow-changes-to-action-extensions-result-in-fewer-breaking-changes.html">Shopify Flow: Changes to Action extensions result in fewer breaking changes</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 

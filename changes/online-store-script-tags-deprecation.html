@@ -13,7 +13,7 @@
 
 <meta
     name="description"
-    content="Script tags are deprecated and will stop running on March 1, 2027 — Shopify developer change tracked by MerchantDiff. Published August 24, 2026.">
+    content="Starting October 1, 2026, the scriptTagCreate and scriptTagUpdate mutations will return an user error, and the ScriptTag REST Admin API resource will…">
 
 <link
     rel="canonical"
@@ -317,6 +317,53 @@ h1 {
     color: #444;
 }
 
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
 .source-box {
     margin-top: 24px;
     padding: 18px;
@@ -431,6 +478,27 @@ developer changelog on
 This Shopify update is categorized as Action Required, API, Deprecation announcement, Admin GraphQL API, Admin REST API.
 </p>
 
+<div class="insight-grid">
+
+<div class="insight">
+<h2>What changed</h2>
+<p>Starting October 1, 2026, the scriptTagCreate and scriptTagUpdate mutations will return an user error, and the ScriptTag REST Admin API resource will reject POST and PUT . The deprecation applies to all API versions, including older ones, so pinning won&#x27;t defer it. On March 1, 2027, Shopify will stop injecting script tags into storefronts. Storefronts are the last place script tags still run, since they already stopped working on the Order status page . If your app uses a script tag to load JavaScript onto a store, then you need to replace it before then. What&#x27;s changing A script tag loads JavaScript on a storefront without any changes to theme code. After March 1, 2027, Shopify won&#x27;t inject those scripts, so script tags will stop loading JavaScript on storefronts. The scriptTags query and the scriptTagDelete mutation keep working, so you can audit and clean up your existing script tags. What you need to do Replace each script tag with an app embed block , which you ship in a theme app extension. App users activate app embed blocks in the theme editor. If a script only collects analytics or conversion data, then use a web pixel instead, which needs no action from the app user.…</p>
+</div>
+
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Shopify app developers using the API or platform feature named in this update should review the official change.</p>
+</div>
+
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>Check whether your app uses the deprecated surface. If it does, plan the migration using Shopify&#x27;s official guidance before the applicable cutoff.</p>
+</div>
+
+</div>
+
+
+
 <p>
 Use the official Shopify entry below as the source of truth
 for technical implementation details, affected APIs,
@@ -453,6 +521,15 @@ Read this change on Shopify →
 </p>
 
 </div>
+
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/product-variant-barcode-is-being-replaced-by-barcodes.html">Variants now support multiple barcodes</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updating-an-orders-shipping-address-returns-accurate-financial-data.html">Updating an order&#x27;s shipping address recalculates taxes as of API version 2026-10</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/deprecation-of-cumulative-marketing-engagements.html">Deprecation of cumulative marketing engagements</a></li>
+</ul>
+</section>
+
 
 <div class="actions">
 
