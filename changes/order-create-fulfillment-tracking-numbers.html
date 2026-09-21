@@ -1,38 +1,21 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The `orderCreate` mutation now supports multiple tracking numbers for each fulfillment | MerchantDiff</title>
-
-<meta
-    name="description"
-    content="We’ve added a trackingNumbers field to OrderCreateFulfillmentInput , so you can attach multiple tracking numbers to a fulfillment when importing orders.…">
-
-<link
-    rel="canonical"
-    href="https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html">
-
-<meta name="robots" content="noindex,follow">
-
-<meta
-    property="og:type"
-    content="article">
-
-<meta
-    property="og:title"
-    content="The `orderCreate` mutation now supports multiple tracking numbers for each fulfillment">
-
-<meta
-    property="og:url"
-    content="https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html">
-
+<meta name="description" content="We’ve added a trackingNumbers field to OrderCreateFulfillmentInput, so you can attach multiple tracking numbers to a fulfillment when importing orders.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The `orderCreate` mutation now supports multiple tracking numbers for each fulfillment">
+<meta property="og:description" content="We’ve added a trackingNumbers field to OrderCreateFulfillmentInput, so you can attach multiple tracking numbers to a fulfillment when importing orders.">
+<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html">
+<meta property="article:published_time" content="2026-08-03T13:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The `orderCreate` mutation now supports multiple tracking numbers for each fulfillment">
+<meta name="twitter:description" content="We’ve added a trackingNumbers field to OrderCreateFulfillmentInput, so you can attach multiple tracking numbers to a fulfillment when importing orders.">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html#article","headline":"The `orderCreate` mutation now supports multiple tracking numbers for each fulfillment","description":"We’ve added a trackingNumbers field to OrderCreateFulfillmentInput, so you can attach multiple tracking numbers to a fulfillment when importing orders.","url":"https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-09-21T19:32:15Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/order-create-fulfillment-tracking-numbers","datePublished":"2026-08-03T13:00:00+00:00","articleSection":["API","New","Admin GraphQL API","Admin REST API","2026-10"],"keywords":"API, New, Admin GraphQL API, Admin REST API, 2026-10"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"The `orderCreate` mutation now supports multiple tracking numbers for each fulfillment","item":"https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html"}]}]}</script>
 <style>
 
 * {
@@ -41,12 +24,7 @@
 
 body {
     margin: 0;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     background: #f7f8fa;
     color: #161616;
 }
@@ -108,9 +86,6 @@ h1 {
     line-height: 1.65;
     color: #555;
 }
-
-
-/* READY TO POST QUEUE */
 
 .ready-panel {
     margin: 0 0 38px;
@@ -225,9 +200,6 @@ h1 {
     color: white;
 }
 
-
-/* UPDATE CARDS */
-
 .card {
     background: white;
     border: 1px solid #e3e6ea;
@@ -249,6 +221,12 @@ h1 {
 
 .card h2 a:hover {
     text-decoration: underline;
+}
+
+.card-summary {
+    margin: 10px 0 0;
+    color: #555;
+    line-height: 1.6;
 }
 
 .meta {
@@ -409,172 +387,119 @@ footer {
     margin-bottom: 20px;
 }
 
+@media (max-width: 640px) {
+    .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .topnav {
+        align-items: flex-start;
+    }
+
+    .navlinks {
+        gap: 10px;
+    }
+
+    .detail {
+        padding: 20px;
+    }
+}
+
 </style>
-
 </head>
-
 <body>
-
+<!-- merchantdiff-content-hash: e04a24b7b0afe480589a6b0b2588ce7fa3734ccdf8511468518f742643b2b1c7 -->
+<!-- merchantdiff-lastmod: 2026-09-21T19:32:15Z -->
 <div class="wrap">
-
 <nav class="topnav">
-
-<a
-    class="brand"
-    href="https://merchantdiff.github.io/merchantdiff-site/">
-MerchantDiff
-</a>
-
+<a class="brand" href="https://merchantdiff.github.io/merchantdiff-site/">MerchantDiff</a>
 <div class="navlinks">
-
-<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">
-Shopify changes
-</a>
-
-<a
-    href="https://x.com/MerchantDiff"
-    target="_blank"
-    rel="noopener">
-X
-</a>
-
+<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">Shopify changes</a>
+<a href="https://x.com/MerchantDiff" target="_blank" rel="noopener noreferrer">X</a>
 </div>
-
 </nav>
-
 <main>
-
-<a
-    class="back"
-    href="https://merchantdiff.github.io/merchantdiff-site/updates.html">
-← Latest Shopify changes
-</a>
-
+<a class="back" href="https://merchantdiff.github.io/merchantdiff-site/updates.html">← Latest Shopify changes</a>
 <div class="meta">
-
-August 03, 2026
-
-
+<time datetime="2026-08-03T13:00:00+00:00">August 03, 2026</time>
 
 </div>
-
 <h1>The `orderCreate` mutation now supports multiple tracking numbers for each fulfillment</h1>
-
-<div class="tags">
-<span class="tag">API</span><span class="tag">New</span><span class="tag">Admin GraphQL API</span><span class="tag">Admin REST API</span><span class="tag">2026-10</span>
-</div>
-
+<div class="tags"><span class="tag">API</span><span class="tag">New</span><span class="tag">Admin GraphQL API</span><span class="tag">Admin REST API</span><span class="tag">2026-10</span></div>
 <section class="detail">
-
 <h2>Shopify developer change</h2>
-
 <p>
-MerchantDiff detected this entry in Shopify's official
-developer changelog on
+MerchantDiff detected this entry in Shopify's official developer changelog on
 <strong>August 03, 2026</strong>.
 </p>
-
-<p>
-This Shopify update is categorized as API, New, Admin GraphQL API, Admin REST API, 2026-10.
-</p>
-
+<p>This Shopify update is categorized as API, New, Admin GraphQL API, Admin REST API, 2026-10.</p>
 <div class="insight-grid">
-
 <div class="insight">
 <h2>What changed</h2>
-<p>We’ve added a trackingNumbers field to OrderCreateFulfillmentInput , so you can attach multiple tracking numbers to a fulfillment when importing orders. If you use the orderCreate mutation to import orders that ship in more than one package, you no longer need to update the fulfillment after creation to add additional tracking numbers. Instead, you can include all tracking numbers upfront when you create the order. Use the trackingNumbers field to pass an array of tracking number strings, for example: trackingNumbers: [&quot;1Z999AA10123456784&quot;, &quot;1Z999AA10123456785&quot;] The trackingCompany value you provide applies to every tracking number in the array. This behavior is consistent with how FulfillmentTrackingInput already works on the fulfillmentCreate mutation. If you provide both the singular trackingNumber and the plural trackingNumbers , the singular value takes precedence. In that case, the value of trackingNumber is used and trackingNumbers is ignored. This ensures that your existing integrations continue to work without any changes. This field is available starting in API version 2026-10 . Learn more orderCreate mutation reference OrderCreateFulfillmentInput Manage fulfillments</p>
+<p>We’ve added a trackingNumbers field to OrderCreateFulfillmentInput, so you can attach multiple tracking numbers to a fulfillment when importing orders. If you use the orderCreate mutation to import orders that ship in more than one package, you no longer need to update the fulfillment after creation to add additional tracking numbers. Instead, you can include all tracking numbers upfront when you create the order. Use the trackingNumbers field to pass an array of tracking number strings, for example: trackingNumbers: [&quot;1Z999AA10123456784&quot;, &quot;1Z999AA10123456785&quot;] The trackingCompany value you provide applies to every tracking number in the array. This behavior is consistent with how FulfillmentTrackingInput already works on the fulfillmentCreate mutation.</p>
 </div>
-
 <div class="insight">
 <h2>Who is affected</h2>
-<p>Shopify app developers using the API or platform feature named in this update should review the official change.</p>
+<p>Apps using the affected Shopify GraphQL API surface should review this change.</p>
 </div>
-
 <div class="insight">
 <h2>What action may be needed</h2>
-<p>Review whether the new capability is relevant to your app. If you plan to use it, test the affected API or workflow before adopting it in production. The update references API version 2026-10; verify the version used by your app.</p>
+<p>Review whether the new capability is relevant to your app. If you plan to use it, test the affected API or workflow before adopting it in production.</p>
 </div>
-
 </div>
-
 
 <div class="version-note">
 <strong>Referenced API version:</strong> 2026-10
 </div>
 
-
 <p>
-Use the official Shopify entry below as the source of truth
-for technical implementation details, affected APIs,
-migration instructions and deadlines.
+Use the official Shopify entry below as the source of truth for technical
+implementation details, affected APIs, migration instructions and deadlines.
 </p>
-
 <div class="source-box">
-
 <strong>Official source</strong>
-
 <p>
-
-<a
-    href="https://shopify.dev/changelog/order-create-fulfillment-tracking-numbers"
-    target="_blank"
-    rel="noopener noreferrer">
+<a href="https://shopify.dev/changelog/order-create-fulfillment-tracking-numbers" target="_blank" rel="noopener noreferrer">
 Read this change on Shopify →
 </a>
-
 </p>
-
 </div>
-
 
 <section class="related">
 <h2>Related Shopify developer changes</h2>
 <ul class="related-list">
-<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/is-translatable-metafield-field.html">New translatable boolean field for Metafield GraphQL Object</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updating-an-orders-shipping-address-returns-accurate-financial-data.html">Updating an order&#x27;s shipping address recalculates taxes as of API version 2026-10</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/carrier-services-will-no-longer-be-automatically-added-to-the-default-shipping-profile.html">Carrier services will no longer be automatically added to the default shipping profile</a></li>
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updating-an-orders-shipping-address-returns-accurate-financial-data.html">Updating an order&#x27;s shipping address recalculates taxes as of API version 2026-10</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/carrier-services-will-no-longer-be-automatically-added-to-the-default-shipping-profile.html">Carrier services will no longer be automatically added to the default shipping profile</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/orderdisplayfulfillmentstatus-now-returns-fulfillmentnotrequired.html">OrderDisplayFulfillmentStatus now returns FULFILLMENT_NOT_REQUIRED for orders with no items to fulfill</a></li>
 </ul>
 </section>
 
-
 <div class="actions">
-
-
-
-</div>
-
-</section>
-
-<section class="cta">
-
-<h2>Want the actionable version?</h2>
-
-<p>
-MerchantDiff monitors Shopify API changes, deprecations,
-deadlines and ecosystem updates, then turns them into
-developer-focused release intelligence: what changed,
-who is affected and what action may be needed.
-</p>
-
 <a
-    href="https://boosty.to/merchantdiff"
+    class="action-button"
+    href="https://x.com/intent/tweet?text=Shopify+developer+update%3A%0A%0AThe+%60orderCreate%60+mutation+now+supports+multiple+tracking+numbers+for+each+fulfillment%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Forder-create-fulfillment-tracking-numbers.html%0A%0A%23ShopifyDev"
     target="_blank"
     rel="noopener noreferrer">
+Post on X →
+</a>
+</div>
+</section>
+<section class="cta">
+<h2>Want the actionable version?</h2>
+<p>
+MerchantDiff monitors Shopify API changes, deprecations, deadlines and
+ecosystem updates, then turns them into developer-focused release intelligence:
+what changed, who is affected and what action may be needed.
+</p>
+<a href="https://boosty.to/merchantdiff" target="_blank" rel="noopener noreferrer">
 Get MerchantDiff →
 </a>
-
 </section>
-
 </main>
-
 <footer>
-
-Source metadata comes from the Shopify Developer Changelog.
-MerchantDiff is an independent project and is not affiliated
-with Shopify.
-
+Source metadata comes from the Shopify Developer Changelog. MerchantDiff is an
+independent project and is not affiliated with Shopify.
 </footer>
-
 </div>
-
 
 <!-- Cloudflare Web Analytics -->
 <script
@@ -583,7 +508,6 @@ with Shopify.
     data-cf-beacon='{"token":"44ece3bc3eee498c9bed2bbfd20a997c"}'>
 </script>
 <!-- End Cloudflare Web Analytics -->
-
 
 </body>
 </html>

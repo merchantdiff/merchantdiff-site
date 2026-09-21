@@ -1,38 +1,21 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The `automaticDiscounts` query is removed in API version 2027-01 | MerchantDiff</title>
-
-<meta
-    name="description"
-    content="The deprecated automaticDiscounts query is removed from the GraphQL Admin API in version 2027-01 . If your app reads a shop’s automatic discounts through…">
-
-<link
-    rel="canonical"
-    href="https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html">
-
-
-
-<meta
-    property="og:type"
-    content="article">
-
-<meta
-    property="og:title"
-    content="The `automaticDiscounts` query is removed in API version 2027-01">
-
-<meta
-    property="og:url"
-    content="https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html">
-
+<meta name="description" content="As of API version 2027-01, automaticDiscounts no longer exists on QueryRoot.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="The `automaticDiscounts` query is removed in API version 2027-01">
+<meta property="og:description" content="As of API version 2027-01, automaticDiscounts no longer exists on QueryRoot.">
+<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html">
+<meta property="article:published_time" content="2026-09-18T16:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="The `automaticDiscounts` query is removed in API version 2027-01">
+<meta name="twitter:description" content="As of API version 2027-01, automaticDiscounts no longer exists on QueryRoot.">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html#article","headline":"The `automaticDiscounts` query is removed in API version 2027-01","description":"As of API version 2027-01, automaticDiscounts no longer exists on QueryRoot.","url":"https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-09-21T19:32:15Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/automaticdiscounts-query-is-removed-in-api-version-2027-01","datePublished":"2026-09-18T16:00:00+00:00","articleSection":["Action Required","API","Breaking API Change","Admin GraphQL API","2027-01"],"keywords":"Action Required, API, Breaking API Change, Admin GraphQL API, 2027-01"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"The `automaticDiscounts` query is removed in API version 2027-01","item":"https://merchantdiff.github.io/merchantdiff-site/changes/automaticdiscounts-query-is-removed-in-api-version-2027-01.html"}]}]}</script>
 <style>
 
 * {
@@ -41,12 +24,7 @@
 
 body {
     margin: 0;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     background: #f7f8fa;
     color: #161616;
 }
@@ -108,9 +86,6 @@ h1 {
     line-height: 1.65;
     color: #555;
 }
-
-
-/* READY TO POST QUEUE */
 
 .ready-panel {
     margin: 0 0 38px;
@@ -225,9 +200,6 @@ h1 {
     color: white;
 }
 
-
-/* UPDATE CARDS */
-
 .card {
     background: white;
     border: 1px solid #e3e6ea;
@@ -249,6 +221,12 @@ h1 {
 
 .card h2 a:hover {
     text-decoration: underline;
+}
+
+.card-summary {
+    margin: 10px 0 0;
+    color: #555;
+    line-height: 1.6;
 }
 
 .meta {
@@ -409,135 +387,93 @@ footer {
     margin-bottom: 20px;
 }
 
+@media (max-width: 640px) {
+    .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .topnav {
+        align-items: flex-start;
+    }
+
+    .navlinks {
+        gap: 10px;
+    }
+
+    .detail {
+        padding: 20px;
+    }
+}
+
 </style>
-
 </head>
-
 <body>
-
+<!-- merchantdiff-content-hash: b8a3a4dec4ebe06d926aae89d6e0b1a90be5b45c6c7378906f05401d20834b29 -->
+<!-- merchantdiff-lastmod: 2026-09-21T19:32:15Z -->
 <div class="wrap">
-
 <nav class="topnav">
-
-<a
-    class="brand"
-    href="https://merchantdiff.github.io/merchantdiff-site/">
-MerchantDiff
-</a>
-
+<a class="brand" href="https://merchantdiff.github.io/merchantdiff-site/">MerchantDiff</a>
 <div class="navlinks">
-
-<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">
-Shopify changes
-</a>
-
-<a
-    href="https://x.com/MerchantDiff"
-    target="_blank"
-    rel="noopener">
-X
-</a>
-
+<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">Shopify changes</a>
+<a href="https://x.com/MerchantDiff" target="_blank" rel="noopener noreferrer">X</a>
 </div>
-
 </nav>
-
 <main>
-
-<a
-    class="back"
-    href="https://merchantdiff.github.io/merchantdiff-site/updates.html">
-← Latest Shopify changes
-</a>
-
+<a class="back" href="https://merchantdiff.github.io/merchantdiff-site/updates.html">← Latest Shopify changes</a>
 <div class="meta">
-
-September 18, 2026
-
+<time datetime="2026-09-18T16:00:00+00:00">September 18, 2026</time>
 <span class="urgent">Action / breaking change</span>
-
 </div>
-
 <h1>The `automaticDiscounts` query is removed in API version 2027-01</h1>
-
-<div class="tags">
-<span class="tag">Action Required</span><span class="tag">API</span><span class="tag">Breaking API Change</span><span class="tag">Admin GraphQL API</span><span class="tag">2027-01</span>
-</div>
-
+<div class="tags"><span class="tag">Action Required</span><span class="tag">API</span><span class="tag">Breaking API Change</span><span class="tag">Admin GraphQL API</span><span class="tag">2027-01</span></div>
 <section class="detail">
-
 <h2>Shopify developer change</h2>
-
 <p>
-MerchantDiff detected this entry in Shopify's official
-developer changelog on
+MerchantDiff detected this entry in Shopify's official developer changelog on
 <strong>September 18, 2026</strong>.
 </p>
-
-<p>
-This Shopify update is categorized as Action Required, API, Breaking API Change, Admin GraphQL API, 2027-01.
-</p>
-
+<p>This Shopify update is categorized as Action Required, API, Breaking API Change, Admin GraphQL API, 2027-01.</p>
 <div class="insight-grid">
-
 <div class="insight">
 <h2>What changed</h2>
-<p>The deprecated automaticDiscounts query is removed from the GraphQL Admin API in version 2027-01 . If your app reads a shop’s automatic discounts through automaticDiscounts , you need to move to the discountNodes query with a method:automatic filter before you upgrade to 2027-01 . Apps on 2026-10 and earlier keep working unchanged while those versions are supported. What changed As of API version 2027-01 , automaticDiscounts no longer exists on QueryRoot . Requests that include automaticDiscounts on 2027-01 return a validation error instead of data. The DiscountAutomaticConnection and DiscountAutomaticEdge types are also removed, because no other fields in the schema return them. Use discountNodes instead, with query: &quot;method:automatic&quot; . It returns a connection of DiscountNode objects, each exposing the discount itself on the discount field. discountNodes accepts filters similar to the removed query, including status , discount_type , discount_class , created_at , and starts_at . For details on how to combine filters, see the Shopify API search syntax . Note: The automaticDiscountNodes query is also deprecated in favor of discountNodes . If you migrate to automaticDiscountNodes…</p>
+<p>As of API version 2027-01, automaticDiscounts no longer exists on QueryRoot. Requests that include automaticDiscounts on 2027-01 return a validation error instead of data. The DiscountAutomaticConnection and DiscountAutomaticEdge types are also removed, because no other fields in the schema return them. Use discountNodes instead, with query: &quot;method:automatic&quot;. It returns a connection of DiscountNode objects, each exposing the discount itself on the discount field.</p>
 </div>
-
 <div class="insight">
 <h2>Who is affected</h2>
-<p>Apps using the affected Shopify GraphQL API surface should review this change.</p>
+<p>This removal affects any app that calls automaticDiscounts and requests API version 2027-01 or later, including apps pinned to unstable once 2027-01 is the latest version. It also affects tooling and generated types that reference DiscountAutomaticConnection or DiscountAutomaticEdge. Apps that request 2026-10 or earlier continue to work as long as those versions are supported.</p>
 </div>
-
 <div class="insight">
 <h2>What action may be needed</h2>
-<p>Check your codebase for use of the affected surface. If it is in use, review Shopify&#x27;s official migration guidance and replace or remove the dependency. The update references API version 2027-01; verify the version used by your app.</p>
+<p>Before you upgrade your app to API version 2027-01, update any queries that call automaticDiscounts to use discountNodes with query: &quot;method:automatic&quot;, and regenerate your types against 2027-01. If you upgrade without migrating, those queries return validation errors and your app no longer reads automatic discounts. You can confirm the migration worked by running your updated queries against a development store on 2027-01 and checking that the automatic discount data matches what you saw on 2026-10.</p>
 </div>
-
 </div>
-
 
 <div class="version-note">
 <strong>Referenced API version:</strong> 2027-01
 </div>
 
-
 <p>
-Use the official Shopify entry below as the source of truth
-for technical implementation details, affected APIs,
-migration instructions and deadlines.
+Use the official Shopify entry below as the source of truth for technical
+implementation details, affected APIs, migration instructions and deadlines.
 </p>
-
 <div class="source-box">
-
 <strong>Official source</strong>
-
 <p>
-
-<a
-    href="https://shopify.dev/changelog/automaticdiscounts-query-is-removed-in-api-version-2027-01"
-    target="_blank"
-    rel="noopener noreferrer">
+<a href="https://shopify.dev/changelog/automaticdiscounts-query-is-removed-in-api-version-2027-01" target="_blank" rel="noopener noreferrer">
 Read this change on Shopify →
 </a>
-
 </p>
-
 </div>
-
 
 <section class="related">
 <h2>Related Shopify developer changes</h2>
 <ul class="related-list">
-<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/updating-an-orders-shipping-address-returns-accurate-financial-data.html">Updating an order&#x27;s shipping address recalculates taxes as of API version 2026-10</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/invalid-metafield-queries-now-return-errors-in-the-graphql-admin-api.html">Invalid metafield queries now return errors in the GraphQL Admin API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/orderdisplayfulfillmentstatus-now-returns-fulfillmentnotrequired.html">OrderDisplayFulfillmentStatus now returns FULFILLMENT_NOT_REQUIRED for orders with no items to fulfill</a></li>
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/removing-deprecated-private-and-publicread-enums-on-metaobject-definitions.html">Removing deprecated PRIVATE and PUBLIC_READ enums on metaobject definitions</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/market-relationships.html">Query market hierarchies with the GraphQL Admin API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/online-store-script-tags-deprecation.html">Script tags are deprecated and will stop running on March 1, 2027</a></li>
 </ul>
 </section>
 
-
 <div class="actions">
-
-
 <a
     class="action-button"
     href="https://x.com/intent/tweet?text=Important+Shopify+developer+change%3A%0A%0AThe+%60automaticDiscounts%60+query+is+removed+in+API+version+2027-01%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fautomaticdiscounts-query-is-removed-in-api-version-2027-01.html%0A%0A%23ShopifyDev"
@@ -545,44 +481,25 @@ Read this change on Shopify →
     rel="noopener noreferrer">
 Post on X →
 </a>
-
-
 </div>
-
 </section>
-
 <section class="cta">
-
 <h2>Want the actionable version?</h2>
-
 <p>
-MerchantDiff monitors Shopify API changes, deprecations,
-deadlines and ecosystem updates, then turns them into
-developer-focused release intelligence: what changed,
-who is affected and what action may be needed.
+MerchantDiff monitors Shopify API changes, deprecations, deadlines and
+ecosystem updates, then turns them into developer-focused release intelligence:
+what changed, who is affected and what action may be needed.
 </p>
-
-<a
-    href="https://boosty.to/merchantdiff"
-    target="_blank"
-    rel="noopener noreferrer">
+<a href="https://boosty.to/merchantdiff" target="_blank" rel="noopener noreferrer">
 Get MerchantDiff →
 </a>
-
 </section>
-
 </main>
-
 <footer>
-
-Source metadata comes from the Shopify Developer Changelog.
-MerchantDiff is an independent project and is not affiliated
-with Shopify.
-
+Source metadata comes from the Shopify Developer Changelog. MerchantDiff is an
+independent project and is not affiliated with Shopify.
 </footer>
-
 </div>
-
 
 <!-- Cloudflare Web Analytics -->
 <script
@@ -591,7 +508,6 @@ with Shopify.
     data-cf-beacon='{"token":"44ece3bc3eee498c9bed2bbfd20a997c"}'>
 </script>
 <!-- End Cloudflare Web Analytics -->
-
 
 </body>
 </html>

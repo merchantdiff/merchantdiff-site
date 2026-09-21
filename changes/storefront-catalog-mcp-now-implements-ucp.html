@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Storefront Catalog MCP now implements UCP | MerchantDiff</title>
+<meta name="description" content="The following UCP catalog tools in Storefront Catalog are now available: - `search_catalog`: Search a store&#x27;s product catalog with filters, pagination…">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/storefront-catalog-mcp-now-implements-ucp.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storefront Catalog MCP now implements UCP">
+<meta property="og:description" content="The following UCP catalog tools in Storefront Catalog are now available: - `search_catalog`: Search a store&#x27;s product catalog with filters, pagination…">
+<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/storefront-catalog-mcp-now-implements-ucp.html">
+<meta property="article:published_time" content="2026-04-22T19:30:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Storefront Catalog MCP now implements UCP">
+<meta name="twitter:description" content="The following UCP catalog tools in Storefront Catalog are now available: - `search_catalog`: Search a store&#x27;s product catalog with filters, pagination…">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/storefront-catalog-mcp-now-implements-ucp.html#article","headline":"Storefront Catalog MCP now implements UCP","description":"The following UCP catalog tools in Storefront Catalog are now available: - `search_catalog`: Search a store's product catalog with filters, pagination…","url":"https://merchantdiff.github.io/merchantdiff-site/changes/storefront-catalog-mcp-now-implements-ucp.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/storefront-catalog-mcp-now-implements-ucp.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-09-21T19:32:15Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/storefront-catalog-mcp-now-implements-ucp","datePublished":"2026-04-22T19:30:00+00:00","articleSection":["Action Required","API","Breaking API Change"],"keywords":"Action Required, API, Breaking API Change"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/storefront-catalog-mcp-now-implements-ucp.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"Storefront Catalog MCP now implements UCP","item":"https://merchantdiff.github.io/merchantdiff-site/changes/storefront-catalog-mcp-now-implements-ucp.html"}]}]}</script>
+<style>
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+    background: #f7f8fa;
+    color: #161616;
+}
+
+a {
+    color: #1457d9;
+}
+
+button {
+    font: inherit;
+}
+
+.wrap {
+    max-width: 920px;
+    margin: auto;
+    padding: 30px 20px 70px;
+}
+
+.topnav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    margin-bottom: 42px;
+}
+
+.brand {
+    font-size: 21px;
+    font-weight: 800;
+    color: #111;
+    text-decoration: none;
+}
+
+.navlinks {
+    display: flex;
+    gap: 16px;
+    font-size: 14px;
+}
+
+.navlinks a {
+    color: #444;
+    text-decoration: none;
+}
+
+.hero {
+    margin-bottom: 34px;
+}
+
+h1 {
+    font-size: clamp(34px, 6vw, 50px);
+    line-height: 1.08;
+    margin: 0 0 18px;
+    letter-spacing: -0.025em;
+}
+
+.intro {
+    max-width: 760px;
+    font-size: 18px;
+    line-height: 1.65;
+    color: #555;
+}
+
+.ready-panel {
+    margin: 0 0 38px;
+    padding: 26px;
+    border-radius: 18px;
+    background: #171717;
+    color: white;
+}
+
+.ready-panel h2 {
+    margin: 0 0 8px;
+    font-size: 27px;
+}
+
+.ready-intro {
+    margin: 0 0 12px;
+    max-width: 700px;
+    color: #cfcfcf;
+    line-height: 1.55;
+}
+
+.queue-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin: 0 0 20px;
+}
+
+.queue-counter {
+    color: #9b9b9b;
+    font-size: 13px;
+}
+
+.reset-button {
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: #9b9b9b;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.reset-button:hover {
+    color: white;
+}
+
+.ready-list {
+    display: grid;
+    gap: 12px;
+}
+
+.ready-item {
+    padding: 17px;
+    border-radius: 12px;
+    background: #262626;
+}
+
+.ready-item-title {
+    margin: 5px 0 12px;
+    font-size: 17px;
+    line-height: 1.35;
+    font-weight: 700;
+}
+
+.ready-meta {
+    font-size: 12px;
+    color: #aaa;
+}
+
+.ready-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 12px;
+}
+
+.ready-button {
+    display: inline-block;
+    padding: 9px 14px;
+    border-radius: 9px;
+    background: white;
+    color: #111;
+    text-decoration: none;
+    font-weight: 800;
+    font-size: 14px;
+}
+
+.ready-button:hover {
+    opacity: 0.9;
+}
+
+.ready-page-link {
+    color: #ccc;
+    font-size: 13px;
+}
+
+.ready-empty {
+    display: none;
+    padding: 22px;
+    border-radius: 12px;
+    background: #262626;
+    color: #cfcfcf;
+    text-align: center;
+}
+
+.ready-empty strong {
+    display: block;
+    margin-bottom: 6px;
+    color: white;
+}
+
+.card {
+    background: white;
+    border: 1px solid #e3e6ea;
+    border-radius: 16px;
+    padding: 23px;
+    margin: 16px 0;
+}
+
+.card h2 {
+    margin: 11px 0;
+    font-size: 22px;
+    line-height: 1.3;
+}
+
+.card h2 a {
+    color: #161616;
+    text-decoration: none;
+}
+
+.card h2 a:hover {
+    text-decoration: underline;
+}
+
+.card-summary {
+    margin: 10px 0 0;
+    color: #555;
+    line-height: 1.6;
+}
+
+.meta {
+    font-size: 14px;
+    color: #666;
+}
+
+.tags {
+    margin-top: 10px;
+}
+
+.tag {
+    display: inline-block;
+    margin: 3px 6px 3px 0;
+    padding: 5px 9px;
+    background: #eef1f5;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.urgent {
+    display: inline-block;
+    margin-left: 8px;
+    font-weight: 700;
+    color: #8b2d16;
+}
+
+.actions {
+    margin-top: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+}
+
+.action-button {
+    display: inline-block;
+    padding: 9px 13px;
+    border-radius: 9px;
+    background: #111;
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.action-button:hover {
+    opacity: 0.85;
+}
+
+.secondary-link {
+    font-size: 14px;
+}
+
+.detail {
+    background: white;
+    border: 1px solid #e3e6ea;
+    border-radius: 18px;
+    padding: 28px;
+    margin: 24px 0;
+}
+
+.detail p {
+    font-size: 17px;
+    line-height: 1.7;
+    color: #444;
+}
+
+.insight-grid {
+    display: grid;
+    gap: 16px;
+    margin: 24px 0;
+}
+
+.insight {
+    padding: 18px;
+    background: #f7f8fa;
+    border: 1px solid #e3e6ea;
+    border-radius: 12px;
+}
+
+.insight h2 {
+    margin: 0 0 8px;
+    font-size: 20px;
+}
+
+.insight p {
+    margin: 0;
+}
+
+.version-note {
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-left: 4px solid #111;
+    background: #f2f4f7;
+}
+
+.related {
+    margin-top: 32px;
+}
+
+.related h2 {
+    margin-bottom: 12px;
+}
+
+.related-list {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.related-list li {
+    margin: 8px 0;
+    line-height: 1.5;
+}
+
+.source-box {
+    margin-top: 24px;
+    padding: 18px;
+    background: #f2f4f7;
+    border-radius: 12px;
+}
+
+.cta {
+    margin-top: 40px;
+    padding: 30px;
+    background: #171717;
+    color: white;
+    border-radius: 18px;
+}
+
+.cta h2 {
+    margin-top: 0;
+}
+
+.cta p {
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.cta a {
+    display: inline-block;
+    margin-top: 7px;
+    color: white;
+    font-weight: 700;
+}
+
+footer {
+    margin-top: 44px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+    font-size: 13px;
+    line-height: 1.6;
+    color: #777;
+}
+
+.back {
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+    .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .topnav {
+        align-items: flex-start;
+    }
+
+    .navlinks {
+        gap: 10px;
+    }
+
+    .detail {
+        padding: 20px;
+    }
+}
+
+</style>
+</head>
+<body>
+<!-- merchantdiff-content-hash: a91da91b2eb43c2717f3f41e2bfaca2cd9fb025107d2bf3c5a504c647aa4f941 -->
+<!-- merchantdiff-lastmod: 2026-09-21T19:32:15Z -->
+<div class="wrap">
+<nav class="topnav">
+<a class="brand" href="https://merchantdiff.github.io/merchantdiff-site/">MerchantDiff</a>
+<div class="navlinks">
+<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">Shopify changes</a>
+<a href="https://x.com/MerchantDiff" target="_blank" rel="noopener noreferrer">X</a>
+</div>
+</nav>
+<main>
+<a class="back" href="https://merchantdiff.github.io/merchantdiff-site/updates.html">← Latest Shopify changes</a>
+<div class="meta">
+<time datetime="2026-04-22T19:30:00+00:00">April 22, 2026</time>
+<span class="urgent">Action / breaking change</span>
+</div>
+<h1>Storefront Catalog MCP now implements UCP</h1>
+<div class="tags"><span class="tag">Action Required</span><span class="tag">API</span><span class="tag">Breaking API Change</span></div>
+<section class="detail">
+<h2>Shopify developer change</h2>
+<p>
+MerchantDiff detected this entry in Shopify's official developer changelog on
+<strong>April 22, 2026</strong>.
+</p>
+<p>This Shopify update is categorized as Action Required, API, Breaking API Change.</p>
+<div class="insight-grid">
+<div class="insight">
+<h2>What changed</h2>
+<p>The following UCP catalog tools in Storefront Catalog are now available: - `search_catalog`: Search a store&#x27;s product catalog with filters, pagination, and buyer context - `lookup_catalog`: Batch lookup products or variants by identifier with inputs correlation - `get_product`: Retrieve full product details with interactive variant selection, availability signals, and more Tool calls can be placed against the https://{storedomain}/api/ucp/mcp endpoint.</p>
+</div>
+<div class="insight">
+<h2>Who is affected</h2>
+<p>Apps and storefronts using the affected Storefront API surface should review this change.</p>
+</div>
+<div class="insight">
+<h2>What action may be needed</h2>
+<p>The previous search and lookup tools are deprecated in favor of the above tool names and endpoint, as well as related updates to their request and response shapes to match UCP. The old versions will be maintained until June 15th, 2026, but all documentation will refer to the latest version. If you’re building with Storefront MCP tools: Update tool names to one of the supported tools above. Update endpoints to use https://{storedomain}/api/ucp/mcp.</p>
+</div>
+</div>
+
+<p>
+Use the official Shopify entry below as the source of truth for technical
+implementation details, affected APIs, migration instructions and deadlines.
+</p>
+<div class="source-box">
+<strong>Official source</strong>
+<p>
+<a href="https://shopify.dev/changelog/storefront-catalog-mcp-now-implements-ucp" target="_blank" rel="noopener noreferrer">
+Read this change on Shopify →
+</a>
+</p>
+</div>
+
+<section class="related">
+<h2>Related Shopify developer changes</h2>
+<ul class="related-list">
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html">Storefront API `@inContext` supports `channelId`</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/storefront-mcp-cart-tools-are-being-deprecated-in-favour-of-ucp-cart-mcp.html">Storefront MCP cart tools are being deprecated in favour of UCP Cart MCP</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/standard-storefront-events-and-actions.html">Standard storefront events and actions</a></li>
+</ul>
+</section>
+
+<div class="actions">
+<a
+    class="action-button"
+    href="https://x.com/intent/tweet?text=Important+Shopify+developer+change%3A%0A%0AStorefront+Catalog+MCP+now+implements+UCP%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fstorefront-catalog-mcp-now-implements-ucp.html%0A%0A%23ShopifyDev"
+    target="_blank"
+    rel="noopener noreferrer">
+Post on X →
+</a>
+</div>
+</section>
+<section class="cta">
+<h2>Want the actionable version?</h2>
+<p>
+MerchantDiff monitors Shopify API changes, deprecations, deadlines and
+ecosystem updates, then turns them into developer-focused release intelligence:
+what changed, who is affected and what action may be needed.
+</p>
+<a href="https://boosty.to/merchantdiff" target="_blank" rel="noopener noreferrer">
+Get MerchantDiff →
+</a>
+</section>
+</main>
+<footer>
+Source metadata comes from the Shopify Developer Changelog. MerchantDiff is an
+independent project and is not affiliated with Shopify.
+</footer>
+</div>
+
+<!-- Cloudflare Web Analytics -->
+<script
+    type="module"
+    src="https://static.cloudflareinsights.com/beacon.min.js"
+    data-cf-beacon='{"token":"44ece3bc3eee498c9bed2bbfd20a997c"}'>
+</script>
+<!-- End Cloudflare Web Analytics -->
+
+</body>
+</html>

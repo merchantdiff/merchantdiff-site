@@ -1,38 +1,21 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Storefront API `@inContext` supports `channelId` | MerchantDiff</title>
-
-<meta
-    name="description"
-    content="As of Storefront API version 2026-10 , the @inContext directive accepts an optional channelId argument. Use channelId to apply a specific sales channel’s…">
-
-<link
-    rel="canonical"
-    href="https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html">
-
-<meta name="robots" content="noindex,follow">
-
-<meta
-    property="og:type"
-    content="article">
-
-<meta
-    property="og:title"
-    content="Storefront API `@inContext` supports `channelId`">
-
-<meta
-    property="og:url"
-    content="https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html">
-
+<meta name="description" content="As of Storefront API version 2026-10, the @inContext directive accepts an optional channelId argument.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Storefront API `@inContext` supports `channelId`">
+<meta property="og:description" content="As of Storefront API version 2026-10, the @inContext directive accepts an optional channelId argument.">
+<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html">
+<meta property="article:published_time" content="2026-07-15T16:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Storefront API `@inContext` supports `channelId`">
+<meta name="twitter:description" content="As of Storefront API version 2026-10, the @inContext directive accepts an optional channelId argument.">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html#article","headline":"Storefront API `@inContext` supports `channelId`","description":"As of Storefront API version 2026-10, the @inContext directive accepts an optional channelId argument.","url":"https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-09-21T19:32:15Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10","datePublished":"2026-07-15T16:00:00+00:00","articleSection":["API","New","Storefront API","2026-10"],"keywords":"API, New, Storefront API, 2026-10"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"Storefront API `@inContext` supports `channelId`","item":"https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html"}]}]}</script>
 <style>
 
 * {
@@ -41,12 +24,7 @@
 
 body {
     margin: 0;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     background: #f7f8fa;
     color: #161616;
 }
@@ -108,9 +86,6 @@ h1 {
     line-height: 1.65;
     color: #555;
 }
-
-
-/* READY TO POST QUEUE */
 
 .ready-panel {
     margin: 0 0 38px;
@@ -225,9 +200,6 @@ h1 {
     color: white;
 }
 
-
-/* UPDATE CARDS */
-
 .card {
     background: white;
     border: 1px solid #e3e6ea;
@@ -249,6 +221,12 @@ h1 {
 
 .card h2 a:hover {
     text-decoration: underline;
+}
+
+.card-summary {
+    margin: 10px 0 0;
+    color: #555;
+    line-height: 1.6;
 }
 
 .meta {
@@ -409,172 +387,119 @@ footer {
     margin-bottom: 20px;
 }
 
+@media (max-width: 640px) {
+    .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .topnav {
+        align-items: flex-start;
+    }
+
+    .navlinks {
+        gap: 10px;
+    }
+
+    .detail {
+        padding: 20px;
+    }
+}
+
 </style>
-
 </head>
-
 <body>
-
+<!-- merchantdiff-content-hash: ccd7684f2ef6199b4fa766cf4900af9e192d24e6474a4cdccd4c6dbbcab3eefa -->
+<!-- merchantdiff-lastmod: 2026-09-21T19:32:15Z -->
 <div class="wrap">
-
 <nav class="topnav">
-
-<a
-    class="brand"
-    href="https://merchantdiff.github.io/merchantdiff-site/">
-MerchantDiff
-</a>
-
+<a class="brand" href="https://merchantdiff.github.io/merchantdiff-site/">MerchantDiff</a>
 <div class="navlinks">
-
-<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">
-Shopify changes
-</a>
-
-<a
-    href="https://x.com/MerchantDiff"
-    target="_blank"
-    rel="noopener">
-X
-</a>
-
+<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">Shopify changes</a>
+<a href="https://x.com/MerchantDiff" target="_blank" rel="noopener noreferrer">X</a>
 </div>
-
 </nav>
-
 <main>
-
-<a
-    class="back"
-    href="https://merchantdiff.github.io/merchantdiff-site/updates.html">
-← Latest Shopify changes
-</a>
-
+<a class="back" href="https://merchantdiff.github.io/merchantdiff-site/updates.html">← Latest Shopify changes</a>
 <div class="meta">
-
-July 15, 2026
-
-
+<time datetime="2026-07-15T16:00:00+00:00">July 15, 2026</time>
 
 </div>
-
 <h1>Storefront API `@inContext` supports `channelId`</h1>
-
-<div class="tags">
-<span class="tag">API</span><span class="tag">New</span><span class="tag">Storefront API</span><span class="tag">2026-10</span>
-</div>
-
+<div class="tags"><span class="tag">API</span><span class="tag">New</span><span class="tag">Storefront API</span><span class="tag">2026-10</span></div>
 <section class="detail">
-
 <h2>Shopify developer change</h2>
-
 <p>
-MerchantDiff detected this entry in Shopify's official
-developer changelog on
+MerchantDiff detected this entry in Shopify's official developer changelog on
 <strong>July 15, 2026</strong>.
 </p>
-
-<p>
-This Shopify update is categorized as API, New, Storefront API, 2026-10.
-</p>
-
+<p>This Shopify update is categorized as API, New, Storefront API, 2026-10.</p>
 <div class="insight-grid">
-
 <div class="insight">
 <h2>What changed</h2>
-<p>As of Storefront API version 2026-10 , the @inContext directive accepts an optional channelId argument. Use channelId to apply a specific sales channel’s context to an entire query, including channel-specific product availability and pricing. Example: query Product($handle: String!, $channelId: ID!) @inContext(channelId: $channelId) { product(handle: $handle) { id title availableForSale priceRange { minVariantPrice { amount currencyCode } } } } Why it&#x27;s changing The existing @inContext directive lets you set buyer context such as country and language . With channelId , you can now: Target a specific channel (for example, a marketplace or custom sales channel) when fetching products, prices, and availability. Build channel-aware storefronts that show the correct catalog, pricing, and merchandising rules for each channel. Reduce custom logic in your app by relying on the API to apply channel-specific behavior. Requirements Access requirement: You can only pass the ID of a channel created by the API client making the request. Fallback behavior: If you omit channelId , the Storefront API uses the first channel owned by that API client. Pass channelId explicitly when your app owns…</p>
+<p>As of Storefront API version 2026-10, the @inContext directive accepts an optional channelId argument. Use channelId to apply a specific sales channel’s context to an entire query, including channel-specific product availability and pricing. Example: query Product($handle: String!, $channelId: ID!) @inContext(channelId: $channelId) { product(handle: $handle) { id title availableForSale priceRange { minVariantPrice { amount currencyCode } } } } Why it&#x27;s changing The existing @inContext directive lets you set buyer context such as country and language. With channelId, you can now: Target a specific channel (for example, a marketplace or custom sales channel) when fetching products, prices, and availability. Build channel-aware storefronts that show the correct catalog, pricing, and merchandising rules for each channel.</p>
 </div>
-
 <div class="insight">
 <h2>Who is affected</h2>
-<p>Shopify app developers using the API or platform feature named in this update should review the official change.</p>
+<p>Apps and storefronts using the affected Storefront API surface should review this change.</p>
 </div>
-
 <div class="insight">
 <h2>What action may be needed</h2>
-<p>Review whether the new capability is relevant to your app. If you plan to use it, test the affected API or workflow before adopting it in production. The update references API version 2026-10; verify the version used by your app.</p>
+<p>Review whether the new capability is relevant to your app. If you plan to use it, test the affected API or workflow before adopting it in production.</p>
 </div>
-
 </div>
-
 
 <div class="version-note">
 <strong>Referenced API version:</strong> 2026-10
 </div>
 
-
 <p>
-Use the official Shopify entry below as the source of truth
-for technical implementation details, affected APIs,
-migration instructions and deadlines.
+Use the official Shopify entry below as the source of truth for technical
+implementation details, affected APIs, migration instructions and deadlines.
 </p>
-
 <div class="source-box">
-
 <strong>Official source</strong>
-
 <p>
-
-<a
-    href="https://shopify.dev/changelog/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10"
-    target="_blank"
-    rel="noopener noreferrer">
+<a href="https://shopify.dev/changelog/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10" target="_blank" rel="noopener noreferrer">
 Read this change on Shopify →
 </a>
-
 </p>
-
 </div>
-
 
 <section class="related">
 <h2>Related Shopify developer changes</h2>
 <ul class="related-list">
-<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/is-translatable-metafield-field.html">New translatable boolean field for Metafield GraphQL Object</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/removed-session-currentsession-staffmemberid-from-pos-ui-extensions-2026-10.html">Removed session.currentSession.staffMemberId from POS UI Extensions (2026-10)</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/product-variant-barcode-is-being-replaced-by-barcodes.html">Variants now support multiple barcodes</a></li>
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html">The `orderCreate` mutation now supports multiple tracking numbers for each fulfillment</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/new-discount-fields-in-the-storefront-cart-graphql-api.html">New discount fields in the Storefront API&#x27;s cart types</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/is-translatable-metafield-field.html">New translatable boolean field for Metafield GraphQL Object</a></li>
 </ul>
 </section>
 
-
 <div class="actions">
-
-
-
-</div>
-
-</section>
-
-<section class="cta">
-
-<h2>Want the actionable version?</h2>
-
-<p>
-MerchantDiff monitors Shopify API changes, deprecations,
-deadlines and ecosystem updates, then turns them into
-developer-focused release intelligence: what changed,
-who is affected and what action may be needed.
-</p>
-
 <a
-    href="https://boosty.to/merchantdiff"
+    class="action-button"
+    href="https://x.com/intent/tweet?text=Shopify+developer+update%3A%0A%0AStorefront+API+%60%40inContext%60+supports+%60channelId%60%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fnew-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html%0A%0A%23ShopifyDev"
     target="_blank"
     rel="noopener noreferrer">
+Post on X →
+</a>
+</div>
+</section>
+<section class="cta">
+<h2>Want the actionable version?</h2>
+<p>
+MerchantDiff monitors Shopify API changes, deprecations, deadlines and
+ecosystem updates, then turns them into developer-focused release intelligence:
+what changed, who is affected and what action may be needed.
+</p>
+<a href="https://boosty.to/merchantdiff" target="_blank" rel="noopener noreferrer">
 Get MerchantDiff →
 </a>
-
 </section>
-
 </main>
-
 <footer>
-
-Source metadata comes from the Shopify Developer Changelog.
-MerchantDiff is an independent project and is not affiliated
-with Shopify.
-
+Source metadata comes from the Shopify Developer Changelog. MerchantDiff is an
+independent project and is not affiliated with Shopify.
 </footer>
-
 </div>
-
 
 <!-- Cloudflare Web Analytics -->
 <script
@@ -583,7 +508,6 @@ with Shopify.
     data-cf-beacon='{"token":"44ece3bc3eee498c9bed2bbfd20a997c"}'>
 </script>
 <!-- End Cloudflare Web Analytics -->
-
 
 </body>
 </html>

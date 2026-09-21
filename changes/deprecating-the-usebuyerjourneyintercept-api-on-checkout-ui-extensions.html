@@ -1,38 +1,21 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Deprecating the useBuyerJourneyIntercept API on checkout UI extensions | MerchantDiff</title>
-
-<meta
-    name="description"
-    content="Starting in version 2026-07 , the useBuyerJourneyIntercept hook on checkout UI extensions, and the block_progress capability it depends on, are…">
-
-<link
-    rel="canonical"
-    href="https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html">
-
-
-
-<meta
-    property="og:type"
-    content="article">
-
-<meta
-    property="og:title"
-    content="Deprecating the useBuyerJourneyIntercept API on checkout UI extensions">
-
-<meta
-    property="og:url"
-    content="https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html">
-
+<meta name="description" content="Starting in version 2026-07, the useBuyerJourneyIntercept hook on checkout UI extensions, and the block_progress capability it depends on, are deprecated.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Deprecating the useBuyerJourneyIntercept API on checkout UI extensions">
+<meta property="og:description" content="Starting in version 2026-07, the useBuyerJourneyIntercept hook on checkout UI extensions, and the block_progress capability it depends on, are deprecated.">
+<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html">
+<meta property="article:published_time" content="2026-07-02T16:00:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Deprecating the useBuyerJourneyIntercept API on checkout UI extensions">
+<meta name="twitter:description" content="Starting in version 2026-07, the useBuyerJourneyIntercept hook on checkout UI extensions, and the block_progress capability it depends on, are deprecated.">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html#article","headline":"Deprecating the useBuyerJourneyIntercept API on checkout UI extensions","description":"Starting in version 2026-07, the useBuyerJourneyIntercept hook on checkout UI extensions, and the block_progress capability it depends on, are deprecated.","url":"https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-09-21T19:32:15Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions","datePublished":"2026-07-02T16:00:00+00:00","articleSection":["Action Required","Polaris","Deprecation announcement","2026-07"],"keywords":"Action Required, Polaris, Deprecation announcement, 2026-07"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"Deprecating the useBuyerJourneyIntercept API on checkout UI extensions","item":"https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html"}]}]}</script>
 <style>
 
 * {
@@ -41,12 +24,7 @@
 
 body {
     margin: 0;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     background: #f7f8fa;
     color: #161616;
 }
@@ -108,9 +86,6 @@ h1 {
     line-height: 1.65;
     color: #555;
 }
-
-
-/* READY TO POST QUEUE */
 
 .ready-panel {
     margin: 0 0 38px;
@@ -225,9 +200,6 @@ h1 {
     color: white;
 }
 
-
-/* UPDATE CARDS */
-
 .card {
     background: white;
     border: 1px solid #e3e6ea;
@@ -249,6 +221,12 @@ h1 {
 
 .card h2 a:hover {
     text-decoration: underline;
+}
+
+.card-summary {
+    margin: 10px 0 0;
+    color: #555;
+    line-height: 1.6;
 }
 
 .meta {
@@ -409,135 +387,93 @@ footer {
     margin-bottom: 20px;
 }
 
+@media (max-width: 640px) {
+    .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .topnav {
+        align-items: flex-start;
+    }
+
+    .navlinks {
+        gap: 10px;
+    }
+
+    .detail {
+        padding: 20px;
+    }
+}
+
 </style>
-
 </head>
-
 <body>
-
+<!-- merchantdiff-content-hash: 8bfdd30406d94991d51587074a40b81982195885f9f10a1bda2b0b4e02b8931e -->
+<!-- merchantdiff-lastmod: 2026-09-21T19:32:15Z -->
 <div class="wrap">
-
 <nav class="topnav">
-
-<a
-    class="brand"
-    href="https://merchantdiff.github.io/merchantdiff-site/">
-MerchantDiff
-</a>
-
+<a class="brand" href="https://merchantdiff.github.io/merchantdiff-site/">MerchantDiff</a>
 <div class="navlinks">
-
-<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">
-Shopify changes
-</a>
-
-<a
-    href="https://x.com/MerchantDiff"
-    target="_blank"
-    rel="noopener">
-X
-</a>
-
+<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">Shopify changes</a>
+<a href="https://x.com/MerchantDiff" target="_blank" rel="noopener noreferrer">X</a>
 </div>
-
 </nav>
-
 <main>
-
-<a
-    class="back"
-    href="https://merchantdiff.github.io/merchantdiff-site/updates.html">
-← Latest Shopify changes
-</a>
-
+<a class="back" href="https://merchantdiff.github.io/merchantdiff-site/updates.html">← Latest Shopify changes</a>
 <div class="meta">
-
-July 02, 2026
-
+<time datetime="2026-07-02T16:00:00+00:00">July 02, 2026</time>
 <span class="urgent">Action / breaking change</span>
-
 </div>
-
 <h1>Deprecating the useBuyerJourneyIntercept API on checkout UI extensions</h1>
-
-<div class="tags">
-<span class="tag">Action Required</span><span class="tag">Polaris</span><span class="tag">Deprecation announcement</span><span class="tag">2026-07</span>
-</div>
-
+<div class="tags"><span class="tag">Action Required</span><span class="tag">Polaris</span><span class="tag">Deprecation announcement</span><span class="tag">2026-07</span></div>
 <section class="detail">
-
 <h2>Shopify developer change</h2>
-
 <p>
-MerchantDiff detected this entry in Shopify's official
-developer changelog on
+MerchantDiff detected this entry in Shopify's official developer changelog on
 <strong>July 02, 2026</strong>.
 </p>
-
-<p>
-This Shopify update is categorized as Action Required, Polaris, Deprecation announcement, 2026-07.
-</p>
-
+<p>This Shopify update is categorized as Action Required, Polaris, Deprecation announcement, 2026-07.</p>
 <div class="insight-grid">
-
 <div class="insight">
 <h2>What changed</h2>
-<p>Starting in version 2026-07 , the useBuyerJourneyIntercept hook on checkout UI extensions, and the block_progress capability it depends on, are deprecated. Existing extensions will continue to work on current and prior API versions, but this API will be removed in a future version , so you should plan to migrate. The following are deprecated: useBuyerJourneyIntercept (Preact hook) in checkout UI extensions The block_progress capability in the extension’s shopify.extension.toml configuration file If you currently use useBuyerJourneyIntercept to enforce merchant business rules, migrate to a cart and checkout validation Function . These Functions run server-side and apply your rules consistently across all checkout surfaces, including express wallets and agentic checkout. If you use useBuyerJourneyIntercept to reject discount codes, migrate that logic to the discount Function API, which now supports rejecting discount codes with a custom message . To learn more and if you&#x27;ve got a use case that&#x27;s keeping you from moving to Shopify Functions: https://community.shopify.dev/t/the-buyer-journey-intercept-api-is-now-deprecated/35930 .</p>
+<p>Starting in version 2026-07, the useBuyerJourneyIntercept hook on checkout UI extensions, and the block_progress capability it depends on, are deprecated. Existing extensions will continue to work on current and prior API versions, but this API will be removed in a future version, so you should plan to migrate. The following are deprecated: useBuyerJourneyIntercept (Preact hook) in checkout UI extensions The block_progress capability in the extension’s shopify.extension.toml configuration file If you currently use useBuyerJourneyIntercept to enforce merchant business rules, migrate to a cart and checkout validation Function. These Functions run server-side and apply your rules consistently across all checkout surfaces, including express wallets and agentic checkout.</p>
 </div>
-
 <div class="insight">
 <h2>Who is affected</h2>
-<p>Developers building or maintaining checkout customizations should review this change.</p>
+<p>Developers building or maintaining Shopify checkout customizations should review this change.</p>
 </div>
-
 <div class="insight">
 <h2>What action may be needed</h2>
-<p>Check whether your app uses the deprecated surface. If it does, plan the migration using Shopify&#x27;s official guidance before the applicable cutoff. The update references API version 2026-07; verify the version used by your app.</p>
+<p>Check whether your app uses the deprecated surface. If it does, plan the migration using Shopify&#x27;s official guidance before the applicable cutoff.</p>
 </div>
-
 </div>
-
 
 <div class="version-note">
 <strong>Referenced API version:</strong> 2026-07
 </div>
 
-
 <p>
-Use the official Shopify entry below as the source of truth
-for technical implementation details, affected APIs,
-migration instructions and deadlines.
+Use the official Shopify entry below as the source of truth for technical
+implementation details, affected APIs, migration instructions and deadlines.
 </p>
-
 <div class="source-box">
-
 <strong>Official source</strong>
-
 <p>
-
-<a
-    href="https://shopify.dev/changelog/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions"
-    target="_blank"
-    rel="noopener noreferrer">
+<a href="https://shopify.dev/changelog/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions" target="_blank" rel="noopener noreferrer">
 Read this change on Shopify →
 </a>
-
 </p>
-
 </div>
-
 
 <section class="related">
 <h2>Related Shopify developer changes</h2>
 <ul class="related-list">
-<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/deprecation-of-cumulative-marketing-engagements.html">Deprecation of cumulative marketing engagements</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/merchant-owned-delivery-profile-apis-are-deprecated-for-market-driven-shipping.html">Merchant-owned delivery profile APIs are deprecated for market-driven shipping</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/pos-ui-extensions-2026-07-uses-per-unit-fixed-amount-line-item-discounts.html">POS UI extensions 2026-07 uses per-unit fixed-amount line item discounts</a></li>
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/pos-ui-extensions-can-now-print-directly-to-hardware-receipt-printers.html">POS UI extensions can now print directly to hardware receipt printers</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/pos-ui-extensions-2026-07-adds-discount-allocations-to-bundle-components.html">POS UI Extensions 2026-07 adds discount allocations to bundle components</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/pos-extensions-now-supports-a-background-extension-target.html">POS Extensions now supports a background extension target</a></li>
 </ul>
 </section>
 
-
 <div class="actions">
-
-
 <a
     class="action-button"
     href="https://x.com/intent/tweet?text=Important+Shopify+developer+change%3A%0A%0ADeprecating+the+useBuyerJourneyIntercept+API+on+checkout+UI+extensions%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fdeprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html%0A%0A%23ShopifyDev"
@@ -545,44 +481,25 @@ Read this change on Shopify →
     rel="noopener noreferrer">
 Post on X →
 </a>
-
-
 </div>
-
 </section>
-
 <section class="cta">
-
 <h2>Want the actionable version?</h2>
-
 <p>
-MerchantDiff monitors Shopify API changes, deprecations,
-deadlines and ecosystem updates, then turns them into
-developer-focused release intelligence: what changed,
-who is affected and what action may be needed.
+MerchantDiff monitors Shopify API changes, deprecations, deadlines and
+ecosystem updates, then turns them into developer-focused release intelligence:
+what changed, who is affected and what action may be needed.
 </p>
-
-<a
-    href="https://boosty.to/merchantdiff"
-    target="_blank"
-    rel="noopener noreferrer">
+<a href="https://boosty.to/merchantdiff" target="_blank" rel="noopener noreferrer">
 Get MerchantDiff →
 </a>
-
 </section>
-
 </main>
-
 <footer>
-
-Source metadata comes from the Shopify Developer Changelog.
-MerchantDiff is an independent project and is not affiliated
-with Shopify.
-
+Source metadata comes from the Shopify Developer Changelog. MerchantDiff is an
+independent project and is not affiliated with Shopify.
 </footer>
-
 </div>
-
 
 <!-- Cloudflare Web Analytics -->
 <script
@@ -591,7 +508,6 @@ with Shopify.
     data-cf-beacon='{"token":"44ece3bc3eee498c9bed2bbfd20a997c"}'>
 </script>
 <!-- End Cloudflare Web Analytics -->
-
 
 </body>
 </html>

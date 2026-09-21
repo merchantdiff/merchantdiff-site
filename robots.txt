@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://merchantdiff.github.io/merchantdiff-site/sitemap.xml

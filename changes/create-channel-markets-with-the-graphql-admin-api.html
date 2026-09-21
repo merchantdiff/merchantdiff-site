@@ -1,38 +1,21 @@
 <!doctype html>
 <html lang="en">
-
 <head>
-
 <meta charset="utf-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1">
-
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Create channel markets with the GraphQL Admin API | MerchantDiff</title>
-
-<meta
-    name="description"
-    content="Starting in API version 2026-07 , the GraphQL Admin API supports channel markets. Apps can now create and update Markets that apply to one or more sales…">
-
-<link
-    rel="canonical"
-    href="https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html">
-
-<meta name="robots" content="noindex,follow">
-
-<meta
-    property="og:type"
-    content="article">
-
-<meta
-    property="og:title"
-    content="Create channel markets with the GraphQL Admin API">
-
-<meta
-    property="og:url"
-    content="https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html">
-
+<meta name="description" content="You can now: Use MarketType.CHANNEL and MarketConditionType.CHANNEL to identify channel markets.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Create channel markets with the GraphQL Admin API">
+<meta property="og:description" content="You can now: Use MarketType.CHANNEL and MarketConditionType.CHANNEL to identify channel markets.">
+<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html">
+<meta property="article:published_time" content="2026-06-17T15:45:00+00:00">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Create channel markets with the GraphQL Admin API">
+<meta name="twitter:description" content="You can now: Use MarketType.CHANNEL and MarketConditionType.CHANNEL to identify channel markets.">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html#article","headline":"Create channel markets with the GraphQL Admin API","description":"You can now: Use MarketType.CHANNEL and MarketConditionType.CHANNEL to identify channel markets.","url":"https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-09-21T19:32:15Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/create-channel-markets-with-the-graphql-admin-api","datePublished":"2026-06-17T15:45:00+00:00","articleSection":["API","New","Admin GraphQL API","2026-07"],"keywords":"API, New, Admin GraphQL API, 2026-07"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"Create channel markets with the GraphQL Admin API","item":"https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html"}]}]}</script>
 <style>
 
 * {
@@ -41,12 +24,7 @@
 
 body {
     margin: 0;
-    font-family:
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     background: #f7f8fa;
     color: #161616;
 }
@@ -108,9 +86,6 @@ h1 {
     line-height: 1.65;
     color: #555;
 }
-
-
-/* READY TO POST QUEUE */
 
 .ready-panel {
     margin: 0 0 38px;
@@ -225,9 +200,6 @@ h1 {
     color: white;
 }
 
-
-/* UPDATE CARDS */
-
 .card {
     background: white;
     border: 1px solid #e3e6ea;
@@ -249,6 +221,12 @@ h1 {
 
 .card h2 a:hover {
     text-decoration: underline;
+}
+
+.card-summary {
+    margin: 10px 0 0;
+    color: #555;
+    line-height: 1.6;
 }
 
 .meta {
@@ -409,172 +387,119 @@ footer {
     margin-bottom: 20px;
 }
 
+@media (max-width: 640px) {
+    .wrap {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .topnav {
+        align-items: flex-start;
+    }
+
+    .navlinks {
+        gap: 10px;
+    }
+
+    .detail {
+        padding: 20px;
+    }
+}
+
 </style>
-
 </head>
-
 <body>
-
+<!-- merchantdiff-content-hash: 4f85410c893c03a0fde87ccedbabf6c4817ef48dcaa990d8ef523f1799c36a5e -->
+<!-- merchantdiff-lastmod: 2026-09-21T19:32:15Z -->
 <div class="wrap">
-
 <nav class="topnav">
-
-<a
-    class="brand"
-    href="https://merchantdiff.github.io/merchantdiff-site/">
-MerchantDiff
-</a>
-
+<a class="brand" href="https://merchantdiff.github.io/merchantdiff-site/">MerchantDiff</a>
 <div class="navlinks">
-
-<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">
-Shopify changes
-</a>
-
-<a
-    href="https://x.com/MerchantDiff"
-    target="_blank"
-    rel="noopener">
-X
-</a>
-
+<a href="https://merchantdiff.github.io/merchantdiff-site/updates.html">Shopify changes</a>
+<a href="https://x.com/MerchantDiff" target="_blank" rel="noopener noreferrer">X</a>
 </div>
-
 </nav>
-
 <main>
-
-<a
-    class="back"
-    href="https://merchantdiff.github.io/merchantdiff-site/updates.html">
-← Latest Shopify changes
-</a>
-
+<a class="back" href="https://merchantdiff.github.io/merchantdiff-site/updates.html">← Latest Shopify changes</a>
 <div class="meta">
-
-June 17, 2026
-
-
+<time datetime="2026-06-17T15:45:00+00:00">June 17, 2026</time>
 
 </div>
-
 <h1>Create channel markets with the GraphQL Admin API</h1>
-
-<div class="tags">
-<span class="tag">API</span><span class="tag">New</span><span class="tag">Admin GraphQL API</span><span class="tag">2026-07</span>
-</div>
-
+<div class="tags"><span class="tag">API</span><span class="tag">New</span><span class="tag">Admin GraphQL API</span><span class="tag">2026-07</span></div>
 <section class="detail">
-
 <h2>Shopify developer change</h2>
-
 <p>
-MerchantDiff detected this entry in Shopify's official
-developer changelog on
+MerchantDiff detected this entry in Shopify's official developer changelog on
 <strong>June 17, 2026</strong>.
 </p>
-
-<p>
-This Shopify update is categorized as API, New, Admin GraphQL API, 2026-07.
-</p>
-
+<p>This Shopify update is categorized as API, New, Admin GraphQL API, 2026-07.</p>
 <div class="insight-grid">
-
 <div class="insight">
 <h2>What changed</h2>
-<p>Starting in API version 2026-07 , the GraphQL Admin API supports channel markets. Apps can now create and update Markets that apply to one or more sales channels, then use existing catalog and market APIs to manage channel-specific product availability, pricing, and currency. This is an additive change. Existing apps don’t need to make updates unless they create, query, or make assumptions about Markets or market catalogs types. What changed You can now: Use MarketType.CHANNEL and MarketConditionType.CHANNEL to identify channel markets. Create channel markets with MarketCreateInput.conditions.channelsCondition and MarketConditionsChannelsInput.channelIds . Add or remove channel conditions through MarketUpdateInput.conditions . Query a market’s channels with Market.channels and Market.channelsCount . Query a channel’s markets with Channel.markets and Channel.marketsCount . Use Channel.activeRegions to read the regions where a channel has active product feeds. Filter markets by type with markets(type: CHANNEL) . What to do If your app works with Markets or catalogs, update any logic that assumes markets are only regional, retail-location, company-location, or none-type markets. If…</p>
+<p>You can now: Use MarketType.CHANNEL and MarketConditionType.CHANNEL to identify channel markets. Create channel markets with MarketCreateInput.conditions.channelsCondition and MarketConditionsChannelsInput.channelIds. Add or remove channel conditions through MarketUpdateInput.conditions. Query a market’s channels with Market.channels and Market.channelsCount. Query a channel’s markets with Channel.markets and Channel.marketsCount.</p>
 </div>
-
 <div class="insight">
 <h2>Who is affected</h2>
 <p>Apps using the affected Shopify GraphQL API surface should review this change.</p>
 </div>
-
 <div class="insight">
 <h2>What action may be needed</h2>
-<p>Review whether the new capability is relevant to your app. If you plan to use it, test the affected API or workflow before adopting it in production. The update references API version 2026-07; verify the version used by your app.</p>
+<p>If your app works with Markets or catalogs, update any logic that assumes markets are only regional, retail-location, company-location, or none-type markets. If your app wants to create channel markets, pass channel IDs through channelsCondition.channelIds, then assign catalogs and pricing configuration using the existing Markets and catalog APIs. Product feed output continues to respect both the channel market’s catalog settings and the sales channel’s own publishing controls.</p>
 </div>
-
 </div>
-
 
 <div class="version-note">
 <strong>Referenced API version:</strong> 2026-07
 </div>
 
-
 <p>
-Use the official Shopify entry below as the source of truth
-for technical implementation details, affected APIs,
-migration instructions and deadlines.
+Use the official Shopify entry below as the source of truth for technical
+implementation details, affected APIs, migration instructions and deadlines.
 </p>
-
 <div class="source-box">
-
 <strong>Official source</strong>
-
 <p>
-
-<a
-    href="https://shopify.dev/changelog/create-channel-markets-with-the-graphql-admin-api"
-    target="_blank"
-    rel="noopener noreferrer">
+<a href="https://shopify.dev/changelog/create-channel-markets-with-the-graphql-admin-api" target="_blank" rel="noopener noreferrer">
 Read this change on Shopify →
 </a>
-
 </p>
-
 </div>
-
 
 <section class="related">
 <h2>Related Shopify developer changes</h2>
 <ul class="related-list">
-<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/whatsapp-marketing-consent-now-available.html">WhatsApp marketing consent now available in the Admin API and Customer Account API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/market-driven-shipping-now-available-in-feature-preview.html">Market-driven shipping now available in feature preview</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/is-translatable-metafield-field.html">New translatable boolean field for Metafield GraphQL Object</a></li>
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/draft-order-deposit-fields-now-available-in-the-admin-and-customer-account-graphql-apis.html">Draft order deposit fields are now available in the GraphQL Admin API and Customer Account API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/businessentity-now-exposes-legalentityid-in-the-admin-api.html">`BusinessEntity` now exposes `legalEntityId` in the GraphQL Admin API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/admin-graphql-api-now-supports-app-owned-delivery-profiles-that-cover-all-shippable-items.html">Admin GraphQL API now supports app-owned delivery profiles that cover all shippable items</a></li>
 </ul>
 </section>
 
-
 <div class="actions">
-
-
-
-</div>
-
-</section>
-
-<section class="cta">
-
-<h2>Want the actionable version?</h2>
-
-<p>
-MerchantDiff monitors Shopify API changes, deprecations,
-deadlines and ecosystem updates, then turns them into
-developer-focused release intelligence: what changed,
-who is affected and what action may be needed.
-</p>
-
 <a
-    href="https://boosty.to/merchantdiff"
+    class="action-button"
+    href="https://x.com/intent/tweet?text=Shopify+developer+update%3A%0A%0ACreate+channel+markets+with+the+GraphQL+Admin+API%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fcreate-channel-markets-with-the-graphql-admin-api.html%0A%0A%23ShopifyDev"
     target="_blank"
     rel="noopener noreferrer">
+Post on X →
+</a>
+</div>
+</section>
+<section class="cta">
+<h2>Want the actionable version?</h2>
+<p>
+MerchantDiff monitors Shopify API changes, deprecations, deadlines and
+ecosystem updates, then turns them into developer-focused release intelligence:
+what changed, who is affected and what action may be needed.
+</p>
+<a href="https://boosty.to/merchantdiff" target="_blank" rel="noopener noreferrer">
 Get MerchantDiff →
 </a>
-
 </section>
-
 </main>
-
 <footer>
-
-Source metadata comes from the Shopify Developer Changelog.
-MerchantDiff is an independent project and is not affiliated
-with Shopify.
-
+Source metadata comes from the Shopify Developer Changelog. MerchantDiff is an
+independent project and is not affiliated with Shopify.
 </footer>
-
 </div>
-
 
 <!-- Cloudflare Web Analytics -->
 <script
@@ -583,7 +508,6 @@ with Shopify.
     data-cf-beacon='{"token":"44ece3bc3eee498c9bed2bbfd20a997c"}'>
 </script>
 <!-- End Cloudflare Web Analytics -->
-
 
 </body>
 </html>
