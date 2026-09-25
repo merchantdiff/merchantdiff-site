@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Shop Campaigns performance data now available via ShopifyQL | MerchantDiff</title>
-<meta name="description" content="The shop_campaign_insights schema is now available in the ShopifyQL.">
+<title>Query SP Fee Details with the GraphQL Admin API | MerchantDiff</title>
+<meta name="description" content="The new feeDetails query returns a connection of FeeDetails objects.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html">
+<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/query-sp-fee-details-with-the-graphql-admin-api.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Shop Campaigns performance data now available via ShopifyQL">
-<meta property="og:description" content="The shop_campaign_insights schema is now available in the ShopifyQL.">
-<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html">
-<meta property="article:published_time" content="2026-08-10T20:10:00+00:00">
+<meta property="og:title" content="Query SP Fee Details with the GraphQL Admin API">
+<meta property="og:description" content="The new feeDetails query returns a connection of FeeDetails objects.">
+<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/query-sp-fee-details-with-the-graphql-admin-api.html">
+<meta property="article:published_time" content="2026-09-23T16:00:00+00:00">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Shop Campaigns performance data now available via ShopifyQL">
-<meta name="twitter:description" content="The shop_campaign_insights schema is now available in the ShopifyQL.">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html#article","headline":"Shop Campaigns performance data now available via ShopifyQL","description":"The shop_campaign_insights schema is now available in the ShopifyQL.","url":"https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-09-25T18:31:40Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/shop-campaigns-shopifyql","datePublished":"2026-08-10T20:10:00+00:00","articleSection":["API","Update","Admin GraphQL API"],"keywords":"API, Update, Admin GraphQL API"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"Shop Campaigns performance data now available via ShopifyQL","item":"https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html"}]}]}</script>
+<meta name="twitter:title" content="Query SP Fee Details with the GraphQL Admin API">
+<meta name="twitter:description" content="The new feeDetails query returns a connection of FeeDetails objects.">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/query-sp-fee-details-with-the-graphql-admin-api.html#article","headline":"Query SP Fee Details with the GraphQL Admin API","description":"The new feeDetails query returns a connection of FeeDetails objects.","url":"https://merchantdiff.github.io/merchantdiff-site/changes/query-sp-fee-details-with-the-graphql-admin-api.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/query-sp-fee-details-with-the-graphql-admin-api.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-09-25T18:31:39Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/query-sp-fee-details-with-the-graphql-admin-api","datePublished":"2026-09-23T16:00:00+00:00","articleSection":["API","New","Admin GraphQL API","2026-10"],"keywords":"API, New, Admin GraphQL API, 2026-10"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/query-sp-fee-details-with-the-graphql-admin-api.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"Query SP Fee Details with the GraphQL Admin API","item":"https://merchantdiff.github.io/merchantdiff-site/changes/query-sp-fee-details-with-the-graphql-admin-api.html"}]}]}</script>
 <style>
 
 * {
@@ -409,8 +409,8 @@ footer {
 </style>
 </head>
 <body>
-<!-- merchantdiff-content-hash: 465ae52e18af1374678b58809a8512e1890eb6276bebcb8c3040a0667ce1635a -->
-<!-- merchantdiff-lastmod: 2026-09-25T18:31:40Z -->
+<!-- merchantdiff-content-hash: db3fb22ce6e07df57522ff659c443b769675ef187be79900a0a4536512f20e52 -->
+<!-- merchantdiff-lastmod: 2026-09-25T18:31:39Z -->
 <div class="wrap">
 <nav class="topnav">
 <a class="brand" href="https://merchantdiff.github.io/merchantdiff-site/">MerchantDiff</a>
@@ -422,31 +422,35 @@ footer {
 <main>
 <a class="back" href="https://merchantdiff.github.io/merchantdiff-site/updates.html">← Latest Shopify changes</a>
 <div class="meta">
-<time datetime="2026-08-10T20:10:00+00:00">August 10, 2026</time>
+<time datetime="2026-09-23T16:00:00+00:00">September 23, 2026</time>
 
 </div>
-<h1>Shop Campaigns performance data now available via ShopifyQL</h1>
-<div class="tags"><span class="tag">API</span><span class="tag">Update</span><span class="tag">Admin GraphQL API</span></div>
+<h1>Query SP Fee Details with the GraphQL Admin API</h1>
+<div class="tags"><span class="tag">API</span><span class="tag">New</span><span class="tag">Admin GraphQL API</span><span class="tag">2026-10</span></div>
 <section class="detail">
 <h2>Shopify developer change</h2>
 <p>
 MerchantDiff detected this entry in Shopify's official developer changelog on
-<strong>August 10, 2026</strong>.
+<strong>September 23, 2026</strong>.
 </p>
-<p>This Shopify update is categorized as API, Update, Admin GraphQL API.</p>
+<p>This Shopify update is categorized as API, New, Admin GraphQL API, 2026-10.</p>
 <div class="insight-grid">
 <div class="insight">
 <h2>What changed</h2>
-<p>The shop_campaign_insights schema is now available in the ShopifyQL. Analytics and reporting apps can query Shop Campaigns performance data on behalf of authorized merchants using the existing shopifyqlQuery field with read_reports scope. Available data Campaign-level and segment-level metrics including ad spend, sales, orders, ROAS, average order value, and average customer acquisition cost. Data is available by campaign name, customer segment, and time dimensions from hourly to yearly in the merchant&#x27;s shop timezone. How to get started Query shop_campaign_insights using the same shopifyqlQuery field you use for other ShopifyQL schemas.</p>
+<p>The new feeDetails query returns a connection of FeeDetails objects. Each FeeDetails object includes: feeName and amount: The name of the fee and the amount charged. flatRate and variableRate: The fixed amount and the rate that make up the fee. taxAmount: The tax charged on the fee. settlementAmount and settlementCurrencyRate: The fee in its settlement currency and the exchange rate used to convert it.</p>
 </div>
 <div class="insight">
 <h2>Who is affected</h2>
-<p>Apps using the affected Shopify GraphQL API surface should review this change.</p>
+<p>This change applies to apps that use GraphQL Admin API version 2026-10 or later and need to retrieve specialized fees recorded on a store&#x27;s transactions. App that use earlier version or that don&#x27;t work with Shopify Payments fees are unaffected. A store with no recorded fee details returns an empty connection rather than an error.</p>
 </div>
 <div class="insight">
 <h2>What action may be needed</h2>
-<p>Review whether the new capability is relevant to your app. If you plan to use it, test the affected API or workflow before adopting it in production.</p>
+<p>To use the feeDetails: Use GraphQL Admin API version 2026-10 or later. Confirm that your app has the read_billing access scope. Query feeDetails and select the fields you need on each FeeDetails node Related docs feeDetails query reference FeeDetails object reference GraphQL Admin API reference for 2026-10</p>
 </div>
+</div>
+
+<div class="version-note">
+<strong>Referenced API version:</strong> 2026-10
 </div>
 
 <p>
@@ -456,7 +460,7 @@ implementation details, affected APIs, migration instructions and deadlines.
 <div class="source-box">
 <strong>Official source</strong>
 <p>
-<a href="https://shopify.dev/changelog/shop-campaigns-shopifyql" target="_blank" rel="noopener noreferrer">
+<a href="https://shopify.dev/changelog/query-sp-fee-details-with-the-graphql-admin-api" target="_blank" rel="noopener noreferrer">
 Read this change on Shopify →
 </a>
 </p>
@@ -465,14 +469,14 @@ Read this change on Shopify →
 <section class="related">
 <h2>Related Shopify developer changes</h2>
 <ul class="related-list">
-<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/shopify-payments-balance-transaction-graphql-type-supports-currency-conversion-type.html">Shopify Payments Balance Transaction GraphQL type supports currency conversion type</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/query-sp-fee-details-with-the-graphql-admin-api.html">Query SP Fee Details with the GraphQL Admin API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/removing-marketcurrencysettingsupdate-mutation.html">Removing marketCurrencySettingsUpdate mutation</a></li>
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/market-relationships.html">Query market hierarchies with the GraphQL Admin API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/invalid-metafield-queries-now-return-errors-in-the-graphql-admin-api.html">Invalid metafield queries now return errors in the GraphQL Admin API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/remove-pricerule-from-draft-order-discount-warning.html">`DraftOrderDiscountNotAppliedWarning.priceRule` removed in GraphQL Admin API 2026-10</a></li>
 </ul>
 </section>
 
 <div class="actions">
 <a
     class="action-button"
-    href="https://x.com/intent/tweet?text=Shopify+developer+update%3A%0A%0AShop+Campaigns+performance+data+now+available+via+ShopifyQL%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fshop-campaigns-shopifyql.html%0A%0A%23ShopifyDev"
+    href="https://x.com/intent/tweet?text=Shopify+developer+update%3A%0A%0AQuery+SP+Fee+Details+with+the+GraphQL+Admin+API%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fquery-sp-fee-details-with-the-graphql-admin-api.html%0A%0A%23ShopifyDev"
     target="_blank"
     rel="noopener noreferrer">
 Post on X →
