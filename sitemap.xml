@@ -12,6 +12,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/adding-access-field-to-standardmetaobjectdefinitiontemplate.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/adding-barcode-support-to-inventory-shipments-api.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/admin-graphql-api-now-supports-app-owned-delivery-profiles-that-cover-all-shippable-items.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/ai-toolkit-skills-have-been-consolidated.html</loc><lastmod>2026-09-26T00:35:53Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/analytics-metric-targets-now-available-in-the-graphql-admin-api.html</loc><lastmod>2026-09-25T18:31:40Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/app-deployment-in-cicd-is-now-available-for-all-apps.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/app-events-see-app-usage-and-performance-data-in-your-dev-dashboard.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
@@ -33,7 +34,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/create-and-delete-dev-stores-in-shopify-cli.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/create-subscriptions-contracts-without-payment-methods.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/create-unpaid-orders-from-subscription-billing-attempts.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/create-unpaid-orders-from-subscription-billing-attempts.html</loc><lastmod>2026-09-26T00:35:54Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/createdat-is-now-available-on-the-customer-object-in-shopify-functions.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/customer-account-api-last-incomplete-checkout-and-checkout-types-removed.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/customer-address-apis-now-support-countrycode.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
@@ -94,7 +95,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafield-triggers-and-additional-topics-are-now-available-for-events.html</loc><lastmod>2026-09-22T18:33:16Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafields-now-require-a-definition-to-be-accessed-through-the-customer-account-api.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metaobject-access-in-functions.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metaobject-scopes-not-required-for-app-metaobjects.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metaobject-scopes-not-required-for-app-metaobjects.html</loc><lastmod>2026-09-26T00:35:54Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/minor-rounding-change-for-custom-line-item-discounts-in-pos-115.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/more-admin-intents-now-support-settings.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-refreshes-for-expiring-offline-access-tokens.html</loc><lastmod>2026-09-22T00:35:29Z</lastmod></url>
