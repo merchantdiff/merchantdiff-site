@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Improved user errors on the `fulfillmentOrderCancel` mutation | MerchantDiff</title>
-<meta name="description" content="The error response now includes a code field for easier programmatic error handling and identification.">
+<title>More resilient token exchanges when migrating tokens without a user session | MerchantDiff</title>
+<meta name="description" content="When you migrate an existing non-expiring offline token to an expiring offline access token without a user session, an eligible retry using the same…">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/fulfillment-order-cancel-error-codes.html">
+<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Improved user errors on the `fulfillmentOrderCancel` mutation">
-<meta property="og:description" content="The error response now includes a code field for easier programmatic error handling and identification.">
-<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/fulfillment-order-cancel-error-codes.html">
-<meta property="article:published_time" content="2026-04-01T16:00:00+00:00">
+<meta property="og:title" content="More resilient token exchanges when migrating tokens without a user session">
+<meta property="og:description" content="When you migrate an existing non-expiring offline token to an expiring offline access token without a user session, an eligible retry using the same…">
+<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session.html">
+<meta property="article:published_time" content="2026-09-29T16:00:00+00:00">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Improved user errors on the `fulfillmentOrderCancel` mutation">
-<meta name="twitter:description" content="The error response now includes a code field for easier programmatic error handling and identification.">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/fulfillment-order-cancel-error-codes.html#article","headline":"Improved user errors on the `fulfillmentOrderCancel` mutation","description":"The error response now includes a code field for easier programmatic error handling and identification.","url":"https://merchantdiff.github.io/merchantdiff-site/changes/fulfillment-order-cancel-error-codes.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/fulfillment-order-cancel-error-codes.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-09-29T18:36:18Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/fulfillment-order-cancel-error-codes","datePublished":"2026-04-01T16:00:00+00:00","articleSection":["API","Update","Admin GraphQL API","2026-04"],"keywords":"API, Update, Admin GraphQL API, 2026-04"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/fulfillment-order-cancel-error-codes.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"Improved user errors on the `fulfillmentOrderCancel` mutation","item":"https://merchantdiff.github.io/merchantdiff-site/changes/fulfillment-order-cancel-error-codes.html"}]}]}</script>
+<meta name="twitter:title" content="More resilient token exchanges when migrating tokens without a user session">
+<meta name="twitter:description" content="When you migrate an existing non-expiring offline token to an expiring offline access token without a user session, an eligible retry using the same…">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session.html#article","headline":"More resilient token exchanges when migrating tokens without a user session","description":"When you migrate an existing non-expiring offline token to an expiring offline access token without a user session, an eligible retry using the same…","url":"https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-09-29T18:36:17Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session","datePublished":"2026-09-29T16:00:00+00:00","articleSection":["API","Update","Admin GraphQL API","Admin REST API"],"keywords":"API, Update, Admin GraphQL API, Admin REST API"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"More resilient token exchanges when migrating tokens without a user session","item":"https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session.html"}]}]}</script>
 <style>
 
 * {
@@ -409,8 +409,8 @@ footer {
 </style>
 </head>
 <body>
-<!-- merchantdiff-content-hash: 9cea8416311a7f4299b407fb8ad84b3f180be74bf50c869081ca20db18843c45 -->
-<!-- merchantdiff-lastmod: 2026-09-29T18:36:18Z -->
+<!-- merchantdiff-content-hash: 0da31ae9fcdde2424074d42db6e31c42c85611bbf4fbc2c6dbf9e0e286f0dbff -->
+<!-- merchantdiff-lastmod: 2026-09-29T18:36:17Z -->
 <div class="wrap">
 <nav class="topnav">
 <a class="brand" href="https://merchantdiff.github.io/merchantdiff-site/">MerchantDiff</a>
@@ -422,35 +422,31 @@ footer {
 <main>
 <a class="back" href="https://merchantdiff.github.io/merchantdiff-site/updates.html">← Latest Shopify changes</a>
 <div class="meta">
-<time datetime="2026-04-01T16:00:00+00:00">April 01, 2026</time>
+<time datetime="2026-09-29T16:00:00+00:00">September 29, 2026</time>
 
 </div>
-<h1>Improved user errors on the `fulfillmentOrderCancel` mutation</h1>
-<div class="tags"><span class="tag">API</span><span class="tag">Update</span><span class="tag">Admin GraphQL API</span><span class="tag">2026-04</span></div>
+<h1>More resilient token exchanges when migrating tokens without a user session</h1>
+<div class="tags"><span class="tag">API</span><span class="tag">Update</span><span class="tag">Admin GraphQL API</span><span class="tag">Admin REST API</span></div>
 <section class="detail">
 <h2>Shopify developer change</h2>
 <p>
 MerchantDiff detected this entry in Shopify's official developer changelog on
-<strong>April 01, 2026</strong>.
+<strong>September 29, 2026</strong>.
 </p>
-<p>This Shopify update is categorized as API, Update, Admin GraphQL API, 2026-04.</p>
+<p>This Shopify update is categorized as API, Update, Admin GraphQL API, Admin REST API.</p>
 <div class="insight-grid">
 <div class="insight">
 <h2>What changed</h2>
-<p>The error response now includes a code field for easier programmatic error handling and identification. Why we made this change: This enhancement supports the new feature for manually marking fulfillment orders as in-progress, which allows merchants to self-report progress on their fulfillment orders. As part of this feature, cancelling fulfillment orders with reported progress is now restricted, and the enhanced error responses help developers handle these restrictions more effectively.</p>
+<p>When you migrate an existing non-expiring offline token to an expiring offline access token without a user session, an eligible retry using the same original token and client credentials returns the same access-token and refresh-token pair as the initial exchange. On an eligible retry: Shopify returns the same access token and refresh token. Shopify extends the access token’s expiry when needed. Shopify doesn’t extend the refresh token’s expiry. Recovery for a particular store and app ends when any of the following is true: Seven days have passed since the initial exchange for that original token.</p>
 </div>
 <div class="insight">
 <h2>Who is affected</h2>
-<p>Apps using the affected Shopify GraphQL API surface should review this change.</p>
+<p>This change affects apps that migrate existing non-expiring offline tokens without a user session, as described in the guide on migrating existing tokens without a user session. Why this matters If your app loses the migration response or fails to store it, you can often recover the access and refresh tokens without requiring the merchant to reopen the app and go through authorization again.</p>
 </div>
 <div class="insight">
 <h2>What action may be needed</h2>
-<p>Review the official Shopify entry, confirm whether the change touches your app, and test the affected workflow before your next relevant deployment.</p>
+<p>When you don’t receive or persist the migration response: Repeat the same migration request with the original non-expiring token and valid client credentials, within seven days of the initial exchange. Persist the returned access token, refresh token, and expiry values together. Discard the original non-expiring token so your app doesn’t attempt to use it again.</p>
 </div>
-</div>
-
-<div class="version-note">
-<strong>Referenced API version:</strong> 2026-04
 </div>
 
 <p>
@@ -460,7 +456,7 @@ implementation details, affected APIs, migration instructions and deadlines.
 <div class="source-box">
 <strong>Official source</strong>
 <p>
-<a href="https://shopify.dev/changelog/fulfillment-order-cancel-error-codes" target="_blank" rel="noopener noreferrer">
+<a href="https://shopify.dev/changelog/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session" target="_blank" rel="noopener noreferrer">
 Read this change on Shopify →
 </a>
 </p>
@@ -469,14 +465,14 @@ Read this change on Shopify →
 <section class="related">
 <h2>Related Shopify developer changes</h2>
 <ul class="related-list">
-<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/checkout-and-accounts-configuration-api-for-unified-branding-across-checkout-customer-accounts-and-sign-in.html">Checkout And Accounts Configuration API for unified branding across checkout, customer accounts, and sign-in</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/multiple-product-discounts-can-apply-on-a-single-cart-line.html">Multiple product discounts can apply on a single cart line</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/add-includeinactive-argument-to-inventorylevels-and-inventorylevel-fields.html">Add `includeInactive` argument to `inventoryLevels` and `inventoryLevel` fields</a></li>
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-refreshes-for-expiring-offline-access-tokens.html">More resilient refreshes for expiring offline access tokens</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/expiring-offline-access-tokens-required-for-all-public-apps-as-of-january-1-2027.html">Expiring offline access tokens required for all public apps as of January 1, 2027</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/online-store-script-tags-deprecation.html">Script tags are deprecated and will stop running on March 1, 2027</a></li>
 </ul>
 </section>
 
 <div class="actions">
 <a
     class="action-button"
-    href="https://x.com/intent/tweet?text=Shopify+developer+update%3A%0A%0AImproved+user+errors+on+the+%60fulfillmentOrderCancel%60+mutation%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Ffulfillment-order-cancel-error-codes.html%0A%0A%23ShopifyDev"
+    href="https://x.com/intent/tweet?text=Shopify+developer+update%3A%0A%0AMore+resilient+token+exchanges+when+migrating+tokens+without+a+user+session%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fmore-resilient-token-exchanges-when-migrating-tokens-without-a-user-session.html%0A%0A%23ShopifyDev"
     target="_blank"
     rel="noopener noreferrer">
 Post on X →
