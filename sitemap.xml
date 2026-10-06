@@ -101,7 +101,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafields-now-require-a-definition-to-be-accessed-through-the-customer-account-api.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metaobject-access-in-functions.html</loc><lastmod>2026-10-01T00:42:09Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metaobject-scopes-not-required-for-app-metaobjects.html</loc><lastmod>2026-09-26T00:35:54Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/minor-rounding-change-for-custom-line-item-discounts-in-pos-115.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/minor-rounding-change-for-custom-line-item-discounts-in-pos-115.html</loc><lastmod>2026-10-06T18:25:40Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/more-admin-intents-now-support-settings.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-refreshes-for-expiring-offline-access-tokens.html</loc><lastmod>2026-09-29T18:36:17Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session.html</loc><lastmod>2026-09-29T18:36:17Z</lastmod></url>
@@ -121,6 +121,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-paymentinstrumentsendaddemail-mutation.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-purchasetype-and-recurringcyclelimit-fields-available-in-the-discount-ui-extension-api.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-retail-cash-management-capabilities.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-shop-campaigns-metrics-and-dimensions-on-api-version-2026-10.html</loc><lastmod>2026-10-06T18:25:39Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-subscriptioncontractcalculation-api-for-subscription-management.html</loc><lastmod>2026-10-02T05:45:22Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/next-generation-events-are-now-generally-available.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/next-generation-events-now-available-in-developer-preview.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
@@ -162,8 +163,8 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/setting-includerestofworld-to-true-returns-an-error-in-api-version-2027-01.html</loc><lastmod>2026-09-23T18:33:06Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/ship-and-pickup-in-one-order-feature-preview.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-minis-march-april-2026-update.html</loc><lastmod>2026-09-22T00:35:29Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-minis-may-june-2026-update.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-minis-march-april-2026-update.html</loc><lastmod>2026-10-06T18:25:40Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-minis-may-june-2026-update.html</loc><lastmod>2026-10-06T18:25:39Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-user-metafields-in-shopify-functions.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shopify-ai-toolkit-for-upgrading-extensions-to-polaris-web-components.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shopify-cli-40-semver-auto-updates-removing-deprecated-flags-and-commands.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
