@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Storefront API `@inContext` supports `channelId` | MerchantDiff</title>
-<meta name="description" content="As of Storefront API version 2026-10, the @inContext directive accepts an optional channelId argument.">
+<title>Per-customer request limit for the Customer Account API | MerchantDiff</title>
+<meta name="description" content="The Customer Account API now limits each customer on a store to 3000 requests per minute.">
 <meta name="robots" content="index,follow">
-<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html">
+<link rel="canonical" href="https://merchantdiff.github.io/merchantdiff-site/changes/per-customer-request-limit-for-the-customer-account-api.html">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Storefront API `@inContext` supports `channelId`">
-<meta property="og:description" content="As of Storefront API version 2026-10, the @inContext directive accepts an optional channelId argument.">
-<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html">
-<meta property="article:published_time" content="2026-07-15T16:00:00+00:00">
+<meta property="og:title" content="Per-customer request limit for the Customer Account API">
+<meta property="og:description" content="The Customer Account API now limits each customer on a store to 3000 requests per minute.">
+<meta property="og:url" content="https://merchantdiff.github.io/merchantdiff-site/changes/per-customer-request-limit-for-the-customer-account-api.html">
+<meta property="article:published_time" content="2026-10-07T16:00:00+00:00">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Storefront API `@inContext` supports `channelId`">
-<meta name="twitter:description" content="As of Storefront API version 2026-10, the @inContext directive accepts an optional channelId argument.">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html#article","headline":"Storefront API `@inContext` supports `channelId`","description":"As of Storefront API version 2026-10, the @inContext directive accepts an optional channelId argument.","url":"https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-10-07T23:08:37Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10","datePublished":"2026-07-15T16:00:00+00:00","articleSection":["API","New","Storefront API","2026-10"],"keywords":"API, New, Storefront API, 2026-10"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"Storefront API `@inContext` supports `channelId`","item":"https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html"}]}]}</script>
+<meta name="twitter:title" content="Per-customer request limit for the Customer Account API">
+<meta name="twitter:description" content="The Customer Account API now limits each customer on a store to 3000 requests per minute.">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/per-customer-request-limit-for-the-customer-account-api.html#article","headline":"Per-customer request limit for the Customer Account API","description":"The Customer Account API now limits each customer on a store to 3000 requests per minute.","url":"https://merchantdiff.github.io/merchantdiff-site/changes/per-customer-request-limit-for-the-customer-account-api.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/per-customer-request-limit-for-the-customer-account-api.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-10-07T23:08:37Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/per-customer-request-limit-for-the-customer-account-api","datePublished":"2026-10-07T16:00:00+00:00","articleSection":["API","Update","Customer Account API"],"keywords":"API, Update, Customer Account API"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/per-customer-request-limit-for-the-customer-account-api.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"Per-customer request limit for the Customer Account API","item":"https://merchantdiff.github.io/merchantdiff-site/changes/per-customer-request-limit-for-the-customer-account-api.html"}]}]}</script>
 <style>
 
 * {
@@ -409,7 +409,7 @@ footer {
 </style>
 </head>
 <body>
-<!-- merchantdiff-content-hash: acaae0a11bc9175eba0872ae3b77e51320432914d4138918a93f95fd7fb6dede -->
+<!-- merchantdiff-content-hash: 1126baa855a05e639541e311e0b227ab3258b546c91f74b8f5787a74d391abcf -->
 <!-- merchantdiff-lastmod: 2026-10-07T23:08:37Z -->
 <div class="wrap">
 <nav class="topnav">
@@ -422,35 +422,31 @@ footer {
 <main>
 <a class="back" href="https://merchantdiff.github.io/merchantdiff-site/updates.html">← Latest Shopify changes</a>
 <div class="meta">
-<time datetime="2026-07-15T16:00:00+00:00">July 15, 2026</time>
+<time datetime="2026-10-07T16:00:00+00:00">October 07, 2026</time>
 
 </div>
-<h1>Storefront API `@inContext` supports `channelId`</h1>
-<div class="tags"><span class="tag">API</span><span class="tag">New</span><span class="tag">Storefront API</span><span class="tag">2026-10</span></div>
+<h1>Per-customer request limit for the Customer Account API</h1>
+<div class="tags"><span class="tag">API</span><span class="tag">Update</span><span class="tag">Customer Account API</span></div>
 <section class="detail">
 <h2>Shopify developer change</h2>
 <p>
 MerchantDiff detected this entry in Shopify's official developer changelog on
-<strong>July 15, 2026</strong>.
+<strong>October 07, 2026</strong>.
 </p>
-<p>This Shopify update is categorized as API, New, Storefront API, 2026-10.</p>
+<p>This Shopify update is categorized as API, Update, Customer Account API.</p>
 <div class="insight-grid">
 <div class="insight">
 <h2>What changed</h2>
-<p>As of Storefront API version 2026-10, the @inContext directive accepts an optional channelId argument. Use channelId to apply a specific sales channel’s context to an entire query, including channel-specific product availability and pricing. Example: query Product($handle: String!, $channelId: ID!) @inContext(channelId: $channelId) { product(handle: $handle) { id title availableForSale priceRange { minVariantPrice { amount currencyCode } } } } Why it&#x27;s changing The existing @inContext directive lets you set buyer context such as country and language. With channelId, you can now: Target a specific channel (for example, a marketplace or custom sales channel) when fetching products, prices, and availability. Build channel-aware storefronts that show the correct catalog, pricing, and merchandising rules for each channel.</p>
+<p>The Customer Account API now limits each customer on a store to 3000 requests per minute. This limit is shared across all apps installed on that store that call the Customer Account API. It applies in addition to the existing cost-based rate limit for the API. When your app exceeds this per-customer limit, the API returns HTTP 429 Too Many Requests with a THROTTLED error and a Retry-After header. For more details, see the Customer Account API rate limits documentation.</p>
 </div>
 <div class="insight">
 <h2>Who is affected</h2>
-<p>Apps and storefronts using the affected Storefront API surface should review this change.</p>
+<p>This change affects all apps that call the Customer Account API on any store. The per-customer limit applies regardless of which app makes the requests, since the limit is shared across all apps for a given customer and store.</p>
 </div>
 <div class="insight">
 <h2>What action may be needed</h2>
-<p>Review whether the new capability is relevant to your app. If you plan to use it, test the affected API or workflow before adopting it in production.</p>
+<p>You don&#x27;t need to take action in most cases, since normal buyer traffic should remain well under this per-customer limit. If your app uses the Customer Account API, you should make sure its retry logic: Detects HTTP 429 responses. Reads the Retry-After header from the response. Waits for the duration in Retry-After, then retries the request.</p>
 </div>
-</div>
-
-<div class="version-note">
-<strong>Referenced API version:</strong> 2026-10
 </div>
 
 <p>
@@ -460,7 +456,7 @@ implementation details, affected APIs, migration instructions and deadlines.
 <div class="source-box">
 <strong>Official source</strong>
 <p>
-<a href="https://shopify.dev/changelog/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10" target="_blank" rel="noopener noreferrer">
+<a href="https://shopify.dev/changelog/per-customer-request-limit-for-the-customer-account-api" target="_blank" rel="noopener noreferrer">
 Read this change on Shopify →
 </a>
 </p>
@@ -469,14 +465,14 @@ Read this change on Shopify →
 <section class="related">
 <h2>Related Shopify developer changes</h2>
 <ul class="related-list">
-<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/shopify-payments-balance-transaction-graphql-type-supports-currency-conversion-type.html">Shopify Payments Balance Transaction GraphQL type supports currency conversion type</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html">The `orderCreate` mutation now supports multiple tracking numbers for each fulfillment</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/cart-mutations-reject-unconfirmed-writes-in-pos-ui-extensions-2026-10.html">Cart mutations reject unconfirmed writes in POS UI extensions 2026-10</a></li>
+<li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/customer-account-api-last-incomplete-checkout-and-checkout-types-removed.html">Customer Account API Customer.lastIncompleteCheckout and Checkout types removed in 2026-10</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/discount-application-information-now-available-for-draft-orders-on-the-customer-account-api.html">Discount application information now available for draft orders on the Customer Account API</a></li><li><a href="https://merchantdiff.github.io/merchantdiff-site/changes/discountedunitprice-on-draftorderlineitem-customer-account-api-deprecation.html">`discountedUnitPrice` on `DraftOrderLineItem` Customer Account API deprecation</a></li>
 </ul>
 </section>
 
 <div class="actions">
 <a
     class="action-button"
-    href="https://x.com/intent/tweet?text=Shopify+developer+update%3A%0A%0AStorefront+API+%60%40inContext%60+supports+%60channelId%60%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fnew-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html%0A%0A%23ShopifyDev"
+    href="https://x.com/intent/tweet?text=Shopify+developer+update%3A%0A%0APer-customer+request+limit+for+the+Customer+Account+API%0A%0Ahttps%3A%2F%2Fmerchantdiff.github.io%2Fmerchantdiff-site%2Fchanges%2Fper-customer-request-limit-for-the-customer-account-api.html%0A%0A%23ShopifyDev"
     target="_blank"
     rel="noopener noreferrer">
 Post on X →
