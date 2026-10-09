@@ -3,7 +3,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/</loc></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/updates.html</loc></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/add-actor-field-to-subscription-contract-and-billing-attempt-mutations.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/add-includeinactive-argument-to-inventorylevels-and-inventorylevel-fields.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/add-includeinactive-argument-to-inventorylevels-and-inventorylevel-fields.html</loc><lastmod>2026-10-09T22:42:01Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/add-isactive-field-to-inventorylevel.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/add-prerequisites-to-product-discount-functions.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/add-tags-to-discounts.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
@@ -72,6 +72,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/gift-card-local-currency-support.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/giftcardcashouttransaction-now-resolvable-from-giftcardtransaction.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/github-commits-now-name-the-last-theme-editor.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/global-catalog-rest-api-stops-serving-traffic-on-november-2-2026.html</loc><lastmod>2026-10-09T22:42:00Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/headless-checkout-sso-is-now-documented-with-ssosilent.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/hydrogen-april-2026-release.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/hydrogen-developer-preview-update-august-18-2026.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
@@ -112,7 +113,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/more-resilient-token-exchanges-when-migrating-tokens-without-a-user-session.html</loc><lastmod>2026-09-29T18:36:17Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/mtls-client-certificate-renewal-for-payments-apps.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/multi-channel-support-for-sales-channel-apps.html</loc><lastmod>2026-09-29T18:36:18Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/multiple-product-discounts-can-apply-on-a-single-cart-line.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/multiple-product-discounts-can-apply-on-a-single-cart-line.html</loc><lastmod>2026-10-09T22:42:01Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-appsubscriptioncancel-mutation-in-the-partner-api.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
