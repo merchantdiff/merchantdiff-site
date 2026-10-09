@@ -26,7 +26,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/built-for-shopify-requirements-for-returns-and-exchanges-and-subscription-apps.html</loc><lastmod>2026-09-22T00:35:29Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/bulk-queries-now-execute-faster.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/businessentity-now-exposes-legalentityid-in-the-admin-api.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/card-deposit-endpoint-now-requires-mtls-certificate.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/card-deposit-endpoint-now-requires-mtls-certificate.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/carrier-services-will-no-longer-be-automatically-added-to-the-default-shipping-profile.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/cart-and-checkout-validation-adds-billing-address-and-po-number-error-targets.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/cart-line-mutations-accept-view-key.html</loc><lastmod>2026-10-07T06:06:07Z</lastmod></url>
@@ -39,8 +39,8 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/create-subscriptions-contracts-without-payment-methods.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/create-unpaid-orders-from-subscription-billing-attempts.html</loc><lastmod>2026-09-26T00:35:54Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/createdat-is-now-available-on-the-customer-object-in-shopify-functions.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/customer-account-api-last-incomplete-checkout-and-checkout-types-removed.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/customer-address-apis-now-support-countrycode.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/customer-account-api-last-incomplete-checkout-and-checkout-types-removed.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/customer-address-apis-now-support-countrycode.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/customer-tax-settings-now-available-in-admin-api.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/customize-llmstxt-llms-fulltxt-and-agentsmd.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/default-value-of-appliesonsubscription-changed-to-true-for-app-discount-inputs.html</loc><lastmod>2026-10-08T06:11:45Z</lastmod></url>
@@ -48,7 +48,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/delegateaccesstokencreate-mutation-now-returns-expiresin.html</loc><lastmod>2026-09-29T18:36:18Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/delivery-options-in-shopify-functions-input-now-expose-their-metafields.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/deprecating-the-usebuyerjourneyintercept-api-on-checkout-ui-extensions.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/deprecation-of-checkout-metafields-in-checkout-and-customer-account-ui-extensions.html</loc><lastmod>2026-10-07T06:06:07Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/deprecation-of-checkout-metafields-in-checkout-and-customer-account-ui-extensions.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/deprecation-of-cumulative-marketing-engagements.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/developer-preview-liquid-block-and-partial-tags.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/discount-application-information-now-available-for-draft-orders-on-the-customer-account-api.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
@@ -63,7 +63,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/events-subscription-query-complexity-limit-is-changing-to-100-points.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/expiring-offline-access-tokens-required-for-all-public-apps-as-of-january-1-2027.html</loc><lastmod>2026-09-29T18:36:17Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/expiring-offline-access-tokens-required-for-public-apps-april-1-2026.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/family-name-is-optional-for-b2b-orders-in-payments-apps-api-requests.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/family-name-is-optional-for-b2b-orders-in-payments-apps-api-requests.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/flow-action-extensions-now-support-relative-paths-for-endpoint-urls.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/four-additional-topics-are-now-available-for-events.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/fulfillment-order-cancel-error-codes.html</loc><lastmod>2026-09-29T18:36:18Z</lastmod></url>
@@ -99,10 +99,11 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/market-relationships.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/markets-apis-now-support-marketregionsubdivision.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/merchant-owned-delivery-profile-apis-are-deprecated-for-market-driven-shipping.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafield-owner-types-required-for-checkout-and-customer-account-ui-extensions.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafield-translations-now-available-via-graphql-admin-api.html</loc><lastmod>2026-09-29T00:38:30Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafield-triggers-and-additional-topics-are-now-available-for-events.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafieldinteger-collection-condition-removed-in-api-version-2027-01.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafields-now-require-a-definition-to-be-accessed-through-the-customer-account-api.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafields-now-require-a-definition-to-be-accessed-through-the-customer-account-api.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metaobject-access-in-functions.html</loc><lastmod>2026-10-01T00:42:09Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metaobject-scopes-not-required-for-app-metaobjects.html</loc><lastmod>2026-09-26T00:35:54Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/minor-rounding-change-for-custom-line-item-discounts-in-pos-115.html</loc><lastmod>2026-10-08T06:11:45Z</lastmod></url>
@@ -114,7 +115,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/multiple-product-discounts-can-apply-on-a-single-cart-line.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-appsubscriptioncancel-mutation-in-the-partner-api.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-checkouttoken-field-added-to-the-order-object.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-collection-model-and-apis-now-available.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-css-variable-for-mobile-safe-area-insets.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
@@ -142,7 +143,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/payment-method-identifier-now-required-for-customerpaymentmethodremotecreate.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/per-customer-request-limit-for-the-customer-account-api.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/physical-inventory-feature-preview.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/polaris-web-components-migration-guides-now-available-for-checkout-and-customer-account-ui-extensions.html</loc><lastmod>2026-10-07T06:06:07Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/polaris-web-components-migration-guides-now-available-for-checkout-and-customer-account-ui-extensions.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/pos-extensions-now-supports-a-background-extension-target.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/pos-ui-extensions-2026-07-adds-discount-allocations-to-bundle-components.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/pos-ui-extensions-2026-07-uses-per-unit-fixed-amount-line-item-discounts.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
@@ -165,7 +166,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/removing-storefront-visibility-field-on-metaobject-field-definitions.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/replacing-or-deleting-a-shopify-hosted-file-no-longer-purges-its-cdn-url.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/report-fulfillment-order-progress-with-new-fulfillmentorderreportprogress-graphql-mutation.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/request-a-bundle-size-exception-for-existing-ui-extensions.html</loc><lastmod>2026-10-07T06:06:06Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/request-a-bundle-size-exception-for-existing-ui-extensions.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/return-policy-profiles-are-now-available-in-the-graphql-admin-api.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/setting-includerestofworld-to-true-returns-an-error-in-api-version-2027-01.html</loc><lastmod>2026-09-23T18:33:06Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/ship-and-pickup-in-one-order-feature-preview.html</loc><lastmod>2026-10-07T06:06:07Z</lastmod></url>
@@ -179,7 +180,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shopify-flow-flow-trigger-lifecycle-callback-extensions-now-support-relative-url-paths.html</loc><lastmod>2026-10-01T00:42:09Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shopify-payments-balance-transaction-graphql-type-supports-currency-conversion-type.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shopify-scripts-will-be-deprecated-on-june-30-2026.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/sidekick-app-extensions-app-store-requirements.html</loc><lastmod>2026-10-08T06:11:45Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/sidekick-app-extensions-app-store-requirements.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/sidekick-app-extensions-available-today.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/sms-marketing-consent-now-available-on-the-customerphonenumber-object.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/standard-storefront-events-and-actions.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
