@@ -430,17 +430,22 @@ ecosystem updates for Shopify developers.
 <h2>Ready to post on X</h2>
 <p class="ready-intro">
 Latest high-value Shopify developer changes selected automatically by
-MerchantDiff. Clicking Post on X opens a prepared post and immediately removes
-that item from this queue.
+MerchantDiff. Clicking Post on X opens a prepared post and hides that item in
+this browser. MerchantDiff cannot verify whether the post was actually
+published on X.
 </p>
 <div class="queue-toolbar">
 <span class="queue-counter" id="ready-counter">
 5 posts waiting
 </span>
 <button class="reset-button" type="button" onclick="resetPostedMarks()">
-Reset posted marks
+Reset browser-local posted marks
 </button>
 </div>
+<p style="margin:-8px 0 18px;color:#9b9b9b;font-size:12px;line-height:1.5;">
+Posted marks are stored in this browser only, so another browser or device can
+show the same candidates again.
+</p>
 <div class="ready-list">
 
 <div class="ready-item" data-post-key="detect-when-a-pos-extension-screen-finishes-navigating">
@@ -544,8 +549,8 @@ Preview MerchantDiff page
 </div>
 
 <div class="ready-empty" id="ready-empty-state">
-<strong>Queue cleared ✓</strong>
-No current high-value Shopify updates are waiting to be posted.
+<strong>Queue cleared in this browser ✓</strong>
+No current high-value Shopify updates are visible in this browser-local queue.
 </div>
 </div>
 </section>

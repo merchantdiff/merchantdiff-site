@@ -15,7 +15,7 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="New APIs for buyer-requested order edits">
 <meta name="twitter:description" content="Buyers can now request edits to the unfulfilled line items on an order, and those requests are exposed as a first-class resource, RequestedOrderEdit…">
-<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html#article","headline":"New APIs for buyer-requested order edits","description":"Buyers can now request edits to the unfulfilled line items on an order, and those requests are exposed as a first-class resource, RequestedOrderEdit…","url":"https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-10-06T00:06:19Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/new-apis-for-buyer-requested-order-edits","datePublished":"2026-10-01T04:00:00+00:00","articleSection":["API","New","Admin GraphQL API","Events & webhooks","2026-10"],"keywords":"API, New, Admin GraphQL API, Events & webhooks, 2026-10"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"New APIs for buyer-requested order edits","item":"https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html"}]}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Article","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html#article","headline":"New APIs for buyer-requested order edits","description":"Buyers can now request edits to the unfulfilled line items on an order, and those requests are exposed as a first-class resource, RequestedOrderEdit…","url":"https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html","mainEntityOfPage":{"@type":"WebPage","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html"},"author":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"publisher":{"@type":"Organization","name":"MerchantDiff","url":"https://merchantdiff.github.io/merchantdiff-site/"},"dateModified":"2026-10-12T19:25:20Z","isAccessibleForFree":true,"inLanguage":"en","isBasedOn":"https://shopify.dev/changelog/new-apis-for-buyer-requested-order-edits","datePublished":"2026-10-01T04:00:00+00:00","articleSection":["API","New","Admin GraphQL API","Events & webhooks","2026-10"],"keywords":"API, New, Admin GraphQL API, Events & webhooks, 2026-10"},{"@type":"BreadcrumbList","@id":"https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"MerchantDiff","item":"https://merchantdiff.github.io/merchantdiff-site/"},{"@type":"ListItem","position":2,"name":"Shopify changes","item":"https://merchantdiff.github.io/merchantdiff-site/updates.html"},{"@type":"ListItem","position":3,"name":"New APIs for buyer-requested order edits","item":"https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html"}]}]}</script>
 <style>
 
 * {
@@ -409,8 +409,8 @@ footer {
 </style>
 </head>
 <body>
-<!-- merchantdiff-content-hash: af7864da45df03fceaf88564d64fa445c0330ced34a4cf7e50986bfa51f5805c -->
-<!-- merchantdiff-lastmod: 2026-10-06T00:06:19Z -->
+<!-- merchantdiff-content-hash: ead3ee7d9fa2f1eaa75dcc1cdd0cfb78857b7c45c4bd3c94a9cd4355712c3835 -->
+<!-- merchantdiff-lastmod: 2026-10-12T19:25:20Z -->
 <div class="wrap">
 <nav class="topnav">
 <a class="brand" href="https://merchantdiff.github.io/merchantdiff-site/">MerchantDiff</a>
@@ -441,11 +441,11 @@ MerchantDiff detected this entry in Shopify's official developer changelog on
 </div>
 <div class="insight">
 <h2>Who is affected</h2>
-<p>Apps that read or manage orders, such as order management, ERP, fulfillment, and 3PL integrations, and apps that build customer account experiences. To use the new GraphQL Admin API surface, apps need the read_orders scope for queries and write_orders for mutations. Why this matters In the 2026-07 API version, there is no API-visible record when a buyer wants an order changed after purchase.</p>
+<p>Apps that read or manage orders, such as order management, ERP, fulfillment, and 3PL integrations, and apps that build customer account experiences. To use the new GraphQL Admin API surface, apps need the read_orders scope for queries and write_orders for mutations.</p>
 </div>
 <div class="insight">
 <h2>What action may be needed</h2>
-<p>No action is required. If you want to support buyer-requested order edits you can update your app to use the latest version of GraphQL Admin API, Customer Account API, and webhooks. Related docs RequestedOrderEdit object reference Admin API requestedOrderEditCreate mutation Customer API orderRequestEdit mutation Webhook topics reference</p>
+<p>No action is required. If you want to support buyer-requested order edits you can update your app to use the latest version of GraphQL Admin API, Customer Account API, and webhooks.</p>
 </div>
 </div>
 
