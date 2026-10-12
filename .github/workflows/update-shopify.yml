@@ -55,3 +55,66 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -m "Update Shopify changelog"
           git push
+
+      # A push made with GITHUB_TOKEN does not start another push-triggered
+      # workflow. Notify IndexNow here for generated content; indexnow.yml still
+      # handles normal/manual pushes that change public HTML files.
+      - name: Wait for GitHub Pages
+        if: steps.changes.outputs.changed == 'true'
+        run: sleep 60
+
+      - name: Build IndexNow payload for generated pages
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          python - <<'PY'
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          base = "https://merchantdiff.github.io/merchantdiff-site/"
+          result = subprocess.run(
+              ["git", "diff", "--name-only", "HEAD^", "HEAD"],
+              check=True,
+              text=True,
+              capture_output=True,
+          )
+          paths = [line.strip() for line in result.stdout.splitlines() if line.strip()]
+
+          urls = []
+          for path in paths:
+              if path == "index.html":
+                  urls.append(base)
+              elif path == "updates.html":
+                  urls.append(base + "updates.html")
+              elif path.startswith("changes/") and path.endswith(".html"):
+                  urls.append(base + path)
+
+          urls = list(dict.fromkeys(urls))
+          if not urls:
+              urls = [base]
+
+          payload = {
+              "host": "merchantdiff.github.io",
+              "key": "ea135eb8f61d4600a04e289be17b8956",
+              "keyLocation": base + "ea135eb8f61d4600a04e289be17b8956.txt",
+              "urlList": urls,
+          }
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "indexnow.json"
+          output.write_text(json.dumps(payload), encoding="utf-8")
+
+          print(f"Submitting {len(urls)} URL(s) to IndexNow:")
+          for url in urls:
+              print(url)
+          PY
+
+      - name: Notify IndexNow
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          curl --fail-with-body \
+            --retry 3 \
+            --retry-delay 10 \
+            -H "Content-Type: application/json; charset=utf-8" \
+            --data-binary @"$RUNNER_TEMP/indexnow.json" \
+            https://api.indexnow.org/indexnow
