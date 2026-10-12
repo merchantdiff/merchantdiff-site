@@ -8,26 +8,97 @@ on:
       - "*.html"
       - "**/*.html"
       - "sitemap.xml"
+      - "robots.txt"
   workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: notify-indexnow
+  cancel-in-progress: true
 
 jobs:
   notify-indexnow:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
 
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
+
       - name: Wait for GitHub Pages
         run: sleep 60
 
-      - name: Notify IndexNow
+      - name: Build IndexNow payload
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          CURRENT_SHA: ${{ github.sha }}
         run: |
-          curl --fail-with-body --retry 3 --retry-delay 10 \
-            -H "Content-Type: application/json; charset=utf-8" \
-            -d '{
+          python - <<'PY'
+          import json
+          import os
+          import subprocess
+          from pathlib import Path
+
+          base = "https://merchantdiff.github.io/merchantdiff-site/"
+          before = os.environ.get("BEFORE_SHA", "").strip()
+          current = os.environ.get("CURRENT_SHA", "").strip()
+
+          def git_lines(*args):
+              result = subprocess.run(
+                  ["git", *args],
+                  check=True,
+                  text=True,
+                  capture_output=True,
+              )
+              return [line.strip() for line in result.stdout.splitlines() if line.strip()]
+
+          paths = []
+          try:
+              if before and set(before) != {"0"}:
+                  paths = git_lines("diff", "--name-only", before, current)
+              elif current:
+                  paths = git_lines("show", "--pretty=", "--name-only", current)
+          except subprocess.CalledProcessError:
+              if current:
+                  paths = git_lines("show", "--pretty=", "--name-only", current)
+
+          urls = []
+          for path in paths:
+              if path == "index.html":
+                  urls.append(base)
+              elif path == "updates.html":
+                  urls.append(base + "updates.html")
+              elif path.startswith("changes/") and path.endswith(".html"):
+                  urls.append(base + path)
+
+          urls = list(dict.fromkeys(urls))
+          if not urls:
+              urls = [base]
+
+          payload = {
               "host": "merchantdiff.github.io",
               "key": "ea135eb8f61d4600a04e289be17b8956",
-              "keyLocation": "https://merchantdiff.github.io/merchantdiff-site/ea135eb8f61d4600a04e289be17b8956.txt",
-              "urlList": [
-                "https://merchantdiff.github.io/merchantdiff-site/"
-              ]
-            }' \
+              "keyLocation": base + "ea135eb8f61d4600a04e289be17b8956.txt",
+              "urlList": urls,
+          }
+
+          output = Path(os.environ["RUNNER_TEMP"]) / "indexnow.json"
+          output.write_text(json.dumps(payload), encoding="utf-8")
+
+          print(f"Submitting {len(urls)} URL(s) to IndexNow:")
+          for url in urls:
+              print(url)
+          PY
+
+      - name: Notify IndexNow
+        run: |
+          curl --fail-with-body \
+            --retry 3 \
+            --retry-delay 10 \
+            -H "Content-Type: application/json; charset=utf-8" \
+            --data-binary @"$RUNNER_TEMP/indexnow.json" \
             https://api.indexnow.org/indexnow
