@@ -148,6 +148,7 @@ def build_audience_text(title, categories, description, source_audience=""):
     if has(
         primary,
         "packed dimension",
+        "packed product dimension",
         "packeddimensions",
         "inventoryitemmeasurement",
         "inventory item measurement",
