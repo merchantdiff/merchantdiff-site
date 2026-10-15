@@ -24,7 +24,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/bots-and-agents-should-identify-themselves-via-web-bot-auth.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/build-app-home-as-a-ui-extension.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/built-for-shopify-requirements-for-returns-and-exchanges-and-subscription-apps.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/bulk-queries-now-execute-faster.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/bulk-queries-now-execute-faster.html</loc><lastmod>2026-10-15T04:47:08Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/businessentity-now-exposes-legalentityid-in-the-admin-api.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/card-deposit-endpoint-now-requires-mtls-certificate.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/carrier-services-will-no-longer-be-automatically-added-to-the-default-shipping-profile.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
@@ -33,6 +33,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/cart-line-view-key-field.html</loc><lastmod>2026-10-07T06:06:07Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/cart-mutations-reject-unconfirmed-writes-in-pos-ui-extensions-2026-10.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/checkout-and-accounts-configuration-api-for-unified-branding-across-checkout-customer-accounts-and-sign-in.html</loc><lastmod>2026-10-12T19:09:26Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/checkout-footer-visibility-now-applies-to-merchant-configurable-content.html</loc><lastmod>2026-10-15T04:47:07Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/color-palettes.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/create-and-delete-dev-stores-in-shopify-cli.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/create-channel-markets-with-the-graphql-admin-api.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
@@ -175,7 +176,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/return-policy-profiles-are-now-available-in-the-graphql-admin-api.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/setting-includerestofworld-to-true-returns-an-error-in-api-version-2027-01.html</loc><lastmod>2026-09-23T18:33:06Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/ship-and-pickup-in-one-order-feature-preview.html</loc><lastmod>2026-10-07T06:06:07Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html</loc><lastmod>2026-10-15T04:47:08Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-minis-march-april-2026-update.html</loc><lastmod>2026-10-07T06:06:07Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-minis-may-june-2026-update.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-user-metafields-in-shopify-functions.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
