@@ -108,7 +108,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/market-driven-delivery-profiles-admin-api.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/market-driven-shipping-now-available-in-feature-preview.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/market-relationships.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/markets-apis-now-support-marketregionsubdivision.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/markets-apis-now-support-marketregionsubdivision.html</loc><lastmod>2026-10-25T16:28:30Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/merchant-owned-delivery-profile-apis-are-deprecated-for-market-driven-shipping.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafield-owner-types-required-for-checkout-and-customer-account-ui-extensions.html</loc><lastmod>2026-10-15T17:05:33Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafield-translations-now-available-via-graphql-admin-api.html</loc><lastmod>2026-09-29T00:38:30Z</lastmod></url>
@@ -168,7 +168,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/product-variant-barcode-is-being-replaced-by-barcodes.html</loc><lastmod>2026-10-21T17:16:35Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/publish-and-unpublish-product-variants-independently-from-product.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/purchase-order-read-api.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/purchase-type-filtering-now-enforced-for-app-discounts.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/purchase-type-filtering-now-enforced-for-app-discounts.html</loc><lastmod>2026-10-25T16:28:30Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/query-sp-fee-details-with-the-graphql-admin-api.html</loc><lastmod>2026-09-25T18:31:39Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/read-rollouts.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/removal-of-itemnotstockedatlocation-error.html</loc><lastmod>2026-10-21T17:16:35Z</lastmod></url>
