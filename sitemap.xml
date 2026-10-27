@@ -128,7 +128,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-apis-for-buyer-requested-order-edits.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-appsubscriptioncancel-mutation-in-the-partner-api.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-channelid-argument-for-incontext-directive-in-storefront-api-2026-10.html</loc><lastmod>2026-10-22T17:15:08Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-checkouttoken-field-added-to-the-order-object.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-checkouttoken-field-added-to-the-order-object.html</loc><lastmod>2026-10-27T12:19:24Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-collection-model-and-apis-now-available.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-css-variable-for-mobile-safe-area-insets.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/new-discount-fields-in-the-storefront-cart-graphql-api.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
@@ -144,14 +144,14 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/next-generation-events-are-now-generally-available.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/next-generation-events-now-available-in-developer-preview.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/online-store-script-tags-deprecation.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/order-attribution-definitions-are-available-in-order-channel-filters.html</loc><lastmod>2026-10-22T21:40:57Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/order-attribution-definitions-are-available-in-order-channel-filters.html</loc><lastmod>2026-10-27T12:19:23Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/orderdisplayfulfillmentstatus-now-returns-fulfillmentnotrequired.html</loc><lastmod>2026-10-21T17:16:35Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/orders-webhooks-now-include-selling-plan-id-on-line-items.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/oxygen-is-now-available-on-development-stores.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/oxygen-is-now-available-on-trial-plan-stores.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/password-protected-shop-dev-flows-on-shopify-theme-cli-v3-83-x-and-older-to-be-deprecated.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/payment-mandates-id-field.html</loc><lastmod>2026-10-21T17:16:35Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/payment-mandates-id-field.html</loc><lastmod>2026-10-27T12:19:23Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/payment-method-identifier-now-required-for-customerpaymentmethodremotecreate.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/per-customer-request-limit-for-the-customer-account-api.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/physical-inventory-feature-preview.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
