@@ -62,7 +62,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/discounts-can-now-be-included-in-rollouts.html</loc><lastmod>2026-10-21T17:16:35Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/downgrade-app-access-scopes-from-write-to-read.html</loc><lastmod>2026-10-23T17:13:00Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/draft-order-and-transfer-shipment-inventory-is-moving-from-reserved-to-committed.html</loc><lastmod>2026-10-21T21:46:13Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/draft-order-deposit-fields-now-available-in-the-admin-and-customer-account-graphql-apis.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/draft-order-deposit-fields-now-available-in-the-admin-and-customer-account-graphql-apis.html</loc><lastmod>2026-10-28T05:49:21Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/draftorderlineitemgrams-field-removed-in-2026-07.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/dynamic-complexity-cost-for-metafieldsset-mutation.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/events-subscription-query-complexity-limit-is-changing-to-100-points.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
@@ -147,14 +147,14 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/next-generation-events-are-now-generally-available.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/next-generation-events-now-available-in-developer-preview.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/online-store-script-tags-deprecation.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/order-attribution-definitions-are-available-in-order-channel-filters.html</loc><lastmod>2026-10-27T12:19:23Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/order-attribution-definitions-are-available-in-order-channel-filters.html</loc><lastmod>2026-10-28T05:49:21Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/order-create-fulfillment-tracking-numbers.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/orderdisplayfulfillmentstatus-now-returns-fulfillmentnotrequired.html</loc><lastmod>2026-10-21T17:16:35Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/orders-webhooks-now-include-selling-plan-id-on-line-items.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/oxygen-is-now-available-on-development-stores.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/oxygen-is-now-available-on-trial-plan-stores.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/password-protected-shop-dev-flows-on-shopify-theme-cli-v3-83-x-and-older-to-be-deprecated.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/payment-mandates-id-field.html</loc><lastmod>2026-10-27T12:19:23Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/payment-mandates-id-field.html</loc><lastmod>2026-10-28T05:49:21Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/payment-method-identifier-now-required-for-customerpaymentmethodremotecreate.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/per-customer-request-limit-for-the-customer-account-api.html</loc><lastmod>2026-10-07T23:08:37Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/physical-inventory-feature-preview.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
