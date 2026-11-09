@@ -30,7 +30,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/bots-and-agents-should-identify-themselves-via-web-bot-auth.html</loc><lastmod>2026-10-20T21:40:49Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/build-app-home-as-a-ui-extension.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/built-for-shopify-requirements-for-returns-and-exchanges-and-subscription-apps.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/bulk-queries-now-execute-faster.html</loc><lastmod>2026-11-08T22:11:23Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/bulk-queries-now-execute-faster.html</loc><lastmod>2026-11-09T22:25:46Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/businessentity-now-exposes-legalentityid-in-the-admin-api.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/card-deposit-endpoint-now-requires-mtls-certificate.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/carrier-services-will-no-longer-be-automatically-added-to-the-default-shipping-profile.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
@@ -167,7 +167,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/orders-webhooks-now-include-selling-plan-id-on-line-items.html</loc><lastmod>2026-10-06T00:06:19Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/oxygen-is-now-available-on-development-stores.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/oxygen-is-now-available-on-trial-plan-stores.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/partner-apps-must-enable-bulk-operations-before-use.html</loc><lastmod>2026-11-07T06:05:24Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/partner-apps-must-enable-bulk-operations-before-use.html</loc><lastmod>2026-11-09T22:25:45Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/password-protected-shop-dev-flows-on-shopify-theme-cli-v3-83-x-and-older-to-be-deprecated.html</loc><lastmod>2026-10-28T22:39:04Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/payment-mandates-id-field.html</loc><lastmod>2026-10-28T05:49:21Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/payment-method-identifier-now-required-for-customerpaymentmethodremotecreate.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
@@ -207,7 +207,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/set-product-categories-on-custom-line-items-in-draft-orders-and-order-edits.html</loc><lastmod>2026-10-21T17:16:35Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/setting-includerestofworld-to-true-returns-an-error-in-api-version-2027-01.html</loc><lastmod>2026-09-23T18:33:06Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/ship-and-pickup-in-one-order-feature-preview.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html</loc><lastmod>2026-11-08T22:11:23Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-campaigns-shopifyql.html</loc><lastmod>2026-11-09T22:25:46Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-minis-march-april-2026-update.html</loc><lastmod>2026-10-07T06:06:07Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-minis-may-june-2026-update.html</loc><lastmod>2026-10-28T22:39:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/shop-user-metafields-in-shopify-functions.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
