@@ -31,7 +31,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/build-app-home-as-a-ui-extension.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/built-for-shopify-requirements-for-returns-and-exchanges-and-subscription-apps.html</loc><lastmod>2026-10-12T19:25:20Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/bulk-queries-now-execute-faster.html</loc><lastmod>2026-11-09T22:25:46Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/businessentity-now-exposes-legalentityid-in-the-admin-api.html</loc><lastmod>2026-11-12T07:17:46Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/businessentity-now-exposes-legalentityid-in-the-admin-api.html</loc><lastmod>2026-11-13T06:51:34Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/card-deposit-endpoint-now-requires-mtls-certificate.html</loc><lastmod>2026-10-09T13:27:12Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/carrier-services-will-no-longer-be-automatically-added-to-the-default-shipping-profile.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/cart-and-checkout-permalinks-now-support-ucp-at-buy.html</loc><lastmod>2026-10-28T22:39:04Z</lastmod></url>
@@ -68,7 +68,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/discounts-can-now-be-included-in-rollouts.html</loc><lastmod>2026-10-21T17:16:35Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/downgrade-app-access-scopes-from-write-to-read.html</loc><lastmod>2026-11-11T06:34:11Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/draft-order-and-transfer-shipment-inventory-is-moving-from-reserved-to-committed.html</loc><lastmod>2026-10-28T22:39:04Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/draft-order-deposit-fields-now-available-in-the-admin-and-customer-account-graphql-apis.html</loc><lastmod>2026-11-11T19:39:32Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/draft-order-deposit-fields-now-available-in-the-admin-and-customer-account-graphql-apis.html</loc><lastmod>2026-11-13T06:51:34Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/draftorderlineitemgrams-field-removed-in-2026-07.html</loc><lastmod>2026-09-21T19:32:15Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/dynamic-complexity-cost-for-metafieldsset-mutation.html</loc><lastmod>2026-10-19T22:24:05Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/events-subscription-query-complexity-limit-is-changing-to-100-points.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
@@ -124,7 +124,7 @@
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/markets-apis-now-support-marketregionsubdivision.html</loc><lastmod>2026-11-11T19:39:32Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/merchant-email-now-available-on-the-themesale-object-in-the-partners-api.html</loc><lastmod>2026-10-28T22:39:04Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/merchant-notes-on-store-credit-transactions.html</loc><lastmod>2026-11-11T06:34:11Z</lastmod></url>
-<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/merchant-owned-delivery-profile-apis-are-deprecated-for-market-driven-shipping.html</loc><lastmod>2026-11-05T20:00:27Z</lastmod></url>
+<url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/merchant-owned-delivery-profile-apis-are-deprecated-for-market-driven-shipping.html</loc><lastmod>2026-11-13T06:51:34Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafield-owner-types-required-for-checkout-and-customer-account-ui-extensions.html</loc><lastmod>2026-10-28T22:39:04Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafield-translations-now-available-via-graphql-admin-api.html</loc><lastmod>2026-09-29T00:38:30Z</lastmod></url>
 <url><loc>https://merchantdiff.github.io/merchantdiff-site/changes/metafield-triggers-and-additional-topics-are-now-available-for-events.html</loc><lastmod>2026-10-01T18:37:52Z</lastmod></url>
